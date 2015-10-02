@@ -1,4 +1,4 @@
-from pglgen.util import xml
+from pglgen import xml
 
 class Command(xml.BaseParser):
 
