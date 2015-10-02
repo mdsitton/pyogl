@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 from pglgen import xml
 
 class Command(xml.BaseParser):
@@ -66,8 +68,8 @@ class Registry(xml.BaseParser):
     def __init__(self, xmlParser, tag, parent, root):
         super(Registry, self).__init__(xmlParser, tag, parent, root)
 
-        self.enums = {}
-        self.commands = {}
+        self.enums = OrderedDict()
+        self.commands = OrderedDict()
 
         self.tag = 'registry'
 
