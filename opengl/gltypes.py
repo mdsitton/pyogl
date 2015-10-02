@@ -17,7 +17,8 @@ GLfloat = ct.c_float
 GLclampf = ct.c_float
 GLdouble = ct.c_double
 GLclampd = ct.c_double
-void = GLvoid = None
+void = None
+GLvoid = None
 GLchar = ct.c_char
 
 GLintptr = _c_ptrdiff_t
