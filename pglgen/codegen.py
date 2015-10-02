@@ -1,28 +1,7 @@
+from opengl import gltypes
 
-supportedTypes = ['GLenum',
-        'GLbitfield',
-        'GLuint',
-        'GLint',
-        'GLsizei',
-        'GLboolean',
-        'GLbyte',
-        'GLshort',
-        'GLubyte',
-        'GLushort',
-        'GLulong',
-        'GLfloat',
-        'GLclampf',
-        'GLdouble',
-        'GLclampd',
-        'GLvoid',
-        'GLchar',
-        'GLintptr',
-        'GLsizeiptr',
-        'GLhandleARB',
-        'GLcharARB',
-        'GLhalfARB',
-        'GLhalfNV',
-        'void']
+# Get list of supported types automatically
+supportedTypes = [item for item in dir(gltypes) if item[0] != '_' and item != 'ct']
 
 codeHeader = '''\'\'\'
 OpenGL binding For python
@@ -32,35 +11,7 @@ import sys
 import ctypes as ct
 
 from opengl.bindutils import gl_func
-
-c_ptrdiff_t = ct.c_ssize_t
-
-GLenum = ct.c_uint
-GLbitfield = ct.c_uint
-GLuint = ct.c_uint
-GLint = ct.c_int
-GLsizei = ct.c_int
-GLboolean = ct.c_ubyte
-GLbyte = ct.c_char
-GLshort = ct.c_short
-GLubyte = ct.c_ubyte
-GLushort = ct.c_ushort
-GLulong = ct.c_ulong
-GLfloat = ct.c_float
-GLclampf = ct.c_float
-GLdouble = ct.c_double
-GLclampd = ct.c_double
-void = GLvoid = None
-GLchar = ct.c_char
-
-GLintptr = c_ptrdiff_t
-GLsizeiptr = c_ptrdiff_t
-
-GLhandleARB = ct.c_uint
-GLcharARB = ct.c_char
-
-GLhalfARB = ct.c_ushort
-GLhalfNV = ct.c_ushort
+from opengl.gltypes import *
 
 '''
 
