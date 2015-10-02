@@ -31,7 +31,7 @@ WARNING - This is generated code, do not modify directly.
 import sys
 import ctypes as ct
 
-from ed2d.bindutils import gl_func
+from opengl.bindutils import gl_func
 
 c_ptrdiff_t = ct.c_ssize_t
 
@@ -68,7 +68,7 @@ enum = '{0} = {1}\n'
 
 funcHeader = '''
 def init():
-    gl = sys.modules['ed2d.opengl.gl']
+    gl = sys.modules['opengl.gl']
 
     noParms = ()
 '''
