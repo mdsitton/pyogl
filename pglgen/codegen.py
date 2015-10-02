@@ -54,19 +54,15 @@ def filter_pointer(typeInfo):
     Filters out pointers frin the type info list
     returns the number of pointers found and removed.
     '''
+    ptrLocs = [i for i, item in enumerate(typeInfo) if '*' in item]
+
     ptrCount = 0
 
-    if '*' in typeInfo:
-        ptrLoc = typeInfo.index('*')
-    elif '**' in typeInfo:
-        ptrLoc = typeInfo.index('**')
-    else:
-        ptrLoc = None
-
-    if ptrLoc is not None:
-        ptrStr = typeInfo[ptrLoc]
-        ptrCount = ptrStr.count('*')
-        typeInfo.remove('*'*ptrCount)
+    if ptrLocs:
+        for i in ptrLocs:
+            ptrStr = typeInfo[i]
+            ptrCount += ptrStr.count('*')
+            typeInfo.remove(ptrStr)
 
     return ptrCount
 
