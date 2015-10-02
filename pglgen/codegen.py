@@ -11,7 +11,7 @@ import sys
 import ctypes as ct
 
 from opengl.bindutils import gl_func
-from opengl.gltypes import *
+from opengl import gltypes as t
 
 '''
 
@@ -75,6 +75,8 @@ def parse_type(typeInfo):
     ptrCount = filter_pointer(typeInfo)
 
     typeStr = typeInfo[0]
+    if typeStr:
+        typeStr = 't.'+typeStr
 
     # add the found number of pointers to the object.
     if ptrCount:
@@ -103,7 +105,7 @@ def gen_binding(enums, commands):
         commentFunction = False
 
         rtnStr = parse_type(rtnType)
-
+        
         # Mark the function  to be commented out out if we do
         # not currently support any of the datatypes needed
         if rtnType[0] not in supportedTypes:
