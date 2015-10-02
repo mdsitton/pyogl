@@ -23,11 +23,57 @@ def init():
 
     noParms = ()
 '''
+
 func = '    gl.{0} = gl_func( \'{0}\', {1}, ({2}))\n'
 
 pointer = 'ct.POINTER({0})'
 
+
+def filter_const(typeInfo):
+    '''
+    Remove const declarations from types since its not very
+    enfocable with python.
+    '''
+
+    # This counts how many const have been removed to
+    # compensate for the new index location
+    consCorrect = 0
+
+    for i, item in enumerate(typeInfo[:]):
+        if 'const' == item:
+            typeInfo.remove('const')
+            consCorrect += 1
+        elif 'const' in item:
+            typeInfo[i-consCorrect] = ''.join(item.split('const'))
+
+    # return typeStr
+
+
+def filter_pointer(typeInfo):
+    '''
+    Filters out pointers frin the type info list
+    returns the number of pointers found and removed.
+    '''
+    ptrCount = 0
+
+    if '*' in typeInfo:
+        ptrLoc = typeInfo.index('*')
+    elif '**' in typeInfo:
+        ptrLoc = typeInfo.index('**')
+    else:
+        ptrLoc = None
+
+    if ptrLoc is not None:
+        ptrStr = typeInfo[ptrLoc]
+        ptrCount = ptrStr.count('*')
+        typeInfo.remove('*'*ptrCount)
+
+    return ptrCount
+
+
 def gen_binding(enums, commands):
+    '''Generate the binding code using the dictionaries passed in'''
+
     code = []
     code.append(codeHeader)
 
@@ -43,35 +89,16 @@ def gen_binding(enums, commands):
 
         commentFunction = False
 
-        # generate return type string
-
-        # Remove const declarations from types since its not very
-        # enfocable with python.
-        consCorrect = 0
-        for i, item in enumerate(rtnType[:]):
-            if 'const' == item:
-                rtnType.remove('const')
-                consCorrect += 1
-            elif 'const' in item:
-                rtnType[i-consCorrect] = ''.join(item.split('const'))
+        # generate return type string must be done before pointers.
+        filter_const(rtnType)
 
 
         # Handle pointers
-        rtnPtrCount = 0
-
-        if '*' in rtnType:
-            rtnPtrLoc = rtnType.index('*')
-        elif '**' in rtnType:
-            rtnPtrLoc = rtnType.index('**')
-        else:
-            rtnPtrLoc = None
-        if rtnPtrLoc is not None:
-            rtnPtrStr = rtnType[rtnPtrLoc]
-            rtnPtrCount = rtnPtrStr.count('*')
-            rtnType.remove('*'*rtnPtrCount)
+        rtnPtrCount = filter_pointer(rtnType)
 
         rtnStr = rtnType[0]
 
+        # add the found number of pointers to the object.
         if rtnPtrCount:
             for i in range(rtnPtrCount):
                 rtnStr = pointer.format(rtnStr)
@@ -89,35 +116,15 @@ def gen_binding(enums, commands):
             # finiky... I'll see if its actually needed later.
             parType = parType[:] 
 
-            # Remove const declarations from types since its not very
-            # enfocable with python.
-            # TODO - This is basically copy paste from above... 
-            consCorrect = 0
-            for i, item in enumerate(parType[:]):
-                if 'const' == item:
-                    parType.remove('const')
-                    consCorrect += 1
-                elif 'const' in item:
-                    parType[i-consCorrect] = ''.join(item.split('const'))
+
+            # generate return type string must be done before pointers.
+            filter_const(parType)
 
             # Handle pointers
-            # TODO - This is basically copy paste from above... 
-            parPtrCount = 0
-
-            if '*' in parType:
-                parPtrLoc = parType.index('*')
-            elif '**' in parType:
-                parPtrLoc = parType.index('**')
-            else:
-                parPtrLoc = None
-            if parPtrLoc is not None:
-                parPtrStr = parType[parPtrLoc]
-                parPtrCount = parPtrStr.count('*')
-                parType.remove('*'*parPtrCount)
-
+            parPtrCount = filter_pointer(parType)
 
             parStr = parType[0]
-
+            # add the found number of pointers to the object.
             if parPtrCount:
                 for i in range(parPtrCount):
                     parStr = pointer.format(parStr)
