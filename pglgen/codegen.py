@@ -66,6 +66,23 @@ def filter_pointer(typeInfo):
 
     return ptrCount
 
+def parse_type(typeInfo):
+
+    # generate return type string must be done before pointers.
+    filter_const(typeInfo)
+
+    # Handle pointers
+    ptrCount = filter_pointer(typeInfo)
+
+    typeStr = typeInfo[0]
+
+    # add the found number of pointers to the object.
+    if ptrCount:
+        for i in range(ptrCount):
+            typeStr = pointer.format(typeStr)
+
+    return typeStr
+
 
 def gen_binding(enums, commands):
     '''Generate the binding code using the dictionaries passed in'''
@@ -85,19 +102,7 @@ def gen_binding(enums, commands):
 
         commentFunction = False
 
-        # generate return type string must be done before pointers.
-        filter_const(rtnType)
-
-
-        # Handle pointers
-        rtnPtrCount = filter_pointer(rtnType)
-
-        rtnStr = rtnType[0]
-
-        # add the found number of pointers to the object.
-        if rtnPtrCount:
-            for i in range(rtnPtrCount):
-                rtnStr = pointer.format(rtnStr)
+        rtnStr = parse_type(rtnType)
 
         # Mark the function  to be commented out out if we do
         # not currently support any of the datatypes needed
@@ -108,22 +113,7 @@ def gen_binding(enums, commands):
         parmItems = []
         for parName, parType in params:
 
-            # Copy list since iterating and changing a list can get
-            # finiky... I'll see if its actually needed later.
-            parType = parType[:] 
-
-
-            # generate return type string must be done before pointers.
-            filter_const(parType)
-
-            # Handle pointers
-            parPtrCount = filter_pointer(parType)
-
-            parStr = parType[0]
-            # add the found number of pointers to the object.
-            if parPtrCount:
-                for i in range(parPtrCount):
-                    parStr = pointer.format(parStr)
+            parStr = parse_type(parType)
 
             # Mark the function  to be commented out out if we do
             # not currently support any of the datatypes needed
