@@ -51,7 +51,7 @@ def filter_const(typeInfo):
 
 def filter_pointer(typeInfo):
     '''
-    Filters out pointers frin the type info list
+    Filters out pointers from the type info list
     returns the number of pointers found and removed.
     '''
     ptrLocs = [i for i, item in enumerate(typeInfo) if '*' in item]
@@ -105,7 +105,7 @@ def gen_binding(enums, commands):
         commentFunction = False
 
         rtnStr = parse_type(rtnType)
-        
+
         # Mark the function  to be commented out out if we do
         # not currently support any of the datatypes needed
         if rtnType[0] not in supportedTypes:
