@@ -61,6 +61,8 @@ class BaseParser(object):
 
         self.set_handlers()
 
+        self.init_data()
+
     def set_handlers(self):
         self.xmlParser.StartElementHandler = self.start
         self.xmlParser.CharacterDataHandler = self.data
@@ -97,12 +99,6 @@ class BaseParser(object):
 
         self.stack.pop()
 
-    def parse(self):
-        pass
-
-    def integrate(self):
-        pass
-
     def switch_parser(self, parser):
         tag, attrs, data = self.stack.peek()
         return parser(self.xmlParser, tag, self, self.root)
@@ -110,6 +106,16 @@ class BaseParser(object):
     def register_parser(self, stackTree, parser):
         self.parsers[stackTree] = {'object': parser}
 
+    # The following method stubs are what the parsing sub-classes
+    # will be implemented within.
+    def init_data(self):
+        pass
+
+    def parse(self):
+        pass
+
+    def integrate(self):
+        pass
 
 
 def parse_xml(rootParser, xmlPath):
