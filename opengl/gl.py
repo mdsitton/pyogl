@@ -5073,6 +5073,9 @@ GL_MAX_SAMPLES_IMG = 0x9135
 GL_TEXTURE_SAMPLES_IMG = 0x9136
 GL_COMPRESSED_RGBA_PVRTC_2BPPV2_IMG = 0x9137
 GL_COMPRESSED_RGBA_PVRTC_4BPPV2_IMG = 0x9138
+GL_CUBIC_IMG = 0x9139
+GL_CUBIC_MIPMAP_NEAREST_IMG = 0x913A
+GL_CUBIC_MIPMAP_LINEAR_IMG = 0x913B
 GL_MAX_DEBUG_MESSAGE_LENGTH = 0x9143
 GL_MAX_DEBUG_MESSAGE_LENGTH_AMD = 0x9143
 GL_MAX_DEBUG_MESSAGE_LENGTH_ARB = 0x9143
@@ -6367,6 +6370,7 @@ def init():
     gl.glFramebufferTextureLayer = gl_func( 'glFramebufferTextureLayer', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLint, t.GLint))
     gl.glFramebufferTextureLayerARB = gl_func( 'glFramebufferTextureLayerARB', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLint, t.GLint))
     gl.glFramebufferTextureLayerEXT = gl_func( 'glFramebufferTextureLayerEXT', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLint, t.GLint))
+    gl.glFramebufferTextureMultisampleMultiviewOVR = gl_func( 'glFramebufferTextureMultisampleMultiviewOVR', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLint, t.GLsizei, t.GLint, t.GLsizei))
     gl.glFramebufferTextureMultiviewOVR = gl_func( 'glFramebufferTextureMultiviewOVR', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLint, t.GLint, t.GLsizei))
     gl.glFramebufferTextureOES = gl_func( 'glFramebufferTextureOES', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLint))
     gl.glFreeObjectBufferATI = gl_func( 'glFreeObjectBufferATI', t.void, (t.GLuint,))
