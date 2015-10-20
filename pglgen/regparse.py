@@ -68,7 +68,7 @@ class Feature(xml.BaseParser):
         self.api = None
         self.version = None
 
-        self.default = OrderedDict()
+        self.default = {}
         self.profile_setup(self.default)
 
         self.profiles = {}
@@ -112,7 +112,7 @@ class Feature(xml.BaseParser):
             if 'profile' in pattrs.keys():
                 profile = pattrs['profile']
                 if profile not in self.profiles.keys():
-                    self.profiles[profile] = OrderedDict()
+                    self.profiles[profile] = {}
                     self.profile_setup(self.profiles[profile])
 
                 self.profiles[profile][featureStatus][tag].append(attrs['name'])
@@ -151,7 +151,32 @@ class Registry(xml.BaseParser):
 
         self.enums = OrderedDict()
         self.commands = OrderedDict()
+
+        # The features dictionary is laid out as follows:
+        # features = {
+        #     gl: {                        # api
+        #         GL_VERSION_1_0: {        # name
+        #             'info': {
+        #                 'api': gl,
+        #                 'version': 1.0,
+        #                 'name': GL_VERSION_1_0,
+        #             },
+        #             'default': {  # Items in default are port of all profiles
+        #                 'require': {
+        #                     'enum': [],
+        #                     'command': [],
+        #                 },
+        #                 'remove': {
+        #                     'enum': [],
+        #                     'command': [],
+        #                 }
+        #             }, # profiles will be after default (core / compatability)
+        #         }
+        #     }
+        # }
         self.features = OrderedDict()
+
+        self.extensions = OrderedDict()
 
         self.tag = 'registry'
 
@@ -170,7 +195,7 @@ class Registry(xml.BaseParser):
 
 def parse_registry(xmlFile):
     reg = xml.parse_xml(Registry, xmlFile)
-    return (reg.enums, reg.commands)
+    return (reg.enums, reg.commands, reg.features, reg.extensions)
 
 
 #  Higher level Tree-like View of parser classes.
