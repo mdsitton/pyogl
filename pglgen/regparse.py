@@ -103,11 +103,10 @@ class Feature(xml.BaseParser):
             # traversal is needed. This is to set various information from the
             # feature tag that is needed in various tags contained within the tag.
             if self.name is None or self.version is None or self.api is None:
-                tag, attrs, data = self.stack.peek(posRel=pos)
-
-                self.name = attrs['name']
-                self.version = attrs['number']
-                self.api = attrs['api']
+                ptag, pattrs, pdata = self.stack.peek(posRel=2)
+                self.name = pattrs['name']
+                self.version = pattrs['number']
+                self.api = pattrs['api']
 
             featureStatus, pattrs, pdata = self.stack.peek(posRel=1)
             if 'profile' in pattrs.keys():
