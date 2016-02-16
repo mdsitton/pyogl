@@ -3,11 +3,12 @@ from pglgen import regparse, codegen
 
 def main():
 
-    enums, commands = regparse.parse_registry('gl.xml')
+    api = 'gl'
+    apis = codegen.gen_binding(*regparse.parse_registry('gl.xml'))
 
-    code = codegen.gen_binding(enums, commands)
+    code = apis[api]
 
-    with open('./opengl/gl.py', 'w') as glFile:
+    with open('./opengl/{}.py'.format(api), 'w') as glFile:
         glFile.write(code)
 
 
