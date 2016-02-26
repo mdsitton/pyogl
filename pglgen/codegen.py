@@ -6,7 +6,6 @@ supportedTypes = [item for item in dir(gltypes) if item[0] != '_' and item != 'c
 codeHeader = '''\'\'\'
 OpenGL binding For python
 WARNING - This is generated code, do not modify directly.
-API: {}
 \'\'\'
 import sys
 import ctypes as ct
@@ -14,21 +13,28 @@ import ctypes as ct
 from opengl.bindutils import gl_func
 from opengl import gltypes as t
 
+def set_func(name, returnType, paramTypes):
+    \'\'\'gl_func wrapper that inserts function in globals.\'\'\'
+    globals()[name] = gl_func(name, returnType, paramTypes)
+
+def set_enum(name, value):
+    globals()[name] = value
+
+noParms = ()
 '''
 
-enum = '{0} = {1}\n'
+enum = '    set_enum({0}, {1})\n'
 
-funcHeader = '''
-def {}():
-    gl = sys.modules['opengl.gl']
-
-    noParms = ()
+funcTemplate = '''
+def {0}():
+{1}
 '''
-initHeader = '''
+initTemplate = '''
 def init():
+{0}
 '''
 
-func = '    gl.{0} = gl_func( \'{0}\', {1}, ({2}))\n'
+func = '    set_func(\'{0}\', {1}, ({2}))\n'
 
 pointer = 'ct.POINTER({0})'
 
@@ -90,81 +96,93 @@ def parse_type(typeInfo):
     return typeStr
 
 
+def gen_func_code(enums, commands):
+    functionCode = []
+
+    for name, typeInfo in commands.items():
+        rtnType = typeInfo['return'][:]
+        params = typeInfo['parms']
+
+        commentFunction = False
+
+        rtnStr = parse_type(rtnType)
+
+        # Mark the function  to be commented out out if we do
+        # not currently support any of the datatypes needed
+        if rtnType[0] not in supportedTypes:
+            commentFunction = True
+
+        # generate param list string
+        parmItems = []
+        for parName, parType in params:
+
+            parStr = parse_type(parType)
+
+            # Mark the function  to be commented out out if we do
+            # not currently support any of the datatypes needed
+            if parType[0] not in supportedTypes:
+                commentFunction = True
+
+            parmItems.append(parStr)
+
+        # Add a comma to the end of a single argument because tuples..
+        if len(parmItems) == 1:
+            parmStr = '{0},'.format(parmItems[0])
+        else:
+            parmStr = ', '.join(parmItems)
+
+        # Comment out function if marked.
+        if commentFunction:
+            funcCode = '# {0}'.format(func.format(name, rtnStr, parmStr))
+        else:
+            funcCode = func.format(name, rtnStr, parmStr)
+
+        functionCode.append(funcCode)
+
+    for name, value in enums.items():
+        functionCode.append(enum.format(name, value))
+            
+    return ''.join(functionCode)
+
 def gen_binding(enums, commands, features, extensions):
     '''Generate the binding code using the dictionaries passed in'''
-    apis = {}
 
+    initNames = []
+    code = []
+    code.append(codeHeader)
     for api, apiNames in features.items():
-
-        code = []
-        code.append(codeHeader.format(api))
-
-        initNames = []
-
         for verName, verFeatures in apiNames.items():
 
             version = verFeatures['info']['version']
 
-            code.append('#### {} VERSION {} ####\n'.format(api.upper(), version))
+            code.append('\n#### {} VERSION {} ####'.format(api.upper(), version))
 
             featureCmds = {c: commands[c] for c in verFeatures['default']['require']['command']}
             featureEnums = {c: enums[c] for c in verFeatures['default']['require']['enum']}
 
-            for name, value in featureEnums.items():
-                code.append(enum.format(name, value))
-
             funcName = 'init_' + verName.lower()
             initNames.append(funcName)
+            
+            funcCode = gen_func_code(featureEnums, featureCmds)
+            
+            code.append(funcTemplate.format(funcName, funcCode))
+        
+        for name, data in extensions.items():
+            code.append('\n#### {} VERSION {} ####'.format(api.upper(), version))
 
-            code.append(funcHeader.format(funcName))
+            extCmds = {c: commands[c] for c in data['command']}
+            extEnums = {c: enums[c] for c in data['enum']}
+            
+            funcName = 'init_' + name.lower()
+            initNames.append(funcName)
+            funcCode = gen_func_code(extEnums, extCmds)
+            
+            code.append(funcTemplate.format(funcName, funcCode))
 
-            for name, typeInfo in featureCmds.items():
-                rtnType = typeInfo['return'][:]
-                params = typeInfo['parms']
-
-                commentFunction = False
-
-                rtnStr = parse_type(rtnType)
-
-                # Mark the function  to be commented out out if we do
-                # not currently support any of the datatypes needed
-                if rtnType[0] not in supportedTypes:
-                    commentFunction = True
-
-                # generate param list string
-                parmItems = []
-                for parName, parType in params:
-
-                    parStr = parse_type(parType)
-
-                    # Mark the function  to be commented out out if we do
-                    # not currently support any of the datatypes needed
-                    if parType[0] not in supportedTypes:
-                        commentFunction = True
-
-                    parmItems.append(parStr)
-
-                # Add a comma to the end of a single argument because tuples..
-                if len(parmItems) == 1:
-                    parmStr = '{0},'.format(parmItems[0])
-                else:
-                    parmStr = ', '.join(parmItems)
-
-                # Comment out function if marked.
-                if commentFunction:
-                    funcCode = '# {0}'.format(func.format(name, rtnStr, parmStr))
-                else:
-                    funcCode = func.format(name, rtnStr, parmStr)
-
-                code.append(funcCode)
-
-            code.append('\n')
-        code.append(initHeader)
+        initCode = []
         for i in initNames:
-            code.append('    {}()\n'.format(i))
+            initCode.append('    {}()\n'.format(i))
 
-        code.append('\n')
-        codeStr = ''.join(code)
-        apis[api] = codeStr
+        code.append(initTemplate.format(''.join(initCode)))
 
-    return apis
+    return ''.join(code)

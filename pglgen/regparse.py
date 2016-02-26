@@ -145,6 +145,38 @@ class Feature(xml.BaseParser):
             self.parent.features[self.api][self.name] = features
 
 
+class Extensions(xml.BaseParser):
+
+    def init_data(self):
+
+        self.name = None
+        self.api = None
+        self.version = None
+
+        self.extensions = {}
+
+    def parse(self):
+
+        tagPath = self.stack.path()
+        tag, attrs, data = self.stack.peek()
+
+        if ('extension/require/enum' in tagPath or
+            'extension/require/command' in tagPath):
+            
+            ptag, pattrs, pdata = self.stack.peek(posRel=2)
+            self.name = pattrs['name']
+            self.supported = pattrs['supported']
+            try:
+                self.extensions[self.name][tag].append(attrs['name'])
+            except:
+                self.extensions[self.name] = {'enum': [], 'command': []}
+                self.extensions[self.name][tag].append(attrs['name'])
+
+    def integrate(self):
+
+        self.parent.extensions.update(self.extensions)
+
+
 class Registry(xml.BaseParser):
 
     def init_data(self):
@@ -182,6 +214,7 @@ class Registry(xml.BaseParser):
 
         self.register_parser('registry/commands', Commands)
         self.register_parser('registry/feature', Feature)
+        self.register_parser('registry/extensions', Extensions)
 
     def parse(self):
 
