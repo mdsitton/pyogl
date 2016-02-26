@@ -1,3 +1,5 @@
+from collections import OrderedDict
+
 from opengl import gltypes
 
 # Get list of supported types automatically
@@ -23,7 +25,7 @@ def set_enum(name, value):
 noParms = ()
 '''
 
-enum = '    set_enum({0}, {1})\n'
+enum = '    set_enum("{0}", {1})\n'
 
 funcTemplate = '''
 def {0}():
@@ -156,9 +158,14 @@ def gen_binding(enums, commands, features, extensions):
             version = verFeatures['info']['version']
 
             code.append('\n#### {} VERSION {} ####'.format(api.upper(), version))
-
-            featureCmds = {c: commands[c] for c in verFeatures['default']['require']['command']}
-            featureEnums = {c: enums[c] for c in verFeatures['default']['require']['enum']}
+            
+            featureCmds = OrderedDict()
+            featureEnums = OrderedDict()
+            
+            for c in verFeatures['default']['require']['command']:
+                featureCmds[c] = commands[c]
+            for e in verFeatures['default']['require']['enum']:
+                featureEnums[e] = enums[e]
 
             funcName = 'init_' + verName.lower()
             initNames.append(funcName)
@@ -169,9 +176,13 @@ def gen_binding(enums, commands, features, extensions):
         
         for name, data in extensions.items():
             code.append('\n#### {} VERSION {} ####'.format(api.upper(), version))
-
-            extCmds = {c: commands[c] for c in data['command']}
-            extEnums = {c: enums[c] for c in data['enum']}
+            extCmds = OrderedDict()
+            extEnums = OrderedDict()
+            
+            for c in data['command']:
+                extCmds[c] = commands[c]
+            for e in data['enum']:
+                extEnums[e] = enums[e]
             
             funcName = 'init_' + name.lower()
             initNames.append(funcName)

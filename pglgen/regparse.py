@@ -68,10 +68,10 @@ class Feature(xml.BaseParser):
         self.api = None
         self.version = None
 
-        self.default = {}
+        self.default = OrderedDict()
         self.profile_setup(self.default)
 
-        self.profiles = {}
+        self.profiles = OrderedDict()
 
         #self.parent.features.append(self)
 
@@ -153,7 +153,7 @@ class Extensions(xml.BaseParser):
         self.api = None
         self.version = None
 
-        self.extensions = {}
+        self.extensions = OrderedDict()
 
     def parse(self):
 
