@@ -165,13 +165,13 @@ def init_glx_version_1_4():
     set_enum("GLX_SAMPLES", 100001)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_3DFX_MULTISAMPLE ####
 def init_glx_3dfx_multisample():
     set_enum("GLX_SAMPLE_BUFFERS_3DFX", 0x8050)
     set_enum("GLX_SAMPLES_3DFX", 0x8051)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_AMD_GPU_ASSOCIATION ####
 def init_glx_amd_gpu_association():
 #     set_func('glXGetGPUIDsAMD', t.unsigned int, (t.unsigned int, ct.POINTER(t.unsigned)))
 #     set_func('glXGetGPUInfoAMD', t.int, (t.unsigned int, t.int, t.GLenum, t.unsigned int, ct.POINTER(t.void)))
@@ -194,14 +194,14 @@ def init_glx_amd_gpu_association():
     set_enum("GLX_GPU_NUM_SPI_AMD", 0x21A8)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_ARB_CONTEXT_FLUSH_CONTROL ####
 def init_glx_arb_context_flush_control():
     set_enum("GLX_CONTEXT_RELEASE_BEHAVIOR_ARB", 0x2097)
     set_enum("GLX_CONTEXT_RELEASE_BEHAVIOR_NONE_ARB", 0)
     set_enum("GLX_CONTEXT_RELEASE_BEHAVIOR_FLUSH_ARB", 0x2098)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_ARB_CREATE_CONTEXT ####
 def init_glx_arb_create_context():
 #     set_func('glXCreateContextAttribsARB', t.GLXContext, (ct.POINTER(t.Display), t.GLXFBConfig, t.GLXContext, t.Bool, ct.POINTER(t.int)))
     set_enum("GLX_CONTEXT_DEBUG_BIT_ARB", 0x00000001)
@@ -211,14 +211,14 @@ def init_glx_arb_create_context():
     set_enum("GLX_CONTEXT_FLAGS_ARB", 0x2094)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_ARB_CREATE_CONTEXT_PROFILE ####
 def init_glx_arb_create_context_profile():
     set_enum("GLX_CONTEXT_CORE_PROFILE_BIT_ARB", 0x00000001)
     set_enum("GLX_CONTEXT_COMPATIBILITY_PROFILE_BIT_ARB", 0x00000002)
     set_enum("GLX_CONTEXT_PROFILE_MASK_ARB", 0x9126)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_ARB_CREATE_CONTEXT_ROBUSTNESS ####
 def init_glx_arb_create_context_robustness():
     set_enum("GLX_CONTEXT_ROBUST_ACCESS_BIT_ARB", 0x00000004)
     set_enum("GLX_LOSE_CONTEXT_ON_RESET_ARB", 0x8252)
@@ -226,70 +226,70 @@ def init_glx_arb_create_context_robustness():
     set_enum("GLX_NO_RESET_NOTIFICATION_ARB", 0x8261)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_ARB_FBCONFIG_FLOAT ####
 def init_glx_arb_fbconfig_float():
     set_enum("GLX_RGBA_FLOAT_TYPE_ARB", 0x20B9)
     set_enum("GLX_RGBA_FLOAT_BIT_ARB", 0x00000004)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_ARB_FRAMEBUFFER_SRGB ####
 def init_glx_arb_framebuffer_srgb():
     set_enum("GLX_FRAMEBUFFER_SRGB_CAPABLE_ARB", 0x20B2)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_ARB_GET_PROC_ADDRESS ####
 def init_glx_arb_get_proc_address():
 #     set_func('glXGetProcAddressARB', t.__GLXextFuncPtr, (ct.POINTER(t.GLubyte),))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_ARB_MULTISAMPLE ####
 def init_glx_arb_multisample():
     set_enum("GLX_SAMPLE_BUFFERS_ARB", 100000)
     set_enum("GLX_SAMPLES_ARB", 100001)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_ARB_ROBUSTNESS_APPLICATION_ISOLATION ####
 def init_glx_arb_robustness_application_isolation():
     set_enum("GLX_CONTEXT_RESET_ISOLATION_BIT_ARB", 0x00000008)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_ARB_ROBUSTNESS_SHARE_GROUP_ISOLATION ####
 def init_glx_arb_robustness_share_group_isolation():
     set_enum("GLX_CONTEXT_RESET_ISOLATION_BIT_ARB", 0x00000008)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_ARB_VERTEX_BUFFER_OBJECT ####
 def init_glx_arb_vertex_buffer_object():
     set_enum("GLX_CONTEXT_ALLOW_BUFFER_BYTE_ORDER_MISMATCH_ARB", 0x2095)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_EXT_BUFFER_AGE ####
 def init_glx_ext_buffer_age():
     set_enum("GLX_BACK_BUFFER_AGE_EXT", 0x20F4)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_EXT_CREATE_CONTEXT_ES_PROFILE ####
 def init_glx_ext_create_context_es_profile():
     set_enum("GLX_CONTEXT_ES_PROFILE_BIT_EXT", 0x00000004)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_EXT_CREATE_CONTEXT_ES2_PROFILE ####
 def init_glx_ext_create_context_es2_profile():
     set_enum("GLX_CONTEXT_ES2_PROFILE_BIT_EXT", 0x00000004)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_EXT_FBCONFIG_PACKED_FLOAT ####
 def init_glx_ext_fbconfig_packed_float():
     set_enum("GLX_RGBA_UNSIGNED_FLOAT_TYPE_EXT", 0x20B1)
     set_enum("GLX_RGBA_UNSIGNED_FLOAT_BIT_EXT", 0x00000008)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_EXT_FRAMEBUFFER_SRGB ####
 def init_glx_ext_framebuffer_srgb():
     set_enum("GLX_FRAMEBUFFER_SRGB_CAPABLE_EXT", 0x20B2)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_EXT_IMPORT_CONTEXT ####
 def init_glx_ext_import_context():
 #     set_func('glXGetCurrentDisplayEXT', ct.POINTER(t.Display), ())
 #     set_func('glXQueryContextInfoEXT', t.int, (ct.POINTER(t.Display), t.GLXContext, t.int, ct.POINTER(t.int)))
@@ -301,26 +301,26 @@ def init_glx_ext_import_context():
     set_enum("GLX_SCREEN_EXT", 0x800C)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_EXT_STEREO_TREE ####
 def init_glx_ext_stereo_tree():
     set_enum("GLX_STEREO_TREE_EXT", 0x20F5)
     set_enum("GLX_STEREO_NOTIFY_MASK_EXT", 0x00000001)
     set_enum("GLX_STEREO_NOTIFY_EXT", 0x00000000)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_EXT_SWAP_CONTROL ####
 def init_glx_ext_swap_control():
 #     set_func('glXSwapIntervalEXT', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int))
     set_enum("GLX_SWAP_INTERVAL_EXT", 0x20F1)
     set_enum("GLX_MAX_SWAP_INTERVAL_EXT", 0x20F2)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_EXT_SWAP_CONTROL_TEAR ####
 def init_glx_ext_swap_control_tear():
     set_enum("GLX_LATE_SWAPS_TEAR_EXT", 0x20F3)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_EXT_TEXTURE_FROM_PIXMAP ####
 def init_glx_ext_texture_from_pixmap():
 #     set_func('glXBindTexImageEXT', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int, ct.POINTER(t.int)))
 #     set_func('glXReleaseTexImageEXT', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int))
@@ -359,7 +359,7 @@ def init_glx_ext_texture_from_pixmap():
     set_enum("GLX_AUX9_EXT", 0x20EB)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_EXT_VISUAL_INFO ####
 def init_glx_ext_visual_info():
     set_enum("GLX_X_VISUAL_TYPE_EXT", 0x22)
     set_enum("GLX_TRANSPARENT_TYPE_EXT", 0x23)
@@ -379,7 +379,7 @@ def init_glx_ext_visual_info():
     set_enum("GLX_TRANSPARENT_INDEX_EXT", 0x8009)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_EXT_VISUAL_RATING ####
 def init_glx_ext_visual_rating():
     set_enum("GLX_VISUAL_CAVEAT_EXT", 0x20)
     set_enum("GLX_SLOW_VISUAL_EXT", 0x8001)
@@ -387,7 +387,7 @@ def init_glx_ext_visual_rating():
     set_enum("GLX_NONE_EXT", 0x8000)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_INTEL_SWAP_EVENT ####
 def init_glx_intel_swap_event():
     set_enum("GLX_BUFFER_SWAP_COMPLETE_INTEL_MASK", 0x04000000)
     set_enum("GLX_EXCHANGE_COMPLETE_INTEL", 0x8180)
@@ -395,22 +395,22 @@ def init_glx_intel_swap_event():
     set_enum("GLX_FLIP_COMPLETE_INTEL", 0x8182)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_MESA_AGP_OFFSET ####
 def init_glx_mesa_agp_offset():
 #     set_func('glXGetAGPOffsetMESA', t.unsigned int, (ct.POINTER(t.void),))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_MESA_COPY_SUB_BUFFER ####
 def init_glx_mesa_copy_sub_buffer():
 #     set_func('glXCopySubBufferMESA', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int, t.int, t.int, t.int))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_MESA_PIXMAP_COLORMAP ####
 def init_glx_mesa_pixmap_colormap():
 #     set_func('glXCreateGLXPixmapMESA', t.GLXPixmap, (ct.POINTER(t.Display), ct.POINTER(t.XVisualInfo), t.Pixmap, t.Colormap))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_MESA_QUERY_RENDERER ####
 def init_glx_mesa_query_renderer():
 #     set_func('glXQueryCurrentRendererIntegerMESA', t.Bool, (t.int, ct.POINTER(t.unsigned)))
 #     set_func('glXQueryCurrentRendererStringMESA', ct.POINTER(t.char), (t.int,))
@@ -430,53 +430,53 @@ def init_glx_mesa_query_renderer():
     set_enum("GLX_RENDERER_ID_MESA", 0x818E)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_MESA_RELEASE_BUFFERS ####
 def init_glx_mesa_release_buffers():
 #     set_func('glXReleaseBuffersMESA', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_MESA_SET_3DFX_MODE ####
 def init_glx_mesa_set_3dfx_mode():
 #     set_func('glXSet3DfxModeMESA', t.Bool, (t.int,))
     set_enum("GLX_3DFX_WINDOW_MODE_MESA", 0x1)
     set_enum("GLX_3DFX_FULLSCREEN_MODE_MESA", 0x2)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_NV_COPY_BUFFER ####
 def init_glx_nv_copy_buffer():
 #     set_func('glXCopyBufferSubDataNV', t.void, (ct.POINTER(t.Display), t.GLXContext, t.GLXContext, t.GLenum, t.GLenum, t.GLintptr, t.GLintptr, t.GLsizeiptr))
 #     set_func('glXNamedCopyBufferSubDataNV', t.void, (ct.POINTER(t.Display), t.GLXContext, t.GLXContext, t.GLuint, t.GLuint, t.GLintptr, t.GLintptr, t.GLsizeiptr))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_NV_COPY_IMAGE ####
 def init_glx_nv_copy_image():
 #     set_func('glXCopyImageSubDataNV', t.void, (ct.POINTER(t.Display), t.GLXContext, t.GLuint, t.GLenum, t.GLint, t.GLint, t.GLint, t.GLint, t.GLXContext, t.GLuint, t.GLenum, t.GLint, t.GLint, t.GLint, t.GLint, t.GLsizei, t.GLsizei, t.GLsizei))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_NV_DELAY_BEFORE_SWAP ####
 def init_glx_nv_delay_before_swap():
 #     set_func('glXDelayBeforeSwapNV', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.GLfloat))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_NV_FLOAT_BUFFER ####
 def init_glx_nv_float_buffer():
     set_enum("GLX_FLOAT_COMPONENTS_NV", 0x20B0)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_NV_MULTISAMPLE_COVERAGE ####
 def init_glx_nv_multisample_coverage():
     set_enum("GLX_COVERAGE_SAMPLES_NV", 100001)
     set_enum("GLX_COLOR_SAMPLES_NV", 0x20B3)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_NV_PRESENT_VIDEO ####
 def init_glx_nv_present_video():
 #     set_func('glXEnumerateVideoDevicesNV', ct.POINTER(t.unsigned), (ct.POINTER(t.Display), t.int, ct.POINTER(t.int)))
 #     set_func('glXBindVideoDeviceNV', t.int, (ct.POINTER(t.Display), t.unsigned int, t.unsigned int, ct.POINTER(t.int)))
     set_enum("GLX_NUM_VIDEO_SLOTS_NV", 0x20F0)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_NV_SWAP_GROUP ####
 def init_glx_nv_swap_group():
 #     set_func('glXJoinSwapGroupNV', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.GLuint))
 #     set_func('glXBindSwapBarrierNV', t.Bool, (ct.POINTER(t.Display), t.GLuint, t.GLuint))
@@ -486,7 +486,7 @@ def init_glx_nv_swap_group():
 #     set_func('glXResetFrameCountNV', t.Bool, (ct.POINTER(t.Display), t.int))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_NV_VIDEO_CAPTURE ####
 def init_glx_nv_video_capture():
 #     set_func('glXBindVideoCaptureDeviceNV', t.int, (ct.POINTER(t.Display), t.unsigned int, t.GLXVideoCaptureDeviceNV))
 #     set_func('glXEnumerateVideoCaptureDevicesNV', ct.POINTER(t.GLXVideoCaptureDeviceNV), (ct.POINTER(t.Display), t.int, ct.POINTER(t.int)))
@@ -498,7 +498,7 @@ def init_glx_nv_video_capture():
     set_enum("GLX_NUM_VIDEO_CAPTURE_SLOTS_NV", 0x20CF)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_NV_VIDEO_OUT ####
 def init_glx_nv_video_out():
 #     set_func('glXGetVideoDeviceNV', t.int, (ct.POINTER(t.Display), t.int, t.int, ct.POINTER(t.GLXVideoDeviceNV)))
 #     set_func('glXReleaseVideoDeviceNV', t.int, (ct.POINTER(t.Display), t.int, t.GLXVideoDeviceNV))
@@ -518,7 +518,7 @@ def init_glx_nv_video_out():
     set_enum("GLX_VIDEO_OUT_STACKED_FIELDS_2_1_NV", 0x20CC)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_OML_SWAP_METHOD ####
 def init_glx_oml_swap_method():
     set_enum("GLX_SWAP_METHOD_OML", 0x8060)
     set_enum("GLX_SWAP_EXCHANGE_OML", 0x8061)
@@ -526,7 +526,7 @@ def init_glx_oml_swap_method():
     set_enum("GLX_SWAP_UNDEFINED_OML", 0x8063)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_OML_SYNC_CONTROL ####
 def init_glx_oml_sync_control():
 #     set_func('glXGetSyncValuesOML', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, ct.POINTER(t.int64_t), ct.POINTER(t.int64_t), ct.POINTER(t.int64_t)))
 #     set_func('glXGetMscRateOML', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, ct.POINTER(t.int32_t), ct.POINTER(t.int32_t)))
@@ -535,52 +535,52 @@ def init_glx_oml_sync_control():
 #     set_func('glXWaitForSbcOML', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.int64_t, ct.POINTER(t.int64_t), ct.POINTER(t.int64_t), ct.POINTER(t.int64_t)))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGI_CUSHION ####
 def init_glx_sgi_cushion():
 #     set_func('glXCushionSGI', t.void, (ct.POINTER(t.Display), t.Window, t.float))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGI_MAKE_CURRENT_READ ####
 def init_glx_sgi_make_current_read():
 #     set_func('glXMakeCurrentReadSGI', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.GLXDrawable, t.GLXContext))
 #     set_func('glXGetCurrentReadDrawableSGI', t.GLXDrawable, ())
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGI_SWAP_CONTROL ####
 def init_glx_sgi_swap_control():
 #     set_func('glXSwapIntervalSGI', t.int, (t.int,))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGI_VIDEO_SYNC ####
 def init_glx_sgi_video_sync():
 #     set_func('glXGetVideoSyncSGI', t.int, (ct.POINTER(t.unsigned),))
 #     set_func('glXWaitVideoSyncSGI', t.int, (t.int, t.int, ct.POINTER(t.unsigned)))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGIS_BLENDED_OVERLAY ####
 def init_glx_sgis_blended_overlay():
     set_enum("GLX_BLENDED_RGBA_SGIS", 0x8025)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGIS_MULTISAMPLE ####
 def init_glx_sgis_multisample():
     set_enum("GLX_SAMPLE_BUFFERS_SGIS", 100000)
     set_enum("GLX_SAMPLES_SGIS", 100001)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGIS_SHARED_MULTISAMPLE ####
 def init_glx_sgis_shared_multisample():
     set_enum("GLX_MULTISAMPLE_SUB_RECT_WIDTH_SGIS", 0x8026)
     set_enum("GLX_MULTISAMPLE_SUB_RECT_HEIGHT_SGIS", 0x8027)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGIX_DMBUFFER ####
 def init_glx_sgix_dmbuffer():
 #     set_func('glXAssociateDMPbufferSGIX', t.Bool, (ct.POINTER(t.Display), t.GLXPbufferSGIX, ct.POINTER(t.DMparams), t.DMbuffer))
     set_enum("GLX_DIGITAL_MEDIA_PBUFFER_SGIX", 0x8024)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGIX_FBCONFIG ####
 def init_glx_sgix_fbconfig():
 #     set_func('glXGetFBConfigAttribSGIX', t.int, (ct.POINTER(t.Display), t.GLXFBConfigSGIX, t.int, ct.POINTER(t.int)))
 #     set_func('glXChooseFBConfigSGIX', ct.POINTER(t.GLXFBConfigSGIX), (ct.POINTER(t.Display), t.int, ct.POINTER(t.int), ct.POINTER(t.int)))
@@ -601,7 +601,7 @@ def init_glx_sgix_fbconfig():
     set_enum("GLX_SCREEN_EXT", 0x800C)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGIX_HYPERPIPE ####
 def init_glx_sgix_hyperpipe():
 #     set_func('glXQueryHyperpipeNetworkSGIX', ct.POINTER(t.GLXHyperpipeNetworkSGIX), (ct.POINTER(t.Display), ct.POINTER(t.int)))
 #     set_func('glXHyperpipeConfigSGIX', t.int, (ct.POINTER(t.Display), t.int, t.int, ct.POINTER(t.GLXHyperpipeConfigSGIX), ct.POINTER(t.int)))
@@ -623,7 +623,7 @@ def init_glx_sgix_hyperpipe():
     set_enum("GLX_HYPERPIPE_ID_SGIX", 0x8030)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGIX_PBUFFER ####
 def init_glx_sgix_pbuffer():
 #     set_func('glXCreateGLXPbufferSGIX', t.GLXPbufferSGIX, (ct.POINTER(t.Display), t.GLXFBConfigSGIX, t.unsigned int, t.unsigned int, ct.POINTER(t.int)))
 #     set_func('glXDestroyGLXPbufferSGIX', t.void, (ct.POINTER(t.Display), t.GLXPbufferSGIX))
@@ -657,18 +657,18 @@ def init_glx_sgix_pbuffer():
     set_enum("GLX_PBUFFER_SGIX", 0x8023)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGIX_SWAP_BARRIER ####
 def init_glx_sgix_swap_barrier():
 #     set_func('glXBindSwapBarrierSGIX', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int))
 #     set_func('glXQueryMaxSwapBarriersSGIX', t.Bool, (ct.POINTER(t.Display), t.int, ct.POINTER(t.int)))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGIX_SWAP_GROUP ####
 def init_glx_sgix_swap_group():
 #     set_func('glXJoinSwapGroupSGIX', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.GLXDrawable))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGIX_VIDEO_RESIZE ####
 def init_glx_sgix_video_resize():
 #     set_func('glXBindChannelToWindowSGIX', t.int, (ct.POINTER(t.Display), t.int, t.int, t.Window))
 #     set_func('glXChannelRectSGIX', t.int, (ct.POINTER(t.Display), t.int, t.int, t.int, t.int, t.int, t.int))
@@ -679,18 +679,18 @@ def init_glx_sgix_video_resize():
     set_enum("GLX_SYNC_SWAP_SGIX", 0x00000001)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGIX_VIDEO_SOURCE ####
 def init_glx_sgix_video_source():
 #     set_func('glXCreateGLXVideoSourceSGIX', t.GLXVideoSourceSGIX, (ct.POINTER(t.Display), t.int, t.VLServer, t.VLPath, t.int, t.VLNode))
 #     set_func('glXDestroyGLXVideoSourceSGIX', t.void, (ct.POINTER(t.Display), t.GLXVideoSourceSGIX))
     pass
 
-#### GLX VERSION 1.4 ####
+#### GLX_SGIX_VISUAL_SELECT_GROUP ####
 def init_glx_sgix_visual_select_group():
     set_enum("GLX_VISUAL_SELECT_GROUP_SGIX", 0x8028)
 
 
-#### GLX VERSION 1.4 ####
+#### GLX_SUN_GET_TRANSPARENT_INDEX ####
 def init_glx_sun_get_transparent_index():
 #     set_func('glXGetTransparentIndexSUN', t.Status, (ct.POINTER(t.Display), t.Window, t.Window, ct.POINTER(t.long)))
     pass

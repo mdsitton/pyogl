@@ -2,6 +2,8 @@ from collections import OrderedDict
 
 from opengl import gltypes
 
+from pglgen import regparse
+
 # Get list of supported types automatically
 supportedTypes = [item for item in dir(gltypes) if item[0] != '_' and item != 'ct']
 
@@ -105,7 +107,7 @@ def gen_func_code(enums, commands):
     for name, typeInfo in commands.items():
         rtnType = typeInfo['return'][:]
         params = typeInfo['parms']
-        
+
         commentFunction = False
 
         rtnStr = parse_type(rtnType)
@@ -149,11 +151,18 @@ def gen_func_code(enums, commands):
         else:
             nonCommented = True
             functionCode.append(enum.format(name, value))
-    
+
     if not nonCommented:
         functionCode.append('    pass')
-            
+
     return ''.join(functionCode)
+
+def gen_bindings(apis):
+    for api in apis:
+        code = gen_binding(*regparse.parse_registry('{0}.xml'.format(api)))
+
+        with open('./opengl/{}.py'.format(api), 'w') as glFile:
+            glFile.write(code)
 
 def gen_binding(enums, commands, features, extensions):
     '''Generate the binding code using the dictionaries passed in'''
@@ -167,10 +176,10 @@ def gen_binding(enums, commands, features, extensions):
             version = verFeatures['info']['version']
 
             code.append('\n#### {} VERSION {} ####'.format(api.upper(), version))
-            
+
             featureCmds = OrderedDict()
             featureEnums = OrderedDict()
-            
+
             for c in verFeatures['default']['require']['command']:
                 featureCmds[c] = commands[c]
             for e in verFeatures['default']['require']['enum']:
@@ -178,31 +187,31 @@ def gen_binding(enums, commands, features, extensions):
 
             funcName = 'init_' + verName.lower()
             initNames.append(funcName)
-            
+
             funcCode = gen_func_code(featureEnums, featureCmds)
-            
-            code.append(funcTemplate.format(funcName, funcCode))
-        
-        for name, data in extensions.items():
-            code.append('\n#### {} VERSION {} ####'.format(api.upper(), version))
-            extCmds = OrderedDict()
-            extEnums = OrderedDict()
-            
-            for c in data['command']:
-                extCmds[c] = commands[c]
-            for e in data['enum']:
-                extEnums[e] = enums[e]
-            
-            funcName = 'init_' + name.lower()
-            initNames.append(funcName)
-            funcCode = gen_func_code(extEnums, extCmds)
-            
+
             code.append(funcTemplate.format(funcName, funcCode))
 
-        initCode = []
-        for i in initNames:
-            initCode.append('    {}()\n'.format(i))
+    for name, data in extensions.items():
+        code.append('\n#### {} ####'.format(name.upper()))
+        extCmds = OrderedDict()
+        extEnums = OrderedDict()
 
-        code.append(initTemplate.format(''.join(initCode)))
+        for c in data['command']:
+            extCmds[c] = commands[c]
+        for e in data['enum']:
+            extEnums[e] = enums[e]
+
+        funcName = 'init_' + name.lower()
+        initNames.append(funcName)
+        funcCode = gen_func_code(extEnums, extCmds)
+
+        code.append(funcTemplate.format(funcName, funcCode))
+
+    initCode = []
+    for i in initNames:
+        initCode.append('    {}()\n'.format(i))
+
+    code.append(initTemplate.format(''.join(initCode)))
 
     return ''.join(code)

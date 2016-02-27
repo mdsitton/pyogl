@@ -2,7 +2,7 @@
 # pyogl
 From scratch python opengl binding  and generation tool.
 
-To regenerate the binding run `gengl.py`.
+To regenerate the binding run `generate.py`.
 Currently the code requires pysdl2 to load opengl functions for platforms other than windows.(this will change here soon)
 
 To use the binding you need to call init() after you have an active opengl context(This may change in the future)
