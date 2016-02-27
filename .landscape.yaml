@@ -9,3 +9,5 @@ python-targets:
 pylint:
   disable:
     - too-many-lines
+    - invalid-name
+    - unused-variable
