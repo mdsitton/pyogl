@@ -11,3 +11,9 @@ pylint:
     - too-many-lines
     - invalid-name
     - unused-variable
+    - attribute-defined-outside-init
+
+pep8:
+  disable:
+    - N803
+    - N806
