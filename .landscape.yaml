@@ -6,3 +6,6 @@ max-line-length: 180
 python-targets:
     - 2
     - 3
+pylint:
+  disable:
+    - too-many-lines
