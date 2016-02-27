@@ -2,6 +2,7 @@ from collections import OrderedDict
 
 from pglgen import xml
 
+
 class Command(xml.BaseParser):
     '''Parse xml registry command tags'''
 
@@ -24,7 +25,7 @@ class Command(xml.BaseParser):
         elif 'command/proto' in tagPath:
             for i in data:
                 if i not in self.rtnType and i is not '':
-                    if '*' in i and len(i) > 1: # split pointer from type
+                    if '*' in i and len(i) > 1:  # split pointer from type
                         info = i.split(' ')
                         self.rtnType.extend(info)
                     else:
@@ -35,7 +36,7 @@ class Command(xml.BaseParser):
         elif 'command/param' in tagPath:
             for i in data:
                 if i not in self.protoParam and i is not '':
-                    if '*' in i and len(i) > 1: # split pointer from type
+                    if '*' in i and len(i) > 1:  # split pointer from type
                         info = i.split(' ')
                         self.protoParam.extend(info)
                     else:
@@ -139,7 +140,7 @@ class Feature(xml.BaseParser):
             self.parent.features[self.api]
         except:
             od = OrderedDict()
-            od[self.name] =  features
+            od[self.name] = features
             self.parent.features[self.api] = od
         else:
             self.parent.features[self.api][self.name] = features
@@ -162,18 +163,17 @@ class Extensions(xml.BaseParser):
 
         if ('extension/require/enum' in tagPath or
             'extension/require/command' in tagPath):
-            
+
             ptag, pattrs, pdata = self.stack.peek(posRel=2)
             self.name = pattrs['name']
             self.supported = pattrs['supported']
             try:
                 self.extensions[self.name][tag].append(attrs['name'])
-            except:
+            except KeyError:
                 self.extensions[self.name] = {'enum': [], 'command': []}
                 self.extensions[self.name][tag].append(attrs['name'])
 
     def integrate(self):
-
         self.parent.extensions.update(self.extensions)
 
 
