@@ -17,3 +17,7 @@ pep8:
   disable:
     - N803
     - N806
+
+pyflakes:
+  disable:
+    - F811
