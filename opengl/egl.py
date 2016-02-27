@@ -62,7 +62,7 @@ def init_egl_version_1_0():
     set_enum("EGL_CONFIG_ID", 0x3028)
     set_enum("EGL_CORE_NATIVE_ENGINE", 0x305B)
     set_enum("EGL_DEPTH_SIZE", 0x3025)
-    set_enum("EGL_DONT_CARE", ((EGLint)-1))
+#     set_enum("EGL_DONT_CARE", ((EGLint)-1))
     set_enum("EGL_DRAW", 0x3059)
     set_enum("EGL_EXTENSIONS", 0x3055)
     set_enum("EGL_FALSE", 0)
@@ -79,9 +79,9 @@ def init_egl_version_1_0():
     set_enum("EGL_NONE", 0x3038)
     set_enum("EGL_NON_CONFORMANT_CONFIG", 0x3051)
     set_enum("EGL_NOT_INITIALIZED", 0x3001)
-    set_enum("EGL_NO_CONTEXT", ((EGLContext)0))
-    set_enum("EGL_NO_DISPLAY", ((EGLDisplay)0))
-    set_enum("EGL_NO_SURFACE", ((EGLSurface)0))
+#     set_enum("EGL_NO_CONTEXT", ((EGLContext)0))
+#     set_enum("EGL_NO_DISPLAY", ((EGLDisplay)0))
+#     set_enum("EGL_NO_SURFACE", ((EGLSurface)0))
     set_enum("EGL_PBUFFER_BIT", 0x0001)
     set_enum("EGL_PIXMAP_BIT", 0x0002)
     set_enum("EGL_READ", 0x305A)
@@ -160,7 +160,7 @@ def init_egl_version_1_2():
     set_enum("EGL_RGB_BUFFER", 0x308E)
     set_enum("EGL_SINGLE_BUFFER", 0x3085)
     set_enum("EGL_SWAP_BEHAVIOR", 0x3093)
-    set_enum("EGL_UNKNOWN", ((EGLint)-1))
+#     set_enum("EGL_UNKNOWN", ((EGLint)-1))
     set_enum("EGL_VERTICAL_RESOLUTION", 0x3091)
 
 
@@ -183,7 +183,7 @@ def init_egl_version_1_3():
 #### EGL VERSION 1.4 ####
 def init_egl_version_1_4():
 #     set_func('eglGetCurrentContext', t.EGLContext, ())
-    set_enum("EGL_DEFAULT_DISPLAY", ((EGLNativeDisplayType)0))
+#     set_enum("EGL_DEFAULT_DISPLAY", ((EGLNativeDisplayType)0))
     set_enum("EGL_MULTISAMPLE_RESOLVE_BOX_BIT", 0x0200)
     set_enum("EGL_MULTISAMPLE_RESOLVE", 0x3099)
     set_enum("EGL_MULTISAMPLE_RESOLVE_DEFAULT", 0x309A)
@@ -230,7 +230,7 @@ def init_egl_version_1_5():
     set_enum("EGL_FOREVER", 0xFFFFFFFFFFFFFFFF)
     set_enum("EGL_TIMEOUT_EXPIRED", 0x30F5)
     set_enum("EGL_CONDITION_SATISFIED", 0x30F6)
-    set_enum("EGL_NO_SYNC", ((EGLSync)0))
+#     set_enum("EGL_NO_SYNC", ((EGLSync)0))
     set_enum("EGL_SYNC_FENCE", 0x30F9)
     set_enum("EGL_GL_COLORSPACE", 0x309D)
     set_enum("EGL_GL_COLORSPACE_SRGB", 0x3089)
@@ -247,7 +247,7 @@ def init_egl_version_1_5():
     set_enum("EGL_GL_TEXTURE_CUBE_MAP_POSITIVE_Z", 0x30B7)
     set_enum("EGL_GL_TEXTURE_CUBE_MAP_NEGATIVE_Z", 0x30B8)
     set_enum("EGL_IMAGE_PRESERVED", 0x30D2)
-    set_enum("EGL_NO_IMAGE", ((EGLImage)0))
+#     set_enum("EGL_NO_IMAGE", ((EGLImage)0))
 
 
 #### EGL VERSION 1.5 ####
@@ -329,7 +329,7 @@ def init_egl_ext_device_base():
 #     set_func('eglQueryDeviceStringEXT', ct.POINTER(t.char), (t.EGLDeviceEXT, t.EGLint))
 #     set_func('eglQueryDevicesEXT', t.EGLBoolean, (t.EGLint, ct.POINTER(t.EGLDeviceEXT), ct.POINTER(t.EGLint)))
 #     set_func('eglQueryDisplayAttribEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLint, ct.POINTER(t.EGLAttrib)))
-    set_enum("EGL_NO_DEVICE_EXT", ((EGLDeviceEXT)(0)))
+#     set_enum("EGL_NO_DEVICE_EXT", ((EGLDeviceEXT)(0)))
     set_enum("EGL_BAD_DEVICE_EXT", 0x322B)
     set_enum("EGL_DEVICE_EXT", 0x322C)
 
@@ -354,7 +354,7 @@ def init_egl_ext_device_query():
 #     set_func('eglQueryDeviceAttribEXT', t.EGLBoolean, (t.EGLDeviceEXT, t.EGLint, t.EGLAttrib))
 #     set_func('eglQueryDeviceStringEXT', ct.POINTER(t.char), (t.EGLDeviceEXT, t.EGLint))
 #     set_func('eglQueryDisplayAttribEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLint, t.EGLAttrib))
-    set_enum("EGL_NO_DEVICE_EXT", ((EGLDeviceEXT)(0)))
+#     set_enum("EGL_NO_DEVICE_EXT", ((EGLDeviceEXT)(0)))
     set_enum("EGL_BAD_DEVICE_EXT", 0x322B)
     set_enum("EGL_DEVICE_EXT", 0x322C)
 
@@ -400,8 +400,8 @@ def init_egl_ext_output_base():
 #     set_func('eglOutputPortAttribEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLOutputPortEXT, t.EGLint, t.EGLAttrib))
 #     set_func('eglQueryOutputPortAttribEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLOutputPortEXT, t.EGLint, ct.POINTER(t.EGLAttrib)))
 #     set_func('eglQueryOutputPortStringEXT', ct.POINTER(t.char), (t.EGLDisplay, t.EGLOutputPortEXT, t.EGLint))
-    set_enum("EGL_NO_OUTPUT_LAYER_EXT", ((EGLOutputLayerEXT)0))
-    set_enum("EGL_NO_OUTPUT_PORT_EXT", ((EGLOutputPortEXT)0))
+#     set_enum("EGL_NO_OUTPUT_LAYER_EXT", ((EGLOutputLayerEXT)0))
+#     set_enum("EGL_NO_OUTPUT_PORT_EXT", ((EGLOutputPortEXT)0))
     set_enum("EGL_BAD_OUTPUT_LAYER_EXT", 0x322D)
     set_enum("EGL_BAD_OUTPUT_PORT_EXT", 0x322E)
     set_enum("EGL_SWAP_INTERVAL_EXT", 0x322F)
@@ -629,7 +629,7 @@ def init_egl_khr_image():
 #     set_func('eglCreateImageKHR', t.EGLImageKHR, (t.EGLDisplay, t.EGLContext, t.EGLenum, t.EGLClientBuffer, ct.POINTER(t.EGLint)))
 #     set_func('eglDestroyImageKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLImageKHR))
     set_enum("EGL_NATIVE_PIXMAP_KHR", 0x30B0)
-    set_enum("EGL_NO_IMAGE_KHR", ((EGLImageKHR)0))
+#     set_enum("EGL_NO_IMAGE_KHR", ((EGLImageKHR)0))
 
 
 #### EGL VERSION 1.5 ####
@@ -637,7 +637,7 @@ def init_egl_khr_image_base():
 #     set_func('eglCreateImageKHR', t.EGLImageKHR, (t.EGLDisplay, t.EGLContext, t.EGLenum, t.EGLClientBuffer, t.EGLint))
 #     set_func('eglDestroyImageKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLImageKHR))
     set_enum("EGL_IMAGE_PRESERVED_KHR", 0x30D2)
-    set_enum("EGL_NO_IMAGE_KHR", ((EGLImageKHR)0))
+#     set_enum("EGL_NO_IMAGE_KHR", ((EGLImageKHR)0))
 
 
 #### EGL VERSION 1.5 ####
@@ -749,7 +749,7 @@ def init_egl_khr_reusable_sync():
     set_enum("EGL_SYNC_REUSABLE_KHR", 0x30FA)
     set_enum("EGL_SYNC_FLUSH_COMMANDS_BIT_KHR", 0x0001)
     set_enum("EGL_FOREVER_KHR", 0xFFFFFFFFFFFFFFFF)
-    set_enum("EGL_NO_SYNC_KHR", ((EGLSyncKHR)0))
+#     set_enum("EGL_NO_SYNC_KHR", ((EGLSyncKHR)0))
 
 
 #### EGL VERSION 1.5 ####
@@ -759,7 +759,7 @@ def init_egl_khr_stream():
 #     set_func('eglStreamAttribKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLStreamKHR, t.EGLenum, t.EGLint))
 #     set_func('eglQueryStreamKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLStreamKHR, t.EGLenum, ct.POINTER(t.EGLint)))
 #     set_func('eglQueryStreamu64KHR', t.EGLBoolean, (t.EGLDisplay, t.EGLStreamKHR, t.EGLenum, ct.POINTER(t.EGLuint64KHR)))
-    set_enum("EGL_NO_STREAM_KHR", ((EGLStreamKHR)0))
+#     set_enum("EGL_NO_STREAM_KHR", ((EGLStreamKHR)0))
     set_enum("EGL_CONSUMER_LATENCY_USEC_KHR", 0x3210)
     set_enum("EGL_PRODUCER_FRAME_KHR", 0x3212)
     set_enum("EGL_CONSUMER_FRAME_KHR", 0x3213)
@@ -786,7 +786,7 @@ def init_egl_khr_stream_consumer_gltexture():
 def init_egl_khr_stream_cross_process_fd():
 #     set_func('eglGetStreamFileDescriptorKHR', t.EGLNativeFileDescriptorKHR, (t.EGLDisplay, t.EGLStreamKHR))
 #     set_func('eglCreateStreamFromFileDescriptorKHR', t.EGLStreamKHR, (t.EGLDisplay, t.EGLNativeFileDescriptorKHR))
-    set_enum("EGL_NO_FILE_DESCRIPTOR_KHR", ((EGLNativeFileDescriptorKHR)(-1)))
+#     set_enum("EGL_NO_FILE_DESCRIPTOR_KHR", ((EGLNativeFileDescriptorKHR)(-1)))
 
 
 #### EGL VERSION 1.5 ####
@@ -966,7 +966,7 @@ def init_egl_nv_sync():
     set_enum("EGL_SYNC_TYPE_NV", 0x30ED)
     set_enum("EGL_SYNC_CONDITION_NV", 0x30EE)
     set_enum("EGL_SYNC_FENCE_NV", 0x30EF)
-    set_enum("EGL_NO_SYNC_NV", ((EGLSyncNV)0))
+#     set_enum("EGL_NO_SYNC_NV", ((EGLSyncNV)0))
 
 
 #### EGL VERSION 1.5 ####

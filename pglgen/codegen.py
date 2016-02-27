@@ -142,7 +142,10 @@ def gen_func_code(enums, commands):
         functionCode.append(funcCode)
 
     for name, value in enums.items():
-        functionCode.append(enum.format(name, value))
+        if '(' in value or ')' in value:
+            functionCode.append('# {0}'.format(enum.format(name, value)))
+        else:
+            functionCode.append(enum.format(name, value))
             
     return ''.join(functionCode)
 
