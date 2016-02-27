@@ -253,7 +253,7 @@ def init_egl_version_1_5():
 #### EGL VERSION 1.5 ####
 def init_egl_android_blob_cache():
 #     set_func('eglSetBlobCacheFuncsANDROID', t.void, (t.EGLDisplay, t.EGLSetBlobFuncANDROID, t.EGLGetBlobFuncANDROID))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_android_framebuffer_target():
@@ -293,7 +293,7 @@ def init_egl_angle_device_d3d():
 #### EGL VERSION 1.5 ####
 def init_egl_angle_query_surface_pointer():
 #     set_func('eglQuerySurfacePointerANGLE', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, t.EGLint, ct.POINTER(ct.POINTER(t.void))))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_angle_surface_d3d_texture_2d_share_handle():
@@ -342,7 +342,7 @@ def init_egl_ext_device_drm():
 #### EGL VERSION 1.5 ####
 def init_egl_ext_device_enumeration():
 #     set_func('eglQueryDevicesEXT', t.EGLBoolean, (t.EGLint, t.EGLDeviceEXT, t.EGLint))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_ext_device_openwf():
@@ -425,7 +425,7 @@ def init_egl_ext_platform_base():
 #     set_func('eglGetPlatformDisplayEXT', t.EGLDisplay, (t.EGLenum, ct.POINTER(t.void), ct.POINTER(t.EGLint)))
 #     set_func('eglCreatePlatformWindowSurfaceEXT', t.EGLSurface, (t.EGLDisplay, t.EGLConfig, ct.POINTER(t.void), ct.POINTER(t.EGLint)))
 #     set_func('eglCreatePlatformPixmapSurfaceEXT', t.EGLSurface, (t.EGLDisplay, t.EGLConfig, ct.POINTER(t.void), ct.POINTER(t.EGLint)))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_ext_platform_device():
@@ -451,12 +451,12 @@ def init_egl_ext_protected_surface():
 #### EGL VERSION 1.5 ####
 def init_egl_ext_stream_consumer_egloutput():
 #     set_func('eglStreamConsumerOutputEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLStreamKHR, t.EGLOutputLayerEXT))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_ext_swap_buffers_with_damage():
 #     set_func('eglSwapBuffersWithDamageEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, ct.POINTER(t.EGLint), t.EGLint))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_ext_yuv_surface():
@@ -787,7 +787,7 @@ def init_egl_khr_stream_cross_process_fd():
 #     set_func('eglGetStreamFileDescriptorKHR', t.EGLNativeFileDescriptorKHR, (t.EGLDisplay, t.EGLStreamKHR))
 #     set_func('eglCreateStreamFromFileDescriptorKHR', t.EGLStreamKHR, (t.EGLDisplay, t.EGLNativeFileDescriptorKHR))
 #     set_enum("EGL_NO_FILE_DESCRIPTOR_KHR", ((EGLNativeFileDescriptorKHR)(-1)))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_khr_stream_fifo():
@@ -807,7 +807,7 @@ def init_egl_khr_stream_producer_eglsurface():
 #### EGL VERSION 1.5 ####
 def init_egl_khr_swap_buffers_with_damage():
 #     set_func('eglSwapBuffersWithDamageKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, ct.POINTER(t.EGLint), t.EGLint))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_khr_vg_parent_image():
@@ -817,7 +817,7 @@ def init_egl_khr_vg_parent_image():
 #### EGL VERSION 1.5 ####
 def init_egl_khr_wait_sync():
 #     set_func('eglWaitSyncKHR', t.EGLint, (t.EGLDisplay, t.EGLSyncKHR, t.EGLint))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_mesa_drm_image():
@@ -836,7 +836,7 @@ def init_egl_mesa_drm_image():
 def init_egl_mesa_image_dma_buf_export():
 #     set_func('eglExportDMABUFImageQueryMESA', t.EGLBoolean, (t.EGLDisplay, t.EGLImageKHR, ct.POINTER(t.int), ct.POINTER(t.int), ct.POINTER(t.EGLuint64KHR)))
 #     set_func('eglExportDMABUFImageMESA', t.EGLBoolean, (t.EGLDisplay, t.EGLImageKHR, ct.POINTER(t.int), ct.POINTER(t.EGLint), ct.POINTER(t.EGLint)))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_mesa_platform_gbm():
@@ -846,12 +846,12 @@ def init_egl_mesa_platform_gbm():
 #### EGL VERSION 1.5 ####
 def init_egl_nok_swap_region():
 #     set_func('eglSwapBuffersRegionNOK', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, t.EGLint, ct.POINTER(t.EGLint)))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_nok_swap_region2():
 #     set_func('eglSwapBuffersRegion2NOK', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, t.EGLint, ct.POINTER(t.EGLint)))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_nok_texture_from_pixmap():
@@ -900,7 +900,7 @@ def init_egl_nv_native_query():
 #     set_func('eglQueryNativeDisplayNV', t.EGLBoolean, (t.EGLDisplay, ct.POINTER(t.EGLNativeDisplayType)))
 #     set_func('eglQueryNativeWindowNV', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, ct.POINTER(t.EGLNativeWindowType)))
 #     set_func('eglQueryNativePixmapNV', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, ct.POINTER(t.EGLNativePixmapType)))
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_nv_post_sub_buffer():
@@ -973,7 +973,7 @@ def init_egl_nv_sync():
 def init_egl_nv_system_time():
 #     set_func('eglGetSystemTimeFrequencyNV', t.EGLuint64NV, ())
 #     set_func('eglGetSystemTimeNV', t.EGLuint64NV, ())
-
+    pass
 
 #### EGL VERSION 1.5 ####
 def init_egl_tizen_image_native_buffer():

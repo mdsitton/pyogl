@@ -100,11 +100,12 @@ def parse_type(typeInfo):
 
 def gen_func_code(enums, commands):
     functionCode = []
+    nonCommented = False
 
     for name, typeInfo in commands.items():
         rtnType = typeInfo['return'][:]
         params = typeInfo['parms']
-
+        
         commentFunction = False
 
         rtnStr = parse_type(rtnType)
@@ -137,6 +138,7 @@ def gen_func_code(enums, commands):
         if commentFunction:
             funcCode = '# {0}'.format(func.format(name, rtnStr, parmStr))
         else:
+            nonCommented = True
             funcCode = func.format(name, rtnStr, parmStr)
 
         functionCode.append(funcCode)
@@ -145,7 +147,11 @@ def gen_func_code(enums, commands):
         if '(' in value or ')' in value:
             functionCode.append('# {0}'.format(enum.format(name, value)))
         else:
+            nonCommented = True
             functionCode.append(enum.format(name, value))
+    
+    if not nonCommented:
+        functionCode.append('    pass')
             
     return ''.join(functionCode)
 

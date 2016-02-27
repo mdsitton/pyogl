@@ -79,7 +79,7 @@ def init_glx_version_1_1():
 #### GLX VERSION 1.2 ####
 def init_glx_version_1_2():
 #     set_func('glXGetCurrentDisplay', ct.POINTER(t.Display), ())
-
+    pass
 
 #### GLX VERSION 1.3 ####
 def init_glx_version_1_3():
@@ -240,7 +240,7 @@ def init_glx_arb_framebuffer_srgb():
 #### GLX VERSION 1.4 ####
 def init_glx_arb_get_proc_address():
 #     set_func('glXGetProcAddressARB', t.__GLXextFuncPtr, (ct.POINTER(t.GLubyte),))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_arb_multisample():
@@ -398,17 +398,17 @@ def init_glx_intel_swap_event():
 #### GLX VERSION 1.4 ####
 def init_glx_mesa_agp_offset():
 #     set_func('glXGetAGPOffsetMESA', t.unsigned int, (ct.POINTER(t.void),))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_mesa_copy_sub_buffer():
 #     set_func('glXCopySubBufferMESA', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int, t.int, t.int, t.int))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_mesa_pixmap_colormap():
 #     set_func('glXCreateGLXPixmapMESA', t.GLXPixmap, (ct.POINTER(t.Display), ct.POINTER(t.XVisualInfo), t.Pixmap, t.Colormap))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_mesa_query_renderer():
@@ -433,7 +433,7 @@ def init_glx_mesa_query_renderer():
 #### GLX VERSION 1.4 ####
 def init_glx_mesa_release_buffers():
 #     set_func('glXReleaseBuffersMESA', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_mesa_set_3dfx_mode():
@@ -446,17 +446,17 @@ def init_glx_mesa_set_3dfx_mode():
 def init_glx_nv_copy_buffer():
 #     set_func('glXCopyBufferSubDataNV', t.void, (ct.POINTER(t.Display), t.GLXContext, t.GLXContext, t.GLenum, t.GLenum, t.GLintptr, t.GLintptr, t.GLsizeiptr))
 #     set_func('glXNamedCopyBufferSubDataNV', t.void, (ct.POINTER(t.Display), t.GLXContext, t.GLXContext, t.GLuint, t.GLuint, t.GLintptr, t.GLintptr, t.GLsizeiptr))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_nv_copy_image():
 #     set_func('glXCopyImageSubDataNV', t.void, (ct.POINTER(t.Display), t.GLXContext, t.GLuint, t.GLenum, t.GLint, t.GLint, t.GLint, t.GLint, t.GLXContext, t.GLuint, t.GLenum, t.GLint, t.GLint, t.GLint, t.GLint, t.GLsizei, t.GLsizei, t.GLsizei))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_nv_delay_before_swap():
 #     set_func('glXDelayBeforeSwapNV', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.GLfloat))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_nv_float_buffer():
@@ -484,7 +484,7 @@ def init_glx_nv_swap_group():
 #     set_func('glXQueryMaxSwapGroupsNV', t.Bool, (ct.POINTER(t.Display), t.int, ct.POINTER(t.GLuint), ct.POINTER(t.GLuint)))
 #     set_func('glXQueryFrameCountNV', t.Bool, (ct.POINTER(t.Display), t.int, ct.POINTER(t.GLuint)))
 #     set_func('glXResetFrameCountNV', t.Bool, (ct.POINTER(t.Display), t.int))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_nv_video_capture():
@@ -533,29 +533,29 @@ def init_glx_oml_sync_control():
 #     set_func('glXSwapBuffersMscOML', t.int64_t, (ct.POINTER(t.Display), t.GLXDrawable, t.int64_t, t.int64_t, t.int64_t))
 #     set_func('glXWaitForMscOML', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.int64_t, t.int64_t, t.int64_t, ct.POINTER(t.int64_t), ct.POINTER(t.int64_t), ct.POINTER(t.int64_t)))
 #     set_func('glXWaitForSbcOML', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.int64_t, ct.POINTER(t.int64_t), ct.POINTER(t.int64_t), ct.POINTER(t.int64_t)))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_sgi_cushion():
 #     set_func('glXCushionSGI', t.void, (ct.POINTER(t.Display), t.Window, t.float))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_sgi_make_current_read():
 #     set_func('glXMakeCurrentReadSGI', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.GLXDrawable, t.GLXContext))
 #     set_func('glXGetCurrentReadDrawableSGI', t.GLXDrawable, ())
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_sgi_swap_control():
 #     set_func('glXSwapIntervalSGI', t.int, (t.int,))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_sgi_video_sync():
 #     set_func('glXGetVideoSyncSGI', t.int, (ct.POINTER(t.unsigned),))
 #     set_func('glXWaitVideoSyncSGI', t.int, (t.int, t.int, ct.POINTER(t.unsigned)))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_sgis_blended_overlay():
@@ -661,12 +661,12 @@ def init_glx_sgix_pbuffer():
 def init_glx_sgix_swap_barrier():
 #     set_func('glXBindSwapBarrierSGIX', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int))
 #     set_func('glXQueryMaxSwapBarriersSGIX', t.Bool, (ct.POINTER(t.Display), t.int, ct.POINTER(t.int)))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_sgix_swap_group():
 #     set_func('glXJoinSwapGroupSGIX', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.GLXDrawable))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_sgix_video_resize():
@@ -683,7 +683,7 @@ def init_glx_sgix_video_resize():
 def init_glx_sgix_video_source():
 #     set_func('glXCreateGLXVideoSourceSGIX', t.GLXVideoSourceSGIX, (ct.POINTER(t.Display), t.int, t.VLServer, t.VLPath, t.int, t.VLNode))
 #     set_func('glXDestroyGLXVideoSourceSGIX', t.void, (ct.POINTER(t.Display), t.GLXVideoSourceSGIX))
-
+    pass
 
 #### GLX VERSION 1.4 ####
 def init_glx_sgix_visual_select_group():
@@ -693,7 +693,7 @@ def init_glx_sgix_visual_select_group():
 #### GLX VERSION 1.4 ####
 def init_glx_sun_get_transparent_index():
 #     set_func('glXGetTransparentIndexSUN', t.Status, (ct.POINTER(t.Display), t.Window, t.Window, ct.POINTER(t.long)))
-
+    pass
 
 def init():
     init_glx_version_1_0()

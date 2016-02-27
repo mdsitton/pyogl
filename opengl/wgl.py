@@ -168,7 +168,7 @@ def init_wgl_arb_create_context_robustness():
 #### WGL VERSION 1.0 ####
 def init_wgl_arb_extensions_string():
 #     set_func('wglGetExtensionsStringARB', ct.POINTER(t.char), (t.HDC,))
-
+    pass
 
 #### WGL VERSION 1.0 ####
 def init_wgl_arb_framebuffer_srgb():
@@ -348,7 +348,7 @@ def init_wgl_ext_display_color_table():
 #### WGL VERSION 1.0 ####
 def init_wgl_ext_extensions_string():
 #     set_func('wglGetExtensionsStringEXT', ct.POINTER(t.char), ())
-
+    pass
 
 #### WGL VERSION 1.0 ####
 def init_wgl_ext_framebuffer_srgb():
@@ -447,7 +447,7 @@ def init_wgl_ext_pixel_format_packed_float():
 def init_wgl_ext_swap_control():
 #     set_func('wglSwapIntervalEXT', t.BOOL, (t.int,))
 #     set_func('wglGetSwapIntervalEXT', t.int, ())
-
+    pass
 
 #### WGL VERSION 1.0 ####
 def init_wgl_i3d_digital_video_control():
@@ -510,7 +510,7 @@ def init_wgl_i3d_swap_frame_lock():
 #     set_func('wglDisableFrameLockI3D', t.BOOL, ())
 #     set_func('wglIsEnabledFrameLockI3D', t.BOOL, (ct.POINTER(t.BOOL),))
 #     set_func('wglQueryFrameLockMasterI3D', t.BOOL, (ct.POINTER(t.BOOL),))
-
+    pass
 
 #### WGL VERSION 1.0 ####
 def init_wgl_i3d_swap_frame_usage():
@@ -518,17 +518,17 @@ def init_wgl_i3d_swap_frame_usage():
 #     set_func('wglBeginFrameTrackingI3D', t.BOOL, ())
 #     set_func('wglEndFrameTrackingI3D', t.BOOL, ())
 #     set_func('wglQueryFrameTrackingI3D', t.BOOL, (ct.POINTER(t.DWORD), ct.POINTER(t.DWORD), ct.POINTER(t.float)))
-
+    pass
 
 #### WGL VERSION 1.0 ####
 def init_wgl_nv_copy_image():
 #     set_func('wglCopyImageSubDataNV', t.BOOL, (t.HGLRC, t.GLuint, t.GLenum, t.GLint, t.GLint, t.GLint, t.GLint, t.HGLRC, t.GLuint, t.GLenum, t.GLint, t.GLint, t.GLint, t.GLint, t.GLsizei, t.GLsizei, t.GLsizei))
-
+    pass
 
 #### WGL VERSION 1.0 ####
 def init_wgl_nv_delay_before_swap():
 #     set_func('wglDelayBeforeSwapNV', t.BOOL, (t.HDC, t.GLfloat))
-
+    pass
 
 #### WGL VERSION 1.0 ####
 def init_wgl_nv_dx_interop():
@@ -607,7 +607,7 @@ def init_wgl_nv_swap_group():
 #     set_func('wglQueryMaxSwapGroupsNV', t.BOOL, (t.HDC, ct.POINTER(t.GLuint), ct.POINTER(t.GLuint)))
 #     set_func('wglQueryFrameCountNV', t.BOOL, (t.HDC, ct.POINTER(t.GLuint)))
 #     set_func('wglResetFrameCountNV', t.BOOL, (t.HDC,))
-
+    pass
 
 #### WGL VERSION 1.0 ####
 def init_wgl_nv_video_capture():
@@ -657,7 +657,7 @@ def init_wgl_oml_sync_control():
 #     set_func('wglSwapLayerBuffersMscOML', t.INT64, (t.HDC, t.int, t.INT64, t.INT64, t.INT64))
 #     set_func('wglWaitForMscOML', t.BOOL, (t.HDC, t.INT64, t.INT64, t.INT64, ct.POINTER(t.INT64), ct.POINTER(t.INT64), ct.POINTER(t.INT64)))
 #     set_func('wglWaitForSbcOML', t.BOOL, (t.HDC, t.INT64, ct.POINTER(t.INT64), ct.POINTER(t.INT64), ct.POINTER(t.INT64)))
-
+    pass
 
 def init():
     init_wgl_version_1_0()
