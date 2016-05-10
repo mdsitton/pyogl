@@ -46,20 +46,22 @@ def conv_list_2d(listIn, cType):
 
     return arrayOut
 
-
 def define_function(libName, name, returnType, params):
     '''Helper function to help in binding functions'''
-    if osName == "Windows":
-        function = ct.WINFUNCTYPE(returnType, *params)
-        lib = ct.WinDLL(libName)
-    elif osName == "Darwin" or osName == "Linux":
-        function = ct.FUNCTYPE(returnType, *params)
-        lib = ct.CDLL(find_library(libName))
+    try:
+        if osName == "Windows":
+            function = ct.WINFUNCTYPE(returnType, *params)
+            lib = ct.WinDLL(libName)
+        elif osName == "Darwin" or osName == "Linux":
+            function = ct.CFUNCTYPE(returnType, *params)
+            lib = ct.CDLL(find_library(libName))
 
-    address = getattr(lib, name)
-    new_func = ct.cast(address, function)
+        address = getattr(lib, name)
+        new_func = ct.cast(address, function)
 
-    return new_func
+        return new_func
+    except:
+        return None
 
 
 if osName == "Windows":

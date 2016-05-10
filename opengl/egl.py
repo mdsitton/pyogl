@@ -33,11 +33,11 @@ def init_egl_version_1_0():
 #     set_func('eglGetCurrentSurface', t.EGLSurface, (t.EGLint,))
 #     set_func('eglGetDisplay', t.EGLDisplay, (t.EGLNativeDisplayType,))
 #     set_func('eglGetError', t.EGLint, ())
-#     set_func('eglGetProcAddress', t.__eglMustCastToProperFunctionPointerType, (ct.POINTER(t.char),))
+#     set_func('eglGetProcAddress', t.__eglMustCastToProperFunctionPointerType, (ct.POINTER(t.CHAR),))
 #     set_func('eglInitialize', t.EGLBoolean, (t.EGLDisplay, ct.POINTER(t.EGLint), ct.POINTER(t.EGLint)))
 #     set_func('eglMakeCurrent', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, t.EGLSurface, t.EGLContext))
 #     set_func('eglQueryContext', t.EGLBoolean, (t.EGLDisplay, t.EGLContext, t.EGLint, ct.POINTER(t.EGLint)))
-#     set_func('eglQueryString', ct.POINTER(t.char), (t.EGLDisplay, t.EGLint))
+#     set_func('eglQueryString', ct.POINTER(t.CHAR), (t.EGLDisplay, t.EGLint))
 #     set_func('eglQuerySurface', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, t.EGLint, ct.POINTER(t.EGLint)))
 #     set_func('eglSwapBuffers', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface))
 #     set_func('eglTerminate', t.EGLBoolean, (t.EGLDisplay,))
@@ -326,7 +326,7 @@ def init_egl_ext_create_context_robustness():
 #### EGL_EXT_DEVICE_BASE ####
 def init_egl_ext_device_base():
 #     set_func('eglQueryDeviceAttribEXT', t.EGLBoolean, (t.EGLDeviceEXT, t.EGLint, ct.POINTER(t.EGLAttrib)))
-#     set_func('eglQueryDeviceStringEXT', ct.POINTER(t.char), (t.EGLDeviceEXT, t.EGLint))
+#     set_func('eglQueryDeviceStringEXT', ct.POINTER(t.CHAR), (t.EGLDeviceEXT, t.EGLint))
 #     set_func('eglQueryDevicesEXT', t.EGLBoolean, (t.EGLint, ct.POINTER(t.EGLDeviceEXT), ct.POINTER(t.EGLint)))
 #     set_func('eglQueryDisplayAttribEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLint, ct.POINTER(t.EGLAttrib)))
 #     set_enum("EGL_NO_DEVICE_EXT", ((EGLDeviceEXT)(0)))
@@ -341,7 +341,7 @@ def init_egl_ext_device_drm():
 
 #### EGL_EXT_DEVICE_ENUMERATION ####
 def init_egl_ext_device_enumeration():
-#     set_func('eglQueryDevicesEXT', t.EGLBoolean, (t.EGLint, t.EGLDeviceEXT, t.EGLint))
+#     set_func('eglQueryDevicesEXT', t.EGLBoolean, (t.EGLint, ct.POINTER(t.EGLDeviceEXT), ct.POINTER(t.EGLint)))
     pass
 
 #### EGL_EXT_DEVICE_OPENWF ####
@@ -351,9 +351,9 @@ def init_egl_ext_device_openwf():
 
 #### EGL_EXT_DEVICE_QUERY ####
 def init_egl_ext_device_query():
-#     set_func('eglQueryDeviceAttribEXT', t.EGLBoolean, (t.EGLDeviceEXT, t.EGLint, t.EGLAttrib))
-#     set_func('eglQueryDeviceStringEXT', ct.POINTER(t.char), (t.EGLDeviceEXT, t.EGLint))
-#     set_func('eglQueryDisplayAttribEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLint, t.EGLAttrib))
+#     set_func('eglQueryDeviceAttribEXT', t.EGLBoolean, (t.EGLDeviceEXT, t.EGLint, ct.POINTER(t.EGLAttrib)))
+#     set_func('eglQueryDeviceStringEXT', ct.POINTER(t.CHAR), (t.EGLDeviceEXT, t.EGLint))
+#     set_func('eglQueryDisplayAttribEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLint, ct.POINTER(t.EGLAttrib)))
 #     set_enum("EGL_NO_DEVICE_EXT", ((EGLDeviceEXT)(0)))
     set_enum("EGL_BAD_DEVICE_EXT", 0x322B)
     set_enum("EGL_DEVICE_EXT", 0x322C)
@@ -396,10 +396,10 @@ def init_egl_ext_output_base():
 #     set_func('eglGetOutputPortsEXT', t.EGLBoolean, (t.EGLDisplay, ct.POINTER(t.EGLAttrib), ct.POINTER(t.EGLOutputPortEXT), t.EGLint, ct.POINTER(t.EGLint)))
 #     set_func('eglOutputLayerAttribEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLOutputLayerEXT, t.EGLint, t.EGLAttrib))
 #     set_func('eglQueryOutputLayerAttribEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLOutputLayerEXT, t.EGLint, ct.POINTER(t.EGLAttrib)))
-#     set_func('eglQueryOutputLayerStringEXT', ct.POINTER(t.char), (t.EGLDisplay, t.EGLOutputLayerEXT, t.EGLint))
+#     set_func('eglQueryOutputLayerStringEXT', ct.POINTER(t.CHAR), (t.EGLDisplay, t.EGLOutputLayerEXT, t.EGLint))
 #     set_func('eglOutputPortAttribEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLOutputPortEXT, t.EGLint, t.EGLAttrib))
 #     set_func('eglQueryOutputPortAttribEXT', t.EGLBoolean, (t.EGLDisplay, t.EGLOutputPortEXT, t.EGLint, ct.POINTER(t.EGLAttrib)))
-#     set_func('eglQueryOutputPortStringEXT', ct.POINTER(t.char), (t.EGLDisplay, t.EGLOutputPortEXT, t.EGLint))
+#     set_func('eglQueryOutputPortStringEXT', ct.POINTER(t.CHAR), (t.EGLDisplay, t.EGLOutputPortEXT, t.EGLint))
 #     set_enum("EGL_NO_OUTPUT_LAYER_EXT", ((EGLOutputLayerEXT)0))
 #     set_enum("EGL_NO_OUTPUT_PORT_EXT", ((EGLOutputPortEXT)0))
     set_enum("EGL_BAD_OUTPUT_LAYER_EXT", 0x322D)
@@ -441,6 +441,11 @@ def init_egl_ext_platform_wayland():
 def init_egl_ext_platform_x11():
     set_enum("EGL_PLATFORM_X11_EXT", 0x31D5)
     set_enum("EGL_PLATFORM_X11_SCREEN_EXT", 0x31D6)
+
+
+#### EGL_EXT_PROTECTED_CONTENT ####
+def init_egl_ext_protected_content():
+    set_enum("EGL_PROTECTED_CONTENT_EXT", 0x32C0)
 
 
 #### EGL_EXT_PROTECTED_SURFACE ####
@@ -634,7 +639,7 @@ def init_egl_khr_image():
 
 #### EGL_KHR_IMAGE_BASE ####
 def init_egl_khr_image_base():
-#     set_func('eglCreateImageKHR', t.EGLImageKHR, (t.EGLDisplay, t.EGLContext, t.EGLenum, t.EGLClientBuffer, t.EGLint))
+#     set_func('eglCreateImageKHR', t.EGLImageKHR, (t.EGLDisplay, t.EGLContext, t.EGLenum, t.EGLClientBuffer, ct.POINTER(t.EGLint)))
 #     set_func('eglDestroyImageKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLImageKHR))
     set_enum("EGL_IMAGE_PRESERVED_KHR", 0x30D2)
 #     set_enum("EGL_NO_IMAGE_KHR", ((EGLImageKHR)0))
@@ -679,7 +684,7 @@ def init_egl_khr_lock_surface2():
 
 #### EGL_KHR_LOCK_SURFACE3 ####
 def init_egl_khr_lock_surface3():
-#     set_func('eglLockSurfaceKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, t.EGLint))
+#     set_func('eglLockSurfaceKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, ct.POINTER(t.EGLint)))
 #     set_func('eglUnlockSurfaceKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface))
 #     set_func('eglQuerySurface64KHR', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, t.EGLint, ct.POINTER(t.EGLAttribKHR)))
     set_enum("EGL_READ_SURFACE_BIT_KHR", 0x0001)
@@ -704,6 +709,11 @@ def init_egl_khr_lock_surface3():
     set_enum("EGL_BITMAP_POINTER_KHR", 0x30C6)
     set_enum("EGL_LOWER_LEFT_KHR", 0x30CE)
     set_enum("EGL_UPPER_LEFT_KHR", 0x30CF)
+
+
+#### EGL_KHR_MUTABLE_RENDER_BUFFER ####
+def init_egl_khr_mutable_render_buffer():
+    set_enum("EGL_MUTABLE_RENDER_BUFFER_BIT_KHR", 0x1000)
 
 
 #### EGL_KHR_PARTIAL_UPDATE ####
@@ -735,11 +745,11 @@ def init_egl_khr_platform_x11():
 
 #### EGL_KHR_REUSABLE_SYNC ####
 def init_egl_khr_reusable_sync():
-#     set_func('eglCreateSyncKHR', t.EGLSyncKHR, (t.EGLDisplay, t.EGLenum, t.EGLint))
+#     set_func('eglCreateSyncKHR', t.EGLSyncKHR, (t.EGLDisplay, t.EGLenum, ct.POINTER(t.EGLint)))
 #     set_func('eglDestroySyncKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLSyncKHR))
 #     set_func('eglClientWaitSyncKHR', t.EGLint, (t.EGLDisplay, t.EGLSyncKHR, t.EGLint, t.EGLTimeKHR))
 #     set_func('eglSignalSyncKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLSyncKHR, t.EGLenum))
-#     set_func('eglGetSyncAttribKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLSyncKHR, t.EGLint, t.EGLint))
+#     set_func('eglGetSyncAttribKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLSyncKHR, t.EGLint, ct.POINTER(t.EGLint)))
     set_enum("EGL_SYNC_STATUS_KHR", 0x30F1)
     set_enum("EGL_SIGNALED_KHR", 0x30F2)
     set_enum("EGL_UNSIGNALED_KHR", 0x30F3)
@@ -834,8 +844,8 @@ def init_egl_mesa_drm_image():
 
 #### EGL_MESA_IMAGE_DMA_BUF_EXPORT ####
 def init_egl_mesa_image_dma_buf_export():
-#     set_func('eglExportDMABUFImageQueryMESA', t.EGLBoolean, (t.EGLDisplay, t.EGLImageKHR, ct.POINTER(t.int), ct.POINTER(t.int), ct.POINTER(t.EGLuint64KHR)))
-#     set_func('eglExportDMABUFImageMESA', t.EGLBoolean, (t.EGLDisplay, t.EGLImageKHR, ct.POINTER(t.int), ct.POINTER(t.EGLint), ct.POINTER(t.EGLint)))
+#     set_func('eglExportDMABUFImageQueryMESA', t.EGLBoolean, (t.EGLDisplay, t.EGLImageKHR, ct.POINTER(t.INT), ct.POINTER(t.INT), ct.POINTER(t.EGLuint64KHR)))
+#     set_func('eglExportDMABUFImageMESA', t.EGLBoolean, (t.EGLDisplay, t.EGLImageKHR, ct.POINTER(t.INT), ct.POINTER(t.EGLint), ct.POINTER(t.EGLint)))
     pass
 
 #### EGL_MESA_PLATFORM_GBM ####
@@ -1019,6 +1029,7 @@ def init():
     init_egl_ext_platform_device()
     init_egl_ext_platform_wayland()
     init_egl_ext_platform_x11()
+    init_egl_ext_protected_content()
     init_egl_ext_protected_surface()
     init_egl_ext_stream_consumer_egloutput()
     init_egl_ext_swap_buffers_with_damage()
@@ -1045,6 +1056,7 @@ def init():
     init_egl_khr_lock_surface()
     init_egl_khr_lock_surface2()
     init_egl_khr_lock_surface3()
+    init_egl_khr_mutable_render_buffer()
     init_egl_khr_partial_update()
     init_egl_khr_platform_android()
     init_egl_khr_platform_gbm()

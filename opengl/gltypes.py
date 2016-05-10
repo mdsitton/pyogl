@@ -1,4 +1,17 @@
 import ctypes as ct
+import platform
+
+try:
+    if genGL:
+        _generation = True
+except NameError:
+    _generation = False
+
+# currently in order to properly fully generat
+if platform.system() == "Linux" or _generation:
+    from .x11 import *
+elif platform.system == "Windows" or _generation:
+    from .win32 import *
 
 # private non gl types
 _c_ptrdiff_t = ct.c_ssize_t

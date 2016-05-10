@@ -6,7 +6,6 @@ from pglgen import regparse
 
 # Get list of supported types automatically
 supportedTypes = [item for item in dir(gltypes) if item[0] != '_' and item != 'ct']
-
 codeHeader = '''\'\'\'
 OpenGL binding For python
 WARNING - This is generated code, do not modify directly.
@@ -58,7 +57,7 @@ def filter_const(typeInfo):
             typeInfo.remove('const')
             consCorrect += 1
         elif 'const' in item:
-            typeInfo[i-consCorrect] = ''.join(item.split('const'))
+            typeInfo[i-consCorrect] = ''.join(item.split('const')).strip()
 
     # return typeStr
 
@@ -81,23 +80,37 @@ def filter_pointer(typeInfo):
     return ptrCount
 
 def parse_type(typeInfo):
+    #print (typeInfo)
 
     # generate return type string must be done before pointers.
     filter_const(typeInfo)
 
     # Handle pointers
     ptrCount = filter_pointer(typeInfo)
-
-    typeStr = typeInfo[0]
+    typeStr = typeInfo[0] # There will only be a single value in typeInfo
+    baseTypeStr = typeStr
     if typeStr:
-        typeStr = 't.'+typeStr
+        if typeStr == 'int':
+            baseTypeStr = 'INT'
+        elif typeStr == 'char':
+            baseTypeStr = 'CHAR'
+        elif typeStr == 'float':
+            baseTypeStr = 'FLOAT'
+        elif typeStr == 'unsigned int':
+            baseTypeStr = 'UINT'
+        elif typeStr == 'unsigned long':
+            baseTypeStr = 'ULONG'
+        typeStr = 't.'+baseTypeStr
 
     # add the found number of pointers to the object.
     if ptrCount:
         for i in range(ptrCount):
             typeStr = pointer.format(typeStr)
 
-    return typeStr
+
+    #print (typeStr, baseTypeStr)
+
+    return typeStr, baseTypeStr
 
 
 def gen_func_code(enums, commands):
@@ -110,22 +123,27 @@ def gen_func_code(enums, commands):
 
         commentFunction = False
 
-        rtnStr = parse_type(rtnType)
+        rtnStr, baseRtnType = parse_type(rtnType)
 
         # Mark the function  to be commented out out if we do
         # not currently support any of the datatypes needed
-        if rtnType[0] not in supportedTypes:
+        if baseRtnType not in supportedTypes:
             commentFunction = True
 
         # generate param list string
         parmItems = []
         for parName, parType in params:
+            # Fix issue where if a function was generated twice it would be
+            # missing pointers. This was because the same list was being passed
+            # by reference all the way to the parseType function where it was
+            # modified...
+            parTypeCpy = parType[:]
 
-            parStr = parse_type(parType)
+            parStr, baseType = parse_type(parTypeCpy)
 
-            # Mark the function  to be commented out out if we do
+            # Mark the function to be commented out out if we do
             # not currently support any of the datatypes needed
-            if parType[0] not in supportedTypes:
+            if baseType not in supportedTypes:
                 commentFunction = True
 
             parmItems.append(parStr)

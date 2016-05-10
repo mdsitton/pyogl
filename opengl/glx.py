@@ -19,23 +19,23 @@ noParms = ()
 
 #### GLX VERSION 1.0 ####
 def init_glx_version_1_0():
-#     set_func('glXChooseVisual', ct.POINTER(t.XVisualInfo), (ct.POINTER(t.Display), t.int, ct.POINTER(t.int)))
+#     set_func('glXChooseVisual', ct.POINTER(t.XVisualInfo), (ct.POINTER(t.Display), t.INT, ct.POINTER(t.INT)))
 #     set_func('glXCreateContext', t.GLXContext, (ct.POINTER(t.Display), ct.POINTER(t.XVisualInfo), t.GLXContext, t.Bool))
 #     set_func('glXDestroyContext', t.void, (ct.POINTER(t.Display), t.GLXContext))
 #     set_func('glXMakeCurrent', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.GLXContext))
-#     set_func('glXCopyContext', t.void, (ct.POINTER(t.Display), t.GLXContext, t.GLXContext, t.unsigned long))
+#     set_func('glXCopyContext', t.void, (ct.POINTER(t.Display), t.GLXContext, t.GLXContext, t.ULONG))
 #     set_func('glXSwapBuffers', t.void, (ct.POINTER(t.Display), t.GLXDrawable))
 #     set_func('glXCreateGLXPixmap', t.GLXPixmap, (ct.POINTER(t.Display), ct.POINTER(t.XVisualInfo), t.Pixmap))
 #     set_func('glXDestroyGLXPixmap', t.void, (ct.POINTER(t.Display), t.GLXPixmap))
-#     set_func('glXQueryExtension', t.Bool, (ct.POINTER(t.Display), ct.POINTER(t.int), ct.POINTER(t.int)))
-#     set_func('glXQueryVersion', t.Bool, (ct.POINTER(t.Display), ct.POINTER(t.int), ct.POINTER(t.int)))
+#     set_func('glXQueryExtension', t.Bool, (ct.POINTER(t.Display), ct.POINTER(t.INT), ct.POINTER(t.INT)))
+#     set_func('glXQueryVersion', t.Bool, (ct.POINTER(t.Display), ct.POINTER(t.INT), ct.POINTER(t.INT)))
 #     set_func('glXIsDirect', t.Bool, (ct.POINTER(t.Display), t.GLXContext))
-#     set_func('glXGetConfig', t.int, (ct.POINTER(t.Display), ct.POINTER(t.XVisualInfo), t.int, ct.POINTER(t.int)))
+#     set_func('glXGetConfig', t.INT, (ct.POINTER(t.Display), ct.POINTER(t.XVisualInfo), t.INT, ct.POINTER(t.INT)))
 #     set_func('glXGetCurrentContext', t.GLXContext, ())
 #     set_func('glXGetCurrentDrawable', t.GLXDrawable, ())
     set_func('glXWaitGL', t.void, ())
     set_func('glXWaitX', t.void, ())
-#     set_func('glXUseXFont', t.void, (t.Font, t.int, t.int, t.int))
+#     set_func('glXUseXFont', t.void, (t.Font, t.INT, t.INT, t.INT))
     set_enum("GLX_EXTENSION_NAME", "GLX")
     set_enum("GLX_PbufferClobber", 0)
     set_enum("GLX_BufferSwapComplete", 1)
@@ -68,9 +68,9 @@ def init_glx_version_1_0():
 
 #### GLX VERSION 1.1 ####
 def init_glx_version_1_1():
-#     set_func('glXQueryExtensionsString', ct.POINTER(t.char), (ct.POINTER(t.Display), t.int))
-#     set_func('glXQueryServerString', ct.POINTER(t.char), (ct.POINTER(t.Display), t.int, t.int))
-#     set_func('glXGetClientString', ct.POINTER(t.char), (ct.POINTER(t.Display), t.int))
+#     set_func('glXQueryExtensionsString', ct.POINTER(t.CHAR), (ct.POINTER(t.Display), t.INT))
+#     set_func('glXQueryServerString', ct.POINTER(t.CHAR), (ct.POINTER(t.Display), t.INT, t.INT))
+#     set_func('glXGetClientString', ct.POINTER(t.CHAR), (ct.POINTER(t.Display), t.INT))
     set_enum("GLX_VENDOR", 0x1)
     set_enum("GLX_VERSION", 0x2)
     set_enum("GLX_EXTENSIONS", 0x3)
@@ -83,23 +83,23 @@ def init_glx_version_1_2():
 
 #### GLX VERSION 1.3 ####
 def init_glx_version_1_3():
-#     set_func('glXGetFBConfigs', ct.POINTER(t.GLXFBConfig), (ct.POINTER(t.Display), t.int, ct.POINTER(t.int)))
-#     set_func('glXChooseFBConfig', ct.POINTER(t.GLXFBConfig), (ct.POINTER(t.Display), t.int, ct.POINTER(t.int), ct.POINTER(t.int)))
-#     set_func('glXGetFBConfigAttrib', t.int, (ct.POINTER(t.Display), t.GLXFBConfig, t.int, ct.POINTER(t.int)))
+#     set_func('glXGetFBConfigs', ct.POINTER(t.GLXFBConfig), (ct.POINTER(t.Display), t.INT, ct.POINTER(t.INT)))
+#     set_func('glXChooseFBConfig', ct.POINTER(t.GLXFBConfig), (ct.POINTER(t.Display), t.INT, ct.POINTER(t.INT), ct.POINTER(t.INT)))
+#     set_func('glXGetFBConfigAttrib', t.INT, (ct.POINTER(t.Display), t.GLXFBConfig, t.INT, ct.POINTER(t.INT)))
 #     set_func('glXGetVisualFromFBConfig', ct.POINTER(t.XVisualInfo), (ct.POINTER(t.Display), t.GLXFBConfig))
-#     set_func('glXCreateWindow', t.GLXWindow, (ct.POINTER(t.Display), t.GLXFBConfig, t.Window, ct.POINTER(t.int)))
+#     set_func('glXCreateWindow', t.GLXWindow, (ct.POINTER(t.Display), t.GLXFBConfig, t.Window, ct.POINTER(t.INT)))
 #     set_func('glXDestroyWindow', t.void, (ct.POINTER(t.Display), t.GLXWindow))
-#     set_func('glXCreatePixmap', t.GLXPixmap, (ct.POINTER(t.Display), t.GLXFBConfig, t.Pixmap, ct.POINTER(t.int)))
+#     set_func('glXCreatePixmap', t.GLXPixmap, (ct.POINTER(t.Display), t.GLXFBConfig, t.Pixmap, ct.POINTER(t.INT)))
 #     set_func('glXDestroyPixmap', t.void, (ct.POINTER(t.Display), t.GLXPixmap))
-#     set_func('glXCreatePbuffer', t.GLXPbuffer, (ct.POINTER(t.Display), t.GLXFBConfig, ct.POINTER(t.int)))
+#     set_func('glXCreatePbuffer', t.GLXPbuffer, (ct.POINTER(t.Display), t.GLXFBConfig, ct.POINTER(t.INT)))
 #     set_func('glXDestroyPbuffer', t.void, (ct.POINTER(t.Display), t.GLXPbuffer))
-#     set_func('glXQueryDrawable', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int, ct.POINTER(t.unsigned)))
-#     set_func('glXCreateNewContext', t.GLXContext, (ct.POINTER(t.Display), t.GLXFBConfig, t.int, t.GLXContext, t.Bool))
+#     set_func('glXQueryDrawable', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.INT, ct.POINTER(t.UINT)))
+#     set_func('glXCreateNewContext', t.GLXContext, (ct.POINTER(t.Display), t.GLXFBConfig, t.INT, t.GLXContext, t.Bool))
 #     set_func('glXMakeContextCurrent', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.GLXDrawable, t.GLXContext))
 #     set_func('glXGetCurrentReadDrawable', t.GLXDrawable, ())
-#     set_func('glXQueryContext', t.int, (ct.POINTER(t.Display), t.GLXContext, t.int, ct.POINTER(t.int)))
-#     set_func('glXSelectEvent', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.unsigned long))
-#     set_func('glXGetSelectedEvent', t.void, (ct.POINTER(t.Display), t.GLXDrawable, ct.POINTER(t.unsigned)))
+#     set_func('glXQueryContext', t.INT, (ct.POINTER(t.Display), t.GLXContext, t.INT, ct.POINTER(t.INT)))
+#     set_func('glXSelectEvent', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.ULONG))
+#     set_func('glXGetSelectedEvent', t.void, (ct.POINTER(t.Display), t.GLXDrawable, ct.POINTER(t.ULONG)))
     set_enum("GLX_WINDOW_BIT", 0x00000001)
     set_enum("GLX_PIXMAP_BIT", 0x00000002)
     set_enum("GLX_PBUFFER_BIT", 0x00000004)
@@ -173,11 +173,11 @@ def init_glx_3dfx_multisample():
 
 #### GLX_AMD_GPU_ASSOCIATION ####
 def init_glx_amd_gpu_association():
-#     set_func('glXGetGPUIDsAMD', t.unsigned int, (t.unsigned int, ct.POINTER(t.unsigned)))
-#     set_func('glXGetGPUInfoAMD', t.int, (t.unsigned int, t.int, t.GLenum, t.unsigned int, ct.POINTER(t.void)))
-#     set_func('glXGetContextGPUIDAMD', t.unsigned int, (t.GLXContext,))
-#     set_func('glXCreateAssociatedContextAMD', t.GLXContext, (t.unsigned int, t.GLXContext))
-#     set_func('glXCreateAssociatedContextAttribsAMD', t.GLXContext, (t.unsigned int, t.GLXContext, ct.POINTER(t.int)))
+#     set_func('glXGetGPUIDsAMD', t.UINT, (t.UINT, ct.POINTER(t.UINT)))
+#     set_func('glXGetGPUInfoAMD', t.INT, (t.UINT, t.INT, t.GLenum, t.UINT, ct.POINTER(t.void)))
+#     set_func('glXGetContextGPUIDAMD', t.UINT, (t.GLXContext,))
+#     set_func('glXCreateAssociatedContextAMD', t.GLXContext, (t.UINT, t.GLXContext))
+#     set_func('glXCreateAssociatedContextAttribsAMD', t.GLXContext, (t.UINT, t.GLXContext, ct.POINTER(t.INT)))
 #     set_func('glXDeleteAssociatedContextAMD', t.Bool, (t.GLXContext,))
 #     set_func('glXMakeAssociatedContextCurrentAMD', t.Bool, (t.GLXContext,))
 #     set_func('glXGetCurrentAssociatedContextAMD', t.GLXContext, ())
@@ -203,7 +203,7 @@ def init_glx_arb_context_flush_control():
 
 #### GLX_ARB_CREATE_CONTEXT ####
 def init_glx_arb_create_context():
-#     set_func('glXCreateContextAttribsARB', t.GLXContext, (ct.POINTER(t.Display), t.GLXFBConfig, t.GLXContext, t.Bool, ct.POINTER(t.int)))
+#     set_func('glXCreateContextAttribsARB', t.GLXContext, (ct.POINTER(t.Display), t.GLXFBConfig, t.GLXContext, t.Bool, ct.POINTER(t.INT)))
     set_enum("GLX_CONTEXT_DEBUG_BIT_ARB", 0x00000001)
     set_enum("GLX_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB", 0x00000002)
     set_enum("GLX_CONTEXT_MAJOR_VERSION_ARB", 0x2091)
@@ -292,13 +292,18 @@ def init_glx_ext_framebuffer_srgb():
 #### GLX_EXT_IMPORT_CONTEXT ####
 def init_glx_ext_import_context():
 #     set_func('glXGetCurrentDisplayEXT', ct.POINTER(t.Display), ())
-#     set_func('glXQueryContextInfoEXT', t.int, (ct.POINTER(t.Display), t.GLXContext, t.int, ct.POINTER(t.int)))
+#     set_func('glXQueryContextInfoEXT', t.INT, (ct.POINTER(t.Display), t.GLXContext, t.INT, ct.POINTER(t.INT)))
 #     set_func('glXGetContextIDEXT', t.GLXContextID, (t.GLXContext,))
 #     set_func('glXImportContextEXT', t.GLXContext, (ct.POINTER(t.Display), t.GLXContextID))
 #     set_func('glXFreeContextEXT', t.void, (ct.POINTER(t.Display), t.GLXContext))
     set_enum("GLX_SHARE_CONTEXT_EXT", 0x800A)
     set_enum("GLX_VISUAL_ID_EXT", 0x800B)
     set_enum("GLX_SCREEN_EXT", 0x800C)
+
+
+#### GLX_EXT_LIBGLVND ####
+def init_glx_ext_libglvnd():
+    set_enum("GLX_VENDOR_NAMES_EXT", 0x20F6)
 
 
 #### GLX_EXT_STEREO_TREE ####
@@ -310,7 +315,7 @@ def init_glx_ext_stereo_tree():
 
 #### GLX_EXT_SWAP_CONTROL ####
 def init_glx_ext_swap_control():
-#     set_func('glXSwapIntervalEXT', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int))
+#     set_func('glXSwapIntervalEXT', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.INT))
     set_enum("GLX_SWAP_INTERVAL_EXT", 0x20F1)
     set_enum("GLX_MAX_SWAP_INTERVAL_EXT", 0x20F2)
 
@@ -322,8 +327,8 @@ def init_glx_ext_swap_control_tear():
 
 #### GLX_EXT_TEXTURE_FROM_PIXMAP ####
 def init_glx_ext_texture_from_pixmap():
-#     set_func('glXBindTexImageEXT', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int, ct.POINTER(t.int)))
-#     set_func('glXReleaseTexImageEXT', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int))
+#     set_func('glXBindTexImageEXT', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.INT, ct.POINTER(t.INT)))
+#     set_func('glXReleaseTexImageEXT', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.INT))
     set_enum("GLX_TEXTURE_1D_BIT_EXT", 0x00000001)
     set_enum("GLX_TEXTURE_2D_BIT_EXT", 0x00000002)
     set_enum("GLX_TEXTURE_RECTANGLE_BIT_EXT", 0x00000004)
@@ -397,12 +402,12 @@ def init_glx_intel_swap_event():
 
 #### GLX_MESA_AGP_OFFSET ####
 def init_glx_mesa_agp_offset():
-#     set_func('glXGetAGPOffsetMESA', t.unsigned int, (ct.POINTER(t.void),))
+#     set_func('glXGetAGPOffsetMESA', t.UINT, (ct.POINTER(t.void),))
     pass
 
 #### GLX_MESA_COPY_SUB_BUFFER ####
 def init_glx_mesa_copy_sub_buffer():
-#     set_func('glXCopySubBufferMESA', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int, t.int, t.int, t.int))
+#     set_func('glXCopySubBufferMESA', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.INT, t.INT, t.INT, t.INT))
     pass
 
 #### GLX_MESA_PIXMAP_COLORMAP ####
@@ -412,10 +417,10 @@ def init_glx_mesa_pixmap_colormap():
 
 #### GLX_MESA_QUERY_RENDERER ####
 def init_glx_mesa_query_renderer():
-#     set_func('glXQueryCurrentRendererIntegerMESA', t.Bool, (t.int, ct.POINTER(t.unsigned)))
-#     set_func('glXQueryCurrentRendererStringMESA', ct.POINTER(t.char), (t.int,))
-#     set_func('glXQueryRendererIntegerMESA', t.Bool, (ct.POINTER(t.Display), t.int, t.int, t.int, ct.POINTER(t.unsigned)))
-#     set_func('glXQueryRendererStringMESA', ct.POINTER(t.char), (ct.POINTER(t.Display), t.int, t.int, t.int))
+#     set_func('glXQueryCurrentRendererIntegerMESA', t.Bool, (t.INT, ct.POINTER(t.UINT)))
+#     set_func('glXQueryCurrentRendererStringMESA', ct.POINTER(t.CHAR), (t.INT,))
+#     set_func('glXQueryRendererIntegerMESA', t.Bool, (ct.POINTER(t.Display), t.INT, t.INT, t.INT, ct.POINTER(t.UINT)))
+#     set_func('glXQueryRendererStringMESA', ct.POINTER(t.CHAR), (ct.POINTER(t.Display), t.INT, t.INT, t.INT))
     set_enum("GLX_RENDERER_VENDOR_ID_MESA", 0x8183)
     set_enum("GLX_RENDERER_DEVICE_ID_MESA", 0x8184)
     set_enum("GLX_RENDERER_VERSION_MESA", 0x8185)
@@ -437,7 +442,7 @@ def init_glx_mesa_release_buffers():
 
 #### GLX_MESA_SET_3DFX_MODE ####
 def init_glx_mesa_set_3dfx_mode():
-#     set_func('glXSet3DfxModeMESA', t.Bool, (t.int,))
+#     set_func('glXSet3DfxModeMESA', t.Bool, (t.INT,))
     set_enum("GLX_3DFX_WINDOW_MODE_MESA", 0x1)
     set_enum("GLX_3DFX_FULLSCREEN_MODE_MESA", 0x2)
 
@@ -471,8 +476,8 @@ def init_glx_nv_multisample_coverage():
 
 #### GLX_NV_PRESENT_VIDEO ####
 def init_glx_nv_present_video():
-#     set_func('glXEnumerateVideoDevicesNV', ct.POINTER(t.unsigned), (ct.POINTER(t.Display), t.int, ct.POINTER(t.int)))
-#     set_func('glXBindVideoDeviceNV', t.int, (ct.POINTER(t.Display), t.unsigned int, t.unsigned int, ct.POINTER(t.int)))
+#     set_func('glXEnumerateVideoDevicesNV', ct.POINTER(t.UINT), (ct.POINTER(t.Display), t.INT, ct.POINTER(t.INT)))
+#     set_func('glXBindVideoDeviceNV', t.INT, (ct.POINTER(t.Display), t.UINT, t.UINT, ct.POINTER(t.INT)))
     set_enum("GLX_NUM_VIDEO_SLOTS_NV", 0x20F0)
 
 
@@ -481,17 +486,17 @@ def init_glx_nv_swap_group():
 #     set_func('glXJoinSwapGroupNV', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.GLuint))
 #     set_func('glXBindSwapBarrierNV', t.Bool, (ct.POINTER(t.Display), t.GLuint, t.GLuint))
 #     set_func('glXQuerySwapGroupNV', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, ct.POINTER(t.GLuint), ct.POINTER(t.GLuint)))
-#     set_func('glXQueryMaxSwapGroupsNV', t.Bool, (ct.POINTER(t.Display), t.int, ct.POINTER(t.GLuint), ct.POINTER(t.GLuint)))
-#     set_func('glXQueryFrameCountNV', t.Bool, (ct.POINTER(t.Display), t.int, ct.POINTER(t.GLuint)))
-#     set_func('glXResetFrameCountNV', t.Bool, (ct.POINTER(t.Display), t.int))
+#     set_func('glXQueryMaxSwapGroupsNV', t.Bool, (ct.POINTER(t.Display), t.INT, ct.POINTER(t.GLuint), ct.POINTER(t.GLuint)))
+#     set_func('glXQueryFrameCountNV', t.Bool, (ct.POINTER(t.Display), t.INT, ct.POINTER(t.GLuint)))
+#     set_func('glXResetFrameCountNV', t.Bool, (ct.POINTER(t.Display), t.INT))
     pass
 
 #### GLX_NV_VIDEO_CAPTURE ####
 def init_glx_nv_video_capture():
-#     set_func('glXBindVideoCaptureDeviceNV', t.int, (ct.POINTER(t.Display), t.unsigned int, t.GLXVideoCaptureDeviceNV))
-#     set_func('glXEnumerateVideoCaptureDevicesNV', ct.POINTER(t.GLXVideoCaptureDeviceNV), (ct.POINTER(t.Display), t.int, ct.POINTER(t.int)))
+#     set_func('glXBindVideoCaptureDeviceNV', t.INT, (ct.POINTER(t.Display), t.UINT, t.GLXVideoCaptureDeviceNV))
+#     set_func('glXEnumerateVideoCaptureDevicesNV', ct.POINTER(t.GLXVideoCaptureDeviceNV), (ct.POINTER(t.Display), t.INT, ct.POINTER(t.INT)))
 #     set_func('glXLockVideoCaptureDeviceNV', t.void, (ct.POINTER(t.Display), t.GLXVideoCaptureDeviceNV))
-#     set_func('glXQueryVideoCaptureDeviceNV', t.int, (ct.POINTER(t.Display), t.GLXVideoCaptureDeviceNV, t.int, ct.POINTER(t.int)))
+#     set_func('glXQueryVideoCaptureDeviceNV', t.INT, (ct.POINTER(t.Display), t.GLXVideoCaptureDeviceNV, t.INT, ct.POINTER(t.INT)))
 #     set_func('glXReleaseVideoCaptureDeviceNV', t.void, (ct.POINTER(t.Display), t.GLXVideoCaptureDeviceNV))
     set_enum("GLX_DEVICE_ID_NV", 0x20CD)
     set_enum("GLX_UNIQUE_ID_NV", 0x20CE)
@@ -500,12 +505,12 @@ def init_glx_nv_video_capture():
 
 #### GLX_NV_VIDEO_OUT ####
 def init_glx_nv_video_out():
-#     set_func('glXGetVideoDeviceNV', t.int, (ct.POINTER(t.Display), t.int, t.int, ct.POINTER(t.GLXVideoDeviceNV)))
-#     set_func('glXReleaseVideoDeviceNV', t.int, (ct.POINTER(t.Display), t.int, t.GLXVideoDeviceNV))
-#     set_func('glXBindVideoImageNV', t.int, (ct.POINTER(t.Display), t.GLXVideoDeviceNV, t.GLXPbuffer, t.int))
-#     set_func('glXReleaseVideoImageNV', t.int, (ct.POINTER(t.Display), t.GLXPbuffer))
-#     set_func('glXSendPbufferToVideoNV', t.int, (ct.POINTER(t.Display), t.GLXPbuffer, t.int, ct.POINTER(t.unsigned), t.GLboolean))
-#     set_func('glXGetVideoInfoNV', t.int, (ct.POINTER(t.Display), t.int, t.GLXVideoDeviceNV, ct.POINTER(t.unsigned), ct.POINTER(t.unsigned)))
+#     set_func('glXGetVideoDeviceNV', t.INT, (ct.POINTER(t.Display), t.INT, t.INT, ct.POINTER(t.GLXVideoDeviceNV)))
+#     set_func('glXReleaseVideoDeviceNV', t.INT, (ct.POINTER(t.Display), t.INT, t.GLXVideoDeviceNV))
+#     set_func('glXBindVideoImageNV', t.INT, (ct.POINTER(t.Display), t.GLXVideoDeviceNV, t.GLXPbuffer, t.INT))
+#     set_func('glXReleaseVideoImageNV', t.INT, (ct.POINTER(t.Display), t.GLXPbuffer))
+#     set_func('glXSendPbufferToVideoNV', t.INT, (ct.POINTER(t.Display), t.GLXPbuffer, t.INT, ct.POINTER(t.ULONG), t.GLboolean))
+#     set_func('glXGetVideoInfoNV', t.INT, (ct.POINTER(t.Display), t.INT, t.GLXVideoDeviceNV, ct.POINTER(t.ULONG), ct.POINTER(t.ULONG)))
     set_enum("GLX_VIDEO_OUT_COLOR_NV", 0x20C3)
     set_enum("GLX_VIDEO_OUT_ALPHA_NV", 0x20C4)
     set_enum("GLX_VIDEO_OUT_DEPTH_NV", 0x20C5)
@@ -537,7 +542,7 @@ def init_glx_oml_sync_control():
 
 #### GLX_SGI_CUSHION ####
 def init_glx_sgi_cushion():
-#     set_func('glXCushionSGI', t.void, (ct.POINTER(t.Display), t.Window, t.float))
+#     set_func('glXCushionSGI', t.void, (ct.POINTER(t.Display), t.Window, t.FLOAT))
     pass
 
 #### GLX_SGI_MAKE_CURRENT_READ ####
@@ -548,13 +553,13 @@ def init_glx_sgi_make_current_read():
 
 #### GLX_SGI_SWAP_CONTROL ####
 def init_glx_sgi_swap_control():
-#     set_func('glXSwapIntervalSGI', t.int, (t.int,))
+#     set_func('glXSwapIntervalSGI', t.INT, (t.INT,))
     pass
 
 #### GLX_SGI_VIDEO_SYNC ####
 def init_glx_sgi_video_sync():
-#     set_func('glXGetVideoSyncSGI', t.int, (ct.POINTER(t.unsigned),))
-#     set_func('glXWaitVideoSyncSGI', t.int, (t.int, t.int, ct.POINTER(t.unsigned)))
+#     set_func('glXGetVideoSyncSGI', t.INT, (ct.POINTER(t.UINT),))
+#     set_func('glXWaitVideoSyncSGI', t.INT, (t.INT, t.INT, ct.POINTER(t.UINT)))
     pass
 
 #### GLX_SGIS_BLENDED_OVERLAY ####
@@ -582,10 +587,10 @@ def init_glx_sgix_dmbuffer():
 
 #### GLX_SGIX_FBCONFIG ####
 def init_glx_sgix_fbconfig():
-#     set_func('glXGetFBConfigAttribSGIX', t.int, (ct.POINTER(t.Display), t.GLXFBConfigSGIX, t.int, ct.POINTER(t.int)))
-#     set_func('glXChooseFBConfigSGIX', ct.POINTER(t.GLXFBConfigSGIX), (ct.POINTER(t.Display), t.int, ct.POINTER(t.int), ct.POINTER(t.int)))
+#     set_func('glXGetFBConfigAttribSGIX', t.INT, (ct.POINTER(t.Display), t.GLXFBConfigSGIX, t.INT, ct.POINTER(t.INT)))
+#     set_func('glXChooseFBConfigSGIX', ct.POINTER(t.GLXFBConfigSGIX), (ct.POINTER(t.Display), t.INT, ct.POINTER(t.INT), ct.POINTER(t.INT)))
 #     set_func('glXCreateGLXPixmapWithConfigSGIX', t.GLXPixmap, (ct.POINTER(t.Display), t.GLXFBConfigSGIX, t.Pixmap))
-#     set_func('glXCreateContextWithConfigSGIX', t.GLXContext, (ct.POINTER(t.Display), t.GLXFBConfigSGIX, t.int, t.GLXContext, t.Bool))
+#     set_func('glXCreateContextWithConfigSGIX', t.GLXContext, (ct.POINTER(t.Display), t.GLXFBConfigSGIX, t.INT, t.GLXContext, t.Bool))
 #     set_func('glXGetVisualFromFBConfigSGIX', ct.POINTER(t.XVisualInfo), (ct.POINTER(t.Display), t.GLXFBConfigSGIX))
 #     set_func('glXGetFBConfigFromVisualSGIX', t.GLXFBConfigSGIX, (ct.POINTER(t.Display), ct.POINTER(t.XVisualInfo)))
     set_enum("GLX_WINDOW_BIT_SGIX", 0x00000001)
@@ -603,14 +608,14 @@ def init_glx_sgix_fbconfig():
 
 #### GLX_SGIX_HYPERPIPE ####
 def init_glx_sgix_hyperpipe():
-#     set_func('glXQueryHyperpipeNetworkSGIX', ct.POINTER(t.GLXHyperpipeNetworkSGIX), (ct.POINTER(t.Display), ct.POINTER(t.int)))
-#     set_func('glXHyperpipeConfigSGIX', t.int, (ct.POINTER(t.Display), t.int, t.int, ct.POINTER(t.GLXHyperpipeConfigSGIX), ct.POINTER(t.int)))
-#     set_func('glXQueryHyperpipeConfigSGIX', ct.POINTER(t.GLXHyperpipeConfigSGIX), (ct.POINTER(t.Display), t.int, ct.POINTER(t.int)))
-#     set_func('glXDestroyHyperpipeConfigSGIX', t.int, (ct.POINTER(t.Display), t.int))
-#     set_func('glXBindHyperpipeSGIX', t.int, (ct.POINTER(t.Display), t.int))
-#     set_func('glXQueryHyperpipeBestAttribSGIX', t.int, (ct.POINTER(t.Display), t.int, t.int, t.int, ct.POINTER(t.void), ct.POINTER(t.void)))
-#     set_func('glXHyperpipeAttribSGIX', t.int, (ct.POINTER(t.Display), t.int, t.int, t.int, ct.POINTER(t.void)))
-#     set_func('glXQueryHyperpipeAttribSGIX', t.int, (ct.POINTER(t.Display), t.int, t.int, t.int, ct.POINTER(t.void)))
+#     set_func('glXQueryHyperpipeNetworkSGIX', ct.POINTER(t.GLXHyperpipeNetworkSGIX), (ct.POINTER(t.Display), ct.POINTER(t.INT)))
+#     set_func('glXHyperpipeConfigSGIX', t.INT, (ct.POINTER(t.Display), t.INT, t.INT, ct.POINTER(t.GLXHyperpipeConfigSGIX), ct.POINTER(t.INT)))
+#     set_func('glXQueryHyperpipeConfigSGIX', ct.POINTER(t.GLXHyperpipeConfigSGIX), (ct.POINTER(t.Display), t.INT, ct.POINTER(t.INT)))
+#     set_func('glXDestroyHyperpipeConfigSGIX', t.INT, (ct.POINTER(t.Display), t.INT))
+#     set_func('glXBindHyperpipeSGIX', t.INT, (ct.POINTER(t.Display), t.INT))
+#     set_func('glXQueryHyperpipeBestAttribSGIX', t.INT, (ct.POINTER(t.Display), t.INT, t.INT, t.INT, ct.POINTER(t.void), ct.POINTER(t.void)))
+#     set_func('glXHyperpipeAttribSGIX', t.INT, (ct.POINTER(t.Display), t.INT, t.INT, t.INT, ct.POINTER(t.void)))
+#     set_func('glXQueryHyperpipeAttribSGIX', t.INT, (ct.POINTER(t.Display), t.INT, t.INT, t.INT, ct.POINTER(t.void)))
     set_enum("GLX_HYPERPIPE_PIPE_NAME_LENGTH_SGIX", 80)
     set_enum("GLX_BAD_HYPERPIPE_CONFIG_SGIX", 91)
     set_enum("GLX_BAD_HYPERPIPE_SGIX", 92)
@@ -625,11 +630,11 @@ def init_glx_sgix_hyperpipe():
 
 #### GLX_SGIX_PBUFFER ####
 def init_glx_sgix_pbuffer():
-#     set_func('glXCreateGLXPbufferSGIX', t.GLXPbufferSGIX, (ct.POINTER(t.Display), t.GLXFBConfigSGIX, t.unsigned int, t.unsigned int, ct.POINTER(t.int)))
+#     set_func('glXCreateGLXPbufferSGIX', t.GLXPbufferSGIX, (ct.POINTER(t.Display), t.GLXFBConfigSGIX, t.UINT, t.UINT, ct.POINTER(t.INT)))
 #     set_func('glXDestroyGLXPbufferSGIX', t.void, (ct.POINTER(t.Display), t.GLXPbufferSGIX))
-#     set_func('glXQueryGLXPbufferSGIX', t.int, (ct.POINTER(t.Display), t.GLXPbufferSGIX, t.int, ct.POINTER(t.unsigned)))
-#     set_func('glXSelectEventSGIX', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.unsigned long))
-#     set_func('glXGetSelectedEventSGIX', t.void, (ct.POINTER(t.Display), t.GLXDrawable, ct.POINTER(t.unsigned)))
+#     set_func('glXQueryGLXPbufferSGIX', t.INT, (ct.POINTER(t.Display), t.GLXPbufferSGIX, t.INT, ct.POINTER(t.UINT)))
+#     set_func('glXSelectEventSGIX', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.ULONG))
+#     set_func('glXGetSelectedEventSGIX', t.void, (ct.POINTER(t.Display), t.GLXDrawable, ct.POINTER(t.ULONG)))
     set_enum("GLX_PBUFFER_BIT_SGIX", 0x00000004)
     set_enum("GLX_BUFFER_CLOBBER_MASK_SGIX", 0x08000000)
     set_enum("GLX_FRONT_LEFT_BUFFER_BIT_SGIX", 0x00000001)
@@ -659,8 +664,8 @@ def init_glx_sgix_pbuffer():
 
 #### GLX_SGIX_SWAP_BARRIER ####
 def init_glx_sgix_swap_barrier():
-#     set_func('glXBindSwapBarrierSGIX', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.int))
-#     set_func('glXQueryMaxSwapBarriersSGIX', t.Bool, (ct.POINTER(t.Display), t.int, ct.POINTER(t.int)))
+#     set_func('glXBindSwapBarrierSGIX', t.void, (ct.POINTER(t.Display), t.GLXDrawable, t.INT))
+#     set_func('glXQueryMaxSwapBarriersSGIX', t.Bool, (ct.POINTER(t.Display), t.INT, ct.POINTER(t.INT)))
     pass
 
 #### GLX_SGIX_SWAP_GROUP ####
@@ -670,18 +675,18 @@ def init_glx_sgix_swap_group():
 
 #### GLX_SGIX_VIDEO_RESIZE ####
 def init_glx_sgix_video_resize():
-#     set_func('glXBindChannelToWindowSGIX', t.int, (ct.POINTER(t.Display), t.int, t.int, t.Window))
-#     set_func('glXChannelRectSGIX', t.int, (ct.POINTER(t.Display), t.int, t.int, t.int, t.int, t.int, t.int))
-#     set_func('glXQueryChannelRectSGIX', t.int, (ct.POINTER(t.Display), t.int, t.int, ct.POINTER(t.int), ct.POINTER(t.int), ct.POINTER(t.int), ct.POINTER(t.int)))
-#     set_func('glXQueryChannelDeltasSGIX', t.int, (ct.POINTER(t.Display), t.int, t.int, ct.POINTER(t.int), ct.POINTER(t.int), ct.POINTER(t.int), ct.POINTER(t.int)))
-#     set_func('glXChannelRectSyncSGIX', t.int, (ct.POINTER(t.Display), t.int, t.int, t.GLenum))
+#     set_func('glXBindChannelToWindowSGIX', t.INT, (ct.POINTER(t.Display), t.INT, t.INT, t.Window))
+#     set_func('glXChannelRectSGIX', t.INT, (ct.POINTER(t.Display), t.INT, t.INT, t.INT, t.INT, t.INT, t.INT))
+#     set_func('glXQueryChannelRectSGIX', t.INT, (ct.POINTER(t.Display), t.INT, t.INT, ct.POINTER(t.INT), ct.POINTER(t.INT), ct.POINTER(t.INT), ct.POINTER(t.INT)))
+#     set_func('glXQueryChannelDeltasSGIX', t.INT, (ct.POINTER(t.Display), t.INT, t.INT, ct.POINTER(t.INT), ct.POINTER(t.INT), ct.POINTER(t.INT), ct.POINTER(t.INT)))
+#     set_func('glXChannelRectSyncSGIX', t.INT, (ct.POINTER(t.Display), t.INT, t.INT, t.GLenum))
     set_enum("GLX_SYNC_FRAME_SGIX", 0x00000000)
     set_enum("GLX_SYNC_SWAP_SGIX", 0x00000001)
 
 
 #### GLX_SGIX_VIDEO_SOURCE ####
 def init_glx_sgix_video_source():
-#     set_func('glXCreateGLXVideoSourceSGIX', t.GLXVideoSourceSGIX, (ct.POINTER(t.Display), t.int, t.VLServer, t.VLPath, t.int, t.VLNode))
+#     set_func('glXCreateGLXVideoSourceSGIX', t.GLXVideoSourceSGIX, (ct.POINTER(t.Display), t.INT, t.VLServer, t.VLPath, t.INT, t.VLNode))
 #     set_func('glXDestroyGLXVideoSourceSGIX', t.void, (ct.POINTER(t.Display), t.GLXVideoSourceSGIX))
     pass
 
@@ -720,6 +725,7 @@ def init():
     init_glx_ext_fbconfig_packed_float()
     init_glx_ext_framebuffer_srgb()
     init_glx_ext_import_context()
+    init_glx_ext_libglvnd()
     init_glx_ext_stereo_tree()
     init_glx_ext_swap_control()
     init_glx_ext_swap_control_tear()

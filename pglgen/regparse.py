@@ -1,6 +1,6 @@
 from collections import OrderedDict
 
-from pglgen import xml
+from pglgen import xmlparse as xml
 
 
 class Command(xml.BaseParser):
@@ -16,6 +16,19 @@ class Command(xml.BaseParser):
 
         self.parent.commands.append(self)
 
+    def seperate_ptr(self, typeData):
+        types = []
+        for i in typeData:
+            if i not in types and i is not '':
+                if '*' in i and len(i) > 1:  # split pointer from type
+                    ptrLoc = i.index('*')
+                    info = [i[:ptrLoc].strip(), i[ptrLoc:].strip()]
+                    #info = i.split(' ')
+                    types.extend(info)
+                elif i != '':
+                    types.append(i)
+        return types
+
     def parse(self):
 
         tagPath = self.stack.path()
@@ -23,24 +36,12 @@ class Command(xml.BaseParser):
         if 'command/proto/name' in tagPath:
             self.name = data[0]
         elif 'command/proto' in tagPath:
-            for i in data:
-                if i not in self.rtnType and i is not '':
-                    if '*' in i and len(i) > 1:  # split pointer from type
-                        info = i.split(' ')
-                        self.rtnType.extend(info)
-                    else:
-                        self.rtnType.append(i)
+            self.rtnType.extend(self.seperate_ptr(data))
         elif 'command/param/name' in tagPath:
             self.params.append([data[0].strip(), self.protoParam])
             self.protoParam = []
         elif 'command/param' in tagPath:
-            for i in data:
-                if i not in self.protoParam and i is not '':
-                    if '*' in i and len(i) > 1:  # split pointer from type
-                        info = i.split(' ')
-                        self.protoParam.extend(info)
-                    else:
-                        self.protoParam.append(i)
+            self.protoParam.extend(self.seperate_ptr(data))
 
 
 class Commands(xml.BaseParser):
