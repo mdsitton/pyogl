@@ -38,6 +38,7 @@ def init():
 '''
 
 func = '    set_func(\'{0}\', {1}, ({2}))\n'
+commentedFunc = '    # set_func(\'{0}\', {1}, ({2}))\n'
 
 pointer = 'ct.POINTER({0})'
 
@@ -156,7 +157,7 @@ def gen_func_code(enums, commands):
 
         # Comment out function if marked.
         if commentFunction:
-            funcCode = '# {0}'.format(func.format(name, rtnStr, parmStr))
+            funcCode = commentedFunc.format(name, rtnStr, parmStr)
         else:
             nonCommented = True
             funcCode = func.format(name, rtnStr, parmStr)

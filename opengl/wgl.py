@@ -19,32 +19,32 @@ noParms = ()
 
 #### WGL VERSION 1.0 ####
 def init_wgl_version_1_0():
-#     set_func('ChoosePixelFormat', t.INT, (t.HDC, ct.POINTER(t.PIXELFORMATDESCRIPTOR)))
-#     set_func('DescribePixelFormat', t.INT, (t.HDC, t.INT, t.UINT, ct.POINTER(t.PIXELFORMATDESCRIPTOR)))
-#     set_func('GetEnhMetaFilePixelFormat', t.UINT, (t.HENHMETAFILE, ct.POINTER(t.PIXELFORMATDESCRIPTOR)))
-#     set_func('GetPixelFormat', t.INT, (t.HDC,))
-#     set_func('SetPixelFormat', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.PIXELFORMATDESCRIPTOR)))
-#     set_func('SwapBuffers', t.BOOL, (t.HDC,))
-#     set_func('wglCopyContext', t.BOOL, (t.HGLRC, t.HGLRC, t.UINT))
-#     set_func('wglCreateContext', t.HGLRC, (t.HDC,))
-#     set_func('wglCreateLayerContext', t.HGLRC, (t.HDC, t.INT))
-#     set_func('wglDeleteContext', t.BOOL, (t.HGLRC,))
-#     set_func('wglDescribeLayerPlane', t.BOOL, (t.HDC, t.INT, t.INT, t.UINT, ct.POINTER(t.LAYERPLANEDESCRIPTOR)))
-#     set_func('wglGetCurrentContext', t.HGLRC, ())
-#     set_func('wglGetCurrentDC', t.HDC, ())
-#     set_func('wglGetLayerPaletteEntries', t.INT, (t.HDC, t.INT, t.INT, t.INT, ct.POINTER(t.COLORREF)))
-#     set_func('wglGetProcAddress', t.PROC, (t.LPCSTR,))
-#     set_func('wglMakeCurrent', t.BOOL, (t.HDC, t.HGLRC))
-#     set_func('wglRealizeLayerPalette', t.BOOL, (t.HDC, t.INT, t.BOOL))
-#     set_func('wglSetLayerPaletteEntries', t.INT, (t.HDC, t.INT, t.INT, t.INT, ct.POINTER(t.COLORREF)))
-#     set_func('wglShareLists', t.BOOL, (t.HGLRC, t.HGLRC))
-#     set_func('wglSwapLayerBuffers', t.BOOL, (t.HDC, t.UINT))
-#     set_func('wglUseFontBitmaps', t.BOOL, (t.HDC, t.DWORD, t.DWORD, t.DWORD))
-#     set_func('wglUseFontBitmapsA', t.BOOL, (t.HDC, t.DWORD, t.DWORD, t.DWORD))
-#     set_func('wglUseFontBitmapsW', t.BOOL, (t.HDC, t.DWORD, t.DWORD, t.DWORD))
-#     set_func('wglUseFontOutlines', t.BOOL, (t.HDC, t.DWORD, t.DWORD, t.DWORD, t.FLOAT, t.FLOAT, t.INT, t.LPGLYPHMETRICSFLOAT))
-#     set_func('wglUseFontOutlinesA', t.BOOL, (t.HDC, t.DWORD, t.DWORD, t.DWORD, t.FLOAT, t.FLOAT, t.INT, t.LPGLYPHMETRICSFLOAT))
-#     set_func('wglUseFontOutlinesW', t.BOOL, (t.HDC, t.DWORD, t.DWORD, t.DWORD, t.FLOAT, t.FLOAT, t.INT, t.LPGLYPHMETRICSFLOAT))
+    # set_func('ChoosePixelFormat', t.INT, (t.HDC, ct.POINTER(t.PIXELFORMATDESCRIPTOR)))
+    # set_func('DescribePixelFormat', t.INT, (t.HDC, t.INT, t.UINT, ct.POINTER(t.PIXELFORMATDESCRIPTOR)))
+    # set_func('GetEnhMetaFilePixelFormat', t.UINT, (t.HENHMETAFILE, ct.POINTER(t.PIXELFORMATDESCRIPTOR)))
+    # set_func('GetPixelFormat', t.INT, (t.HDC,))
+    # set_func('SetPixelFormat', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.PIXELFORMATDESCRIPTOR)))
+    # set_func('SwapBuffers', t.BOOL, (t.HDC,))
+    # set_func('wglCopyContext', t.BOOL, (t.HGLRC, t.HGLRC, t.UINT))
+    # set_func('wglCreateContext', t.HGLRC, (t.HDC,))
+    # set_func('wglCreateLayerContext', t.HGLRC, (t.HDC, t.INT))
+    # set_func('wglDeleteContext', t.BOOL, (t.HGLRC,))
+    # set_func('wglDescribeLayerPlane', t.BOOL, (t.HDC, t.INT, t.INT, t.UINT, ct.POINTER(t.LAYERPLANEDESCRIPTOR)))
+    # set_func('wglGetCurrentContext', t.HGLRC, ())
+    # set_func('wglGetCurrentDC', t.HDC, ())
+    # set_func('wglGetLayerPaletteEntries', t.INT, (t.HDC, t.INT, t.INT, t.INT, ct.POINTER(t.COLORREF)))
+    # set_func('wglGetProcAddress', t.PROC, (t.LPCSTR,))
+    # set_func('wglMakeCurrent', t.BOOL, (t.HDC, t.HGLRC))
+    # set_func('wglRealizeLayerPalette', t.BOOL, (t.HDC, t.INT, t.BOOL))
+    # set_func('wglSetLayerPaletteEntries', t.INT, (t.HDC, t.INT, t.INT, t.INT, ct.POINTER(t.COLORREF)))
+    # set_func('wglShareLists', t.BOOL, (t.HGLRC, t.HGLRC))
+    # set_func('wglSwapLayerBuffers', t.BOOL, (t.HDC, t.UINT))
+    # set_func('wglUseFontBitmaps', t.BOOL, (t.HDC, t.DWORD, t.DWORD, t.DWORD))
+    # set_func('wglUseFontBitmapsA', t.BOOL, (t.HDC, t.DWORD, t.DWORD, t.DWORD))
+    # set_func('wglUseFontBitmapsW', t.BOOL, (t.HDC, t.DWORD, t.DWORD, t.DWORD))
+    # set_func('wglUseFontOutlines', t.BOOL, (t.HDC, t.DWORD, t.DWORD, t.DWORD, t.FLOAT, t.FLOAT, t.INT, t.LPGLYPHMETRICSFLOAT))
+    # set_func('wglUseFontOutlinesA', t.BOOL, (t.HDC, t.DWORD, t.DWORD, t.DWORD, t.FLOAT, t.FLOAT, t.INT, t.LPGLYPHMETRICSFLOAT))
+    # set_func('wglUseFontOutlinesW', t.BOOL, (t.HDC, t.DWORD, t.DWORD, t.DWORD, t.FLOAT, t.FLOAT, t.INT, t.LPGLYPHMETRICSFLOAT))
     set_enum("WGL_FONT_LINES", 0)
     set_enum("WGL_FONT_POLYGONS", 1)
     set_enum("WGL_SWAP_MAIN_PLANE", 0x00000001)
@@ -88,7 +88,7 @@ def init_wgl_3dfx_multisample():
 
 #### WGL_3DL_STEREO_CONTROL ####
 def init_wgl_3dl_stereo_control():
-#     set_func('wglSetStereoEmitterState3DL', t.BOOL, (t.HDC, t.UINT))
+    # set_func('wglSetStereoEmitterState3DL', t.BOOL, (t.HDC, t.UINT))
     set_enum("WGL_STEREO_EMITTER_ENABLE_3DL", 0x2055)
     set_enum("WGL_STEREO_EMITTER_DISABLE_3DL", 0x2056)
     set_enum("WGL_STEREO_POLARITY_NORMAL_3DL", 0x2057)
@@ -97,15 +97,15 @@ def init_wgl_3dl_stereo_control():
 
 #### WGL_AMD_GPU_ASSOCIATION ####
 def init_wgl_amd_gpu_association():
-#     set_func('wglGetGPUIDsAMD', t.UINT, (t.UINT, ct.POINTER(t.UINT)))
-#     set_func('wglGetGPUInfoAMD', t.INT, (t.UINT, t.INT, t.GLenum, t.UINT, ct.POINTER(t.void)))
-#     set_func('wglGetContextGPUIDAMD', t.UINT, (t.HGLRC,))
-#     set_func('wglCreateAssociatedContextAMD', t.HGLRC, (t.UINT,))
-#     set_func('wglCreateAssociatedContextAttribsAMD', t.HGLRC, (t.UINT, t.HGLRC, ct.POINTER(t.INT)))
-#     set_func('wglDeleteAssociatedContextAMD', t.BOOL, (t.HGLRC,))
-#     set_func('wglMakeAssociatedContextCurrentAMD', t.BOOL, (t.HGLRC,))
-#     set_func('wglGetCurrentAssociatedContextAMD', t.HGLRC, ())
-#     set_func('wglBlitContextFramebufferAMD', t.VOID, (t.HGLRC, t.GLint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLbitfield, t.GLenum))
+    # set_func('wglGetGPUIDsAMD', t.UINT, (t.UINT, ct.POINTER(t.UINT)))
+    # set_func('wglGetGPUInfoAMD', t.INT, (t.UINT, t.INT, t.GLenum, t.UINT, ct.POINTER(t.void)))
+    # set_func('wglGetContextGPUIDAMD', t.UINT, (t.HGLRC,))
+    # set_func('wglCreateAssociatedContextAMD', t.HGLRC, (t.UINT,))
+    # set_func('wglCreateAssociatedContextAttribsAMD', t.HGLRC, (t.UINT, t.HGLRC, ct.POINTER(t.INT)))
+    # set_func('wglDeleteAssociatedContextAMD', t.BOOL, (t.HGLRC,))
+    # set_func('wglMakeAssociatedContextCurrentAMD', t.BOOL, (t.HGLRC,))
+    # set_func('wglGetCurrentAssociatedContextAMD', t.HGLRC, ())
+    # set_func('wglBlitContextFramebufferAMD', t.VOID, (t.HGLRC, t.GLint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLbitfield, t.GLenum))
     set_enum("WGL_GPU_VENDOR_AMD", 0x1F00)
     set_enum("WGL_GPU_RENDERER_STRING_AMD", 0x1F01)
     set_enum("WGL_GPU_OPENGL_VERSION_STRING_AMD", 0x1F02)
@@ -120,10 +120,10 @@ def init_wgl_amd_gpu_association():
 
 #### WGL_ARB_BUFFER_REGION ####
 def init_wgl_arb_buffer_region():
-#     set_func('wglCreateBufferRegionARB', t.HANDLE, (t.HDC, t.INT, t.UINT))
-#     set_func('wglDeleteBufferRegionARB', t.VOID, (t.HANDLE,))
-#     set_func('wglSaveBufferRegionARB', t.BOOL, (t.HANDLE, t.INT, t.INT, t.INT, t.INT))
-#     set_func('wglRestoreBufferRegionARB', t.BOOL, (t.HANDLE, t.INT, t.INT, t.INT, t.INT, t.INT, t.INT))
+    # set_func('wglCreateBufferRegionARB', t.HANDLE, (t.HDC, t.INT, t.UINT))
+    # set_func('wglDeleteBufferRegionARB', t.VOID, (t.HANDLE,))
+    # set_func('wglSaveBufferRegionARB', t.BOOL, (t.HANDLE, t.INT, t.INT, t.INT, t.INT))
+    # set_func('wglRestoreBufferRegionARB', t.BOOL, (t.HANDLE, t.INT, t.INT, t.INT, t.INT, t.INT, t.INT))
     set_enum("WGL_FRONT_COLOR_BUFFER_BIT_ARB", 0x00000001)
     set_enum("WGL_BACK_COLOR_BUFFER_BIT_ARB", 0x00000002)
     set_enum("WGL_DEPTH_BUFFER_BIT_ARB", 0x00000004)
@@ -139,7 +139,7 @@ def init_wgl_arb_context_flush_control():
 
 #### WGL_ARB_CREATE_CONTEXT ####
 def init_wgl_arb_create_context():
-#     set_func('wglCreateContextAttribsARB', t.HGLRC, (t.HDC, t.HGLRC, ct.POINTER(t.INT)))
+    # set_func('wglCreateContextAttribsARB', t.HGLRC, (t.HDC, t.HGLRC, ct.POINTER(t.INT)))
     set_enum("WGL_CONTEXT_DEBUG_BIT_ARB", 0x00000001)
     set_enum("WGL_CONTEXT_FORWARD_COMPATIBLE_BIT_ARB", 0x00000002)
     set_enum("WGL_CONTEXT_MAJOR_VERSION_ARB", 0x2091)
@@ -167,7 +167,7 @@ def init_wgl_arb_create_context_robustness():
 
 #### WGL_ARB_EXTENSIONS_STRING ####
 def init_wgl_arb_extensions_string():
-#     set_func('wglGetExtensionsStringARB', ct.POINTER(t.CHAR), (t.HDC,))
+    # set_func('wglGetExtensionsStringARB', ct.POINTER(t.CHAR), (t.HDC,))
     pass
 
 #### WGL_ARB_FRAMEBUFFER_SRGB ####
@@ -177,8 +177,8 @@ def init_wgl_arb_framebuffer_srgb():
 
 #### WGL_ARB_MAKE_CURRENT_READ ####
 def init_wgl_arb_make_current_read():
-#     set_func('wglMakeContextCurrentARB', t.BOOL, (t.HDC, t.HDC, t.HGLRC))
-#     set_func('wglGetCurrentReadDCARB', t.HDC, ())
+    # set_func('wglMakeContextCurrentARB', t.BOOL, (t.HDC, t.HDC, t.HGLRC))
+    # set_func('wglGetCurrentReadDCARB', t.HDC, ())
     set_enum("ERROR_INVALID_PIXEL_TYPE_ARB", 0x2043)
     set_enum("ERROR_INCOMPATIBLE_DEVICE_CONTEXTS_ARB", 0x2054)
 
@@ -191,11 +191,11 @@ def init_wgl_arb_multisample():
 
 #### WGL_ARB_PBUFFER ####
 def init_wgl_arb_pbuffer():
-#     set_func('wglCreatePbufferARB', t.HPBUFFERARB, (t.HDC, t.INT, t.INT, t.INT, ct.POINTER(t.INT)))
-#     set_func('wglGetPbufferDCARB', t.HDC, (t.HPBUFFERARB,))
-#     set_func('wglReleasePbufferDCARB', t.INT, (t.HPBUFFERARB, t.HDC))
-#     set_func('wglDestroyPbufferARB', t.BOOL, (t.HPBUFFERARB,))
-#     set_func('wglQueryPbufferARB', t.BOOL, (t.HPBUFFERARB, t.INT, ct.POINTER(t.INT)))
+    # set_func('wglCreatePbufferARB', t.HPBUFFERARB, (t.HDC, t.INT, t.INT, t.INT, ct.POINTER(t.INT)))
+    # set_func('wglGetPbufferDCARB', t.HDC, (t.HPBUFFERARB,))
+    # set_func('wglReleasePbufferDCARB', t.INT, (t.HPBUFFERARB, t.HDC))
+    # set_func('wglDestroyPbufferARB', t.BOOL, (t.HPBUFFERARB,))
+    # set_func('wglQueryPbufferARB', t.BOOL, (t.HPBUFFERARB, t.INT, ct.POINTER(t.INT)))
     set_enum("WGL_DRAW_TO_PBUFFER_ARB", 0x202D)
     set_enum("WGL_MAX_PBUFFER_PIXELS_ARB", 0x202E)
     set_enum("WGL_MAX_PBUFFER_WIDTH_ARB", 0x202F)
@@ -208,9 +208,9 @@ def init_wgl_arb_pbuffer():
 
 #### WGL_ARB_PIXEL_FORMAT ####
 def init_wgl_arb_pixel_format():
-#     set_func('wglGetPixelFormatAttribivARB', t.BOOL, (t.HDC, t.INT, t.INT, t.UINT, ct.POINTER(t.INT), ct.POINTER(t.INT)))
-#     set_func('wglGetPixelFormatAttribfvARB', t.BOOL, (t.HDC, t.INT, t.INT, t.UINT, ct.POINTER(t.INT), ct.POINTER(t.FLOAT)))
-#     set_func('wglChoosePixelFormatARB', t.BOOL, (t.HDC, ct.POINTER(t.INT), ct.POINTER(t.FLOAT), t.UINT, ct.POINTER(t.INT), ct.POINTER(t.UINT)))
+    # set_func('wglGetPixelFormatAttribivARB', t.BOOL, (t.HDC, t.INT, t.INT, t.UINT, ct.POINTER(t.INT), ct.POINTER(t.INT)))
+    # set_func('wglGetPixelFormatAttribfvARB', t.BOOL, (t.HDC, t.INT, t.INT, t.UINT, ct.POINTER(t.INT), ct.POINTER(t.FLOAT)))
+    # set_func('wglChoosePixelFormatARB', t.BOOL, (t.HDC, ct.POINTER(t.INT), ct.POINTER(t.FLOAT), t.UINT, ct.POINTER(t.INT), ct.POINTER(t.UINT)))
     set_enum("WGL_NUMBER_PIXEL_FORMATS_ARB", 0x2000)
     set_enum("WGL_DRAW_TO_WINDOW_ARB", 0x2001)
     set_enum("WGL_DRAW_TO_BITMAP_ARB", 0x2002)
@@ -269,9 +269,9 @@ def init_wgl_arb_pixel_format_float():
 
 #### WGL_ARB_RENDER_TEXTURE ####
 def init_wgl_arb_render_texture():
-#     set_func('wglBindTexImageARB', t.BOOL, (t.HPBUFFERARB, t.INT))
-#     set_func('wglReleaseTexImageARB', t.BOOL, (t.HPBUFFERARB, t.INT))
-#     set_func('wglSetPbufferAttribARB', t.BOOL, (t.HPBUFFERARB, ct.POINTER(t.INT)))
+    # set_func('wglBindTexImageARB', t.BOOL, (t.HPBUFFERARB, t.INT))
+    # set_func('wglReleaseTexImageARB', t.BOOL, (t.HPBUFFERARB, t.INT))
+    # set_func('wglSetPbufferAttribARB', t.BOOL, (t.HPBUFFERARB, ct.POINTER(t.INT)))
     set_enum("WGL_BIND_TO_TEXTURE_RGB_ARB", 0x2070)
     set_enum("WGL_BIND_TO_TEXTURE_RGBA_ARB", 0x2071)
     set_enum("WGL_TEXTURE_FORMAT_ARB", 0x2072)
@@ -342,12 +342,12 @@ def init_wgl_ext_display_color_table():
     set_func('wglCreateDisplayColorTableEXT', t.GLboolean, (t.GLushort,))
     set_func('wglLoadDisplayColorTableEXT', t.GLboolean, (ct.POINTER(t.GLushort), t.GLuint))
     set_func('wglBindDisplayColorTableEXT', t.GLboolean, (t.GLushort,))
-#     set_func('wglDestroyDisplayColorTableEXT', t.VOID, (t.GLushort,))
+    # set_func('wglDestroyDisplayColorTableEXT', t.VOID, (t.GLushort,))
 
 
 #### WGL_EXT_EXTENSIONS_STRING ####
 def init_wgl_ext_extensions_string():
-#     set_func('wglGetExtensionsStringEXT', ct.POINTER(t.CHAR), ())
+    # set_func('wglGetExtensionsStringEXT', ct.POINTER(t.CHAR), ())
     pass
 
 #### WGL_EXT_FRAMEBUFFER_SRGB ####
@@ -357,8 +357,8 @@ def init_wgl_ext_framebuffer_srgb():
 
 #### WGL_EXT_MAKE_CURRENT_READ ####
 def init_wgl_ext_make_current_read():
-#     set_func('wglMakeContextCurrentEXT', t.BOOL, (t.HDC, t.HDC, t.HGLRC))
-#     set_func('wglGetCurrentReadDCEXT', t.HDC, ())
+    # set_func('wglMakeContextCurrentEXT', t.BOOL, (t.HDC, t.HDC, t.HGLRC))
+    # set_func('wglGetCurrentReadDCEXT', t.HDC, ())
     set_enum("ERROR_INVALID_PIXEL_TYPE_EXT", 0x2043)
 
 
@@ -370,11 +370,11 @@ def init_wgl_ext_multisample():
 
 #### WGL_EXT_PBUFFER ####
 def init_wgl_ext_pbuffer():
-#     set_func('wglCreatePbufferEXT', t.HPBUFFEREXT, (t.HDC, t.INT, t.INT, t.INT, ct.POINTER(t.INT)))
-#     set_func('wglGetPbufferDCEXT', t.HDC, (t.HPBUFFEREXT,))
-#     set_func('wglReleasePbufferDCEXT', t.INT, (t.HPBUFFEREXT, t.HDC))
-#     set_func('wglDestroyPbufferEXT', t.BOOL, (t.HPBUFFEREXT,))
-#     set_func('wglQueryPbufferEXT', t.BOOL, (t.HPBUFFEREXT, t.INT, ct.POINTER(t.INT)))
+    # set_func('wglCreatePbufferEXT', t.HPBUFFEREXT, (t.HDC, t.INT, t.INT, t.INT, ct.POINTER(t.INT)))
+    # set_func('wglGetPbufferDCEXT', t.HDC, (t.HPBUFFEREXT,))
+    # set_func('wglReleasePbufferDCEXT', t.INT, (t.HPBUFFEREXT, t.HDC))
+    # set_func('wglDestroyPbufferEXT', t.BOOL, (t.HPBUFFEREXT,))
+    # set_func('wglQueryPbufferEXT', t.BOOL, (t.HPBUFFEREXT, t.INT, ct.POINTER(t.INT)))
     set_enum("WGL_DRAW_TO_PBUFFER_EXT", 0x202D)
     set_enum("WGL_MAX_PBUFFER_PIXELS_EXT", 0x202E)
     set_enum("WGL_MAX_PBUFFER_WIDTH_EXT", 0x202F)
@@ -388,9 +388,9 @@ def init_wgl_ext_pbuffer():
 
 #### WGL_EXT_PIXEL_FORMAT ####
 def init_wgl_ext_pixel_format():
-#     set_func('wglGetPixelFormatAttribivEXT', t.BOOL, (t.HDC, t.INT, t.INT, t.UINT, ct.POINTER(t.INT), ct.POINTER(t.INT)))
-#     set_func('wglGetPixelFormatAttribfvEXT', t.BOOL, (t.HDC, t.INT, t.INT, t.UINT, ct.POINTER(t.INT), ct.POINTER(t.FLOAT)))
-#     set_func('wglChoosePixelFormatEXT', t.BOOL, (t.HDC, ct.POINTER(t.INT), ct.POINTER(t.FLOAT), t.UINT, ct.POINTER(t.INT), ct.POINTER(t.UINT)))
+    # set_func('wglGetPixelFormatAttribivEXT', t.BOOL, (t.HDC, t.INT, t.INT, t.UINT, ct.POINTER(t.INT), ct.POINTER(t.INT)))
+    # set_func('wglGetPixelFormatAttribfvEXT', t.BOOL, (t.HDC, t.INT, t.INT, t.UINT, ct.POINTER(t.INT), ct.POINTER(t.FLOAT)))
+    # set_func('wglChoosePixelFormatEXT', t.BOOL, (t.HDC, ct.POINTER(t.INT), ct.POINTER(t.FLOAT), t.UINT, ct.POINTER(t.INT), ct.POINTER(t.UINT)))
     set_enum("WGL_NUMBER_PIXEL_FORMATS_EXT", 0x2000)
     set_enum("WGL_DRAW_TO_WINDOW_EXT", 0x2001)
     set_enum("WGL_DRAW_TO_BITMAP_EXT", 0x2002)
@@ -445,14 +445,14 @@ def init_wgl_ext_pixel_format_packed_float():
 
 #### WGL_EXT_SWAP_CONTROL ####
 def init_wgl_ext_swap_control():
-#     set_func('wglSwapIntervalEXT', t.BOOL, (t.INT,))
-#     set_func('wglGetSwapIntervalEXT', t.INT, ())
+    # set_func('wglSwapIntervalEXT', t.BOOL, (t.INT,))
+    # set_func('wglGetSwapIntervalEXT', t.INT, ())
     pass
 
 #### WGL_I3D_DIGITAL_VIDEO_CONTROL ####
 def init_wgl_i3d_digital_video_control():
-#     set_func('wglGetDigitalVideoParametersI3D', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.INT)))
-#     set_func('wglSetDigitalVideoParametersI3D', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.INT)))
+    # set_func('wglGetDigitalVideoParametersI3D', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.INT)))
+    # set_func('wglSetDigitalVideoParametersI3D', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.INT)))
     set_enum("WGL_DIGITAL_VIDEO_CURSOR_ALPHA_FRAMEBUFFER_I3D", 0x2050)
     set_enum("WGL_DIGITAL_VIDEO_CURSOR_ALPHA_VALUE_I3D", 0x2051)
     set_enum("WGL_DIGITAL_VIDEO_CURSOR_INCLUDED_I3D", 0x2052)
@@ -461,28 +461,28 @@ def init_wgl_i3d_digital_video_control():
 
 #### WGL_I3D_GAMMA ####
 def init_wgl_i3d_gamma():
-#     set_func('wglGetGammaTableParametersI3D', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.INT)))
-#     set_func('wglSetGammaTableParametersI3D', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.INT)))
-#     set_func('wglGetGammaTableI3D', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.USHORT), ct.POINTER(t.USHORT), ct.POINTER(t.USHORT)))
-#     set_func('wglSetGammaTableI3D', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.USHORT), ct.POINTER(t.USHORT), ct.POINTER(t.USHORT)))
+    # set_func('wglGetGammaTableParametersI3D', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.INT)))
+    # set_func('wglSetGammaTableParametersI3D', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.INT)))
+    # set_func('wglGetGammaTableI3D', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.USHORT), ct.POINTER(t.USHORT), ct.POINTER(t.USHORT)))
+    # set_func('wglSetGammaTableI3D', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.USHORT), ct.POINTER(t.USHORT), ct.POINTER(t.USHORT)))
     set_enum("WGL_GAMMA_TABLE_SIZE_I3D", 0x204E)
     set_enum("WGL_GAMMA_EXCLUDE_DESKTOP_I3D", 0x204F)
 
 
 #### WGL_I3D_GENLOCK ####
 def init_wgl_i3d_genlock():
-#     set_func('wglEnableGenlockI3D', t.BOOL, (t.HDC,))
-#     set_func('wglDisableGenlockI3D', t.BOOL, (t.HDC,))
-#     set_func('wglIsEnabledGenlockI3D', t.BOOL, (t.HDC, ct.POINTER(t.BOOL)))
-#     set_func('wglGenlockSourceI3D', t.BOOL, (t.HDC, t.UINT))
-#     set_func('wglGetGenlockSourceI3D', t.BOOL, (t.HDC, ct.POINTER(t.UINT)))
-#     set_func('wglGenlockSourceEdgeI3D', t.BOOL, (t.HDC, t.UINT))
-#     set_func('wglGetGenlockSourceEdgeI3D', t.BOOL, (t.HDC, ct.POINTER(t.UINT)))
-#     set_func('wglGenlockSampleRateI3D', t.BOOL, (t.HDC, t.UINT))
-#     set_func('wglGetGenlockSampleRateI3D', t.BOOL, (t.HDC, ct.POINTER(t.UINT)))
-#     set_func('wglGenlockSourceDelayI3D', t.BOOL, (t.HDC, t.UINT))
-#     set_func('wglGetGenlockSourceDelayI3D', t.BOOL, (t.HDC, ct.POINTER(t.UINT)))
-#     set_func('wglQueryGenlockMaxSourceDelayI3D', t.BOOL, (t.HDC, ct.POINTER(t.UINT), ct.POINTER(t.UINT)))
+    # set_func('wglEnableGenlockI3D', t.BOOL, (t.HDC,))
+    # set_func('wglDisableGenlockI3D', t.BOOL, (t.HDC,))
+    # set_func('wglIsEnabledGenlockI3D', t.BOOL, (t.HDC, ct.POINTER(t.BOOL)))
+    # set_func('wglGenlockSourceI3D', t.BOOL, (t.HDC, t.UINT))
+    # set_func('wglGetGenlockSourceI3D', t.BOOL, (t.HDC, ct.POINTER(t.UINT)))
+    # set_func('wglGenlockSourceEdgeI3D', t.BOOL, (t.HDC, t.UINT))
+    # set_func('wglGetGenlockSourceEdgeI3D', t.BOOL, (t.HDC, ct.POINTER(t.UINT)))
+    # set_func('wglGenlockSampleRateI3D', t.BOOL, (t.HDC, t.UINT))
+    # set_func('wglGetGenlockSampleRateI3D', t.BOOL, (t.HDC, ct.POINTER(t.UINT)))
+    # set_func('wglGenlockSourceDelayI3D', t.BOOL, (t.HDC, t.UINT))
+    # set_func('wglGetGenlockSourceDelayI3D', t.BOOL, (t.HDC, ct.POINTER(t.UINT)))
+    # set_func('wglQueryGenlockMaxSourceDelayI3D', t.BOOL, (t.HDC, ct.POINTER(t.UINT), ct.POINTER(t.UINT)))
     set_enum("WGL_GENLOCK_SOURCE_MULTIVIEW_I3D", 0x2044)
     set_enum("WGL_GENLOCK_SOURCE_EXTERNAL_SYNC_I3D", 0x2045)
     set_enum("WGL_GENLOCK_SOURCE_EXTERNAL_FIELD_I3D", 0x2046)
@@ -496,50 +496,50 @@ def init_wgl_i3d_genlock():
 
 #### WGL_I3D_IMAGE_BUFFER ####
 def init_wgl_i3d_image_buffer():
-#     set_func('wglCreateImageBufferI3D', t.LPVOID, (t.HDC, t.DWORD, t.UINT))
-#     set_func('wglDestroyImageBufferI3D', t.BOOL, (t.HDC, t.LPVOID))
-#     set_func('wglAssociateImageBufferEventsI3D', t.BOOL, (t.HDC, ct.POINTER(t.HANDLE), ct.POINTER(t.LPVOID), ct.POINTER(t.DWORD), t.UINT))
-#     set_func('wglReleaseImageBufferEventsI3D', t.BOOL, (t.HDC, ct.POINTER(t.LPVOID), t.UINT))
+    # set_func('wglCreateImageBufferI3D', t.LPVOID, (t.HDC, t.DWORD, t.UINT))
+    # set_func('wglDestroyImageBufferI3D', t.BOOL, (t.HDC, t.LPVOID))
+    # set_func('wglAssociateImageBufferEventsI3D', t.BOOL, (t.HDC, ct.POINTER(t.HANDLE), ct.POINTER(t.LPVOID), ct.POINTER(t.DWORD), t.UINT))
+    # set_func('wglReleaseImageBufferEventsI3D', t.BOOL, (t.HDC, ct.POINTER(t.LPVOID), t.UINT))
     set_enum("WGL_IMAGE_BUFFER_MIN_ACCESS_I3D", 0x00000001)
     set_enum("WGL_IMAGE_BUFFER_LOCK_I3D", 0x00000002)
 
 
 #### WGL_I3D_SWAP_FRAME_LOCK ####
 def init_wgl_i3d_swap_frame_lock():
-#     set_func('wglEnableFrameLockI3D', t.BOOL, ())
-#     set_func('wglDisableFrameLockI3D', t.BOOL, ())
-#     set_func('wglIsEnabledFrameLockI3D', t.BOOL, (ct.POINTER(t.BOOL),))
-#     set_func('wglQueryFrameLockMasterI3D', t.BOOL, (ct.POINTER(t.BOOL),))
+    # set_func('wglEnableFrameLockI3D', t.BOOL, ())
+    # set_func('wglDisableFrameLockI3D', t.BOOL, ())
+    # set_func('wglIsEnabledFrameLockI3D', t.BOOL, (ct.POINTER(t.BOOL),))
+    # set_func('wglQueryFrameLockMasterI3D', t.BOOL, (ct.POINTER(t.BOOL),))
     pass
 
 #### WGL_I3D_SWAP_FRAME_USAGE ####
 def init_wgl_i3d_swap_frame_usage():
-#     set_func('wglGetFrameUsageI3D', t.BOOL, (ct.POINTER(t.FLOAT),))
-#     set_func('wglBeginFrameTrackingI3D', t.BOOL, ())
-#     set_func('wglEndFrameTrackingI3D', t.BOOL, ())
-#     set_func('wglQueryFrameTrackingI3D', t.BOOL, (ct.POINTER(t.DWORD), ct.POINTER(t.DWORD), ct.POINTER(t.FLOAT)))
+    # set_func('wglGetFrameUsageI3D', t.BOOL, (ct.POINTER(t.FLOAT),))
+    # set_func('wglBeginFrameTrackingI3D', t.BOOL, ())
+    # set_func('wglEndFrameTrackingI3D', t.BOOL, ())
+    # set_func('wglQueryFrameTrackingI3D', t.BOOL, (ct.POINTER(t.DWORD), ct.POINTER(t.DWORD), ct.POINTER(t.FLOAT)))
     pass
 
 #### WGL_NV_COPY_IMAGE ####
 def init_wgl_nv_copy_image():
-#     set_func('wglCopyImageSubDataNV', t.BOOL, (t.HGLRC, t.GLuint, t.GLenum, t.GLint, t.GLint, t.GLint, t.GLint, t.HGLRC, t.GLuint, t.GLenum, t.GLint, t.GLint, t.GLint, t.GLint, t.GLsizei, t.GLsizei, t.GLsizei))
+    # set_func('wglCopyImageSubDataNV', t.BOOL, (t.HGLRC, t.GLuint, t.GLenum, t.GLint, t.GLint, t.GLint, t.GLint, t.HGLRC, t.GLuint, t.GLenum, t.GLint, t.GLint, t.GLint, t.GLint, t.GLsizei, t.GLsizei, t.GLsizei))
     pass
 
 #### WGL_NV_DELAY_BEFORE_SWAP ####
 def init_wgl_nv_delay_before_swap():
-#     set_func('wglDelayBeforeSwapNV', t.BOOL, (t.HDC, t.GLfloat))
+    # set_func('wglDelayBeforeSwapNV', t.BOOL, (t.HDC, t.GLfloat))
     pass
 
 #### WGL_NV_DX_INTEROP ####
 def init_wgl_nv_dx_interop():
-#     set_func('wglDXSetResourceShareHandleNV', t.BOOL, (ct.POINTER(t.void), t.HANDLE))
-#     set_func('wglDXOpenDeviceNV', t.HANDLE, (ct.POINTER(t.void),))
-#     set_func('wglDXCloseDeviceNV', t.BOOL, (t.HANDLE,))
-#     set_func('wglDXRegisterObjectNV', t.HANDLE, (t.HANDLE, ct.POINTER(t.void), t.GLuint, t.GLenum, t.GLenum))
-#     set_func('wglDXUnregisterObjectNV', t.BOOL, (t.HANDLE, t.HANDLE))
-#     set_func('wglDXObjectAccessNV', t.BOOL, (t.HANDLE, t.GLenum))
-#     set_func('wglDXLockObjectsNV', t.BOOL, (t.HANDLE, t.GLint, ct.POINTER(t.HANDLE)))
-#     set_func('wglDXUnlockObjectsNV', t.BOOL, (t.HANDLE, t.GLint, ct.POINTER(t.HANDLE)))
+    # set_func('wglDXSetResourceShareHandleNV', t.BOOL, (ct.POINTER(t.void), t.HANDLE))
+    # set_func('wglDXOpenDeviceNV', t.HANDLE, (ct.POINTER(t.void),))
+    # set_func('wglDXCloseDeviceNV', t.BOOL, (t.HANDLE,))
+    # set_func('wglDXRegisterObjectNV', t.HANDLE, (t.HANDLE, ct.POINTER(t.void), t.GLuint, t.GLenum, t.GLenum))
+    # set_func('wglDXUnregisterObjectNV', t.BOOL, (t.HANDLE, t.HANDLE))
+    # set_func('wglDXObjectAccessNV', t.BOOL, (t.HANDLE, t.GLenum))
+    # set_func('wglDXLockObjectsNV', t.BOOL, (t.HANDLE, t.GLint, ct.POINTER(t.HANDLE)))
+    # set_func('wglDXUnlockObjectsNV', t.BOOL, (t.HANDLE, t.GLint, ct.POINTER(t.HANDLE)))
     set_enum("WGL_ACCESS_READ_ONLY_NV", 0x00000000)
     set_enum("WGL_ACCESS_READ_WRITE_NV", 0x00000001)
     set_enum("WGL_ACCESS_WRITE_DISCARD_NV", 0x00000002)
@@ -560,11 +560,11 @@ def init_wgl_nv_float_buffer():
 
 #### WGL_NV_GPU_AFFINITY ####
 def init_wgl_nv_gpu_affinity():
-#     set_func('wglEnumGpusNV', t.BOOL, (t.UINT, ct.POINTER(t.HGPUNV)))
-#     set_func('wglEnumGpuDevicesNV', t.BOOL, (t.HGPUNV, t.UINT, t.PGPU_DEVICE))
-#     set_func('wglCreateAffinityDCNV', t.HDC, (ct.POINTER(t.HGPUNV),))
-#     set_func('wglEnumGpusFromAffinityDCNV', t.BOOL, (t.HDC, t.UINT, ct.POINTER(t.HGPUNV)))
-#     set_func('wglDeleteDCNV', t.BOOL, (t.HDC,))
+    # set_func('wglEnumGpusNV', t.BOOL, (t.UINT, ct.POINTER(t.HGPUNV)))
+    # set_func('wglEnumGpuDevicesNV', t.BOOL, (t.HGPUNV, t.UINT, t.PGPU_DEVICE))
+    # set_func('wglCreateAffinityDCNV', t.HDC, (ct.POINTER(t.HGPUNV),))
+    # set_func('wglEnumGpusFromAffinityDCNV', t.BOOL, (t.HDC, t.UINT, ct.POINTER(t.HGPUNV)))
+    # set_func('wglDeleteDCNV', t.BOOL, (t.HDC,))
     set_enum("ERROR_INCOMPATIBLE_AFFINITY_MASKS_NV", 0x20D0)
     set_enum("ERROR_MISSING_AFFINITY_MASK_NV", 0x20D1)
 
@@ -577,9 +577,9 @@ def init_wgl_nv_multisample_coverage():
 
 #### WGL_NV_PRESENT_VIDEO ####
 def init_wgl_nv_present_video():
-#     set_func('wglEnumerateVideoDevicesNV', t.INT, (t.HDC, ct.POINTER(t.HVIDEOOUTPUTDEVICENV)))
-#     set_func('wglBindVideoDeviceNV', t.BOOL, (t.HDC, t.UINT, t.HVIDEOOUTPUTDEVICENV, ct.POINTER(t.INT)))
-#     set_func('wglQueryCurrentContextNV', t.BOOL, (t.INT, ct.POINTER(t.INT)))
+    # set_func('wglEnumerateVideoDevicesNV', t.INT, (t.HDC, ct.POINTER(t.HVIDEOOUTPUTDEVICENV)))
+    # set_func('wglBindVideoDeviceNV', t.BOOL, (t.HDC, t.UINT, t.HVIDEOOUTPUTDEVICENV, ct.POINTER(t.INT)))
+    # set_func('wglQueryCurrentContextNV', t.BOOL, (t.INT, ct.POINTER(t.INT)))
     set_enum("WGL_NUM_VIDEO_SLOTS_NV", 0x20F0)
 
 
@@ -601,33 +601,33 @@ def init_wgl_nv_render_texture_rectangle():
 
 #### WGL_NV_SWAP_GROUP ####
 def init_wgl_nv_swap_group():
-#     set_func('wglJoinSwapGroupNV', t.BOOL, (t.HDC, t.GLuint))
-#     set_func('wglBindSwapBarrierNV', t.BOOL, (t.GLuint, t.GLuint))
-#     set_func('wglQuerySwapGroupNV', t.BOOL, (t.HDC, ct.POINTER(t.GLuint), ct.POINTER(t.GLuint)))
-#     set_func('wglQueryMaxSwapGroupsNV', t.BOOL, (t.HDC, ct.POINTER(t.GLuint), ct.POINTER(t.GLuint)))
-#     set_func('wglQueryFrameCountNV', t.BOOL, (t.HDC, ct.POINTER(t.GLuint)))
-#     set_func('wglResetFrameCountNV', t.BOOL, (t.HDC,))
+    # set_func('wglJoinSwapGroupNV', t.BOOL, (t.HDC, t.GLuint))
+    # set_func('wglBindSwapBarrierNV', t.BOOL, (t.GLuint, t.GLuint))
+    # set_func('wglQuerySwapGroupNV', t.BOOL, (t.HDC, ct.POINTER(t.GLuint), ct.POINTER(t.GLuint)))
+    # set_func('wglQueryMaxSwapGroupsNV', t.BOOL, (t.HDC, ct.POINTER(t.GLuint), ct.POINTER(t.GLuint)))
+    # set_func('wglQueryFrameCountNV', t.BOOL, (t.HDC, ct.POINTER(t.GLuint)))
+    # set_func('wglResetFrameCountNV', t.BOOL, (t.HDC,))
     pass
 
 #### WGL_NV_VIDEO_CAPTURE ####
 def init_wgl_nv_video_capture():
-#     set_func('wglBindVideoCaptureDeviceNV', t.BOOL, (t.UINT, t.HVIDEOINPUTDEVICENV))
-#     set_func('wglEnumerateVideoCaptureDevicesNV', t.UINT, (t.HDC, ct.POINTER(t.HVIDEOINPUTDEVICENV)))
-#     set_func('wglLockVideoCaptureDeviceNV', t.BOOL, (t.HDC, t.HVIDEOINPUTDEVICENV))
-#     set_func('wglQueryVideoCaptureDeviceNV', t.BOOL, (t.HDC, t.HVIDEOINPUTDEVICENV, t.INT, ct.POINTER(t.INT)))
-#     set_func('wglReleaseVideoCaptureDeviceNV', t.BOOL, (t.HDC, t.HVIDEOINPUTDEVICENV))
+    # set_func('wglBindVideoCaptureDeviceNV', t.BOOL, (t.UINT, t.HVIDEOINPUTDEVICENV))
+    # set_func('wglEnumerateVideoCaptureDevicesNV', t.UINT, (t.HDC, ct.POINTER(t.HVIDEOINPUTDEVICENV)))
+    # set_func('wglLockVideoCaptureDeviceNV', t.BOOL, (t.HDC, t.HVIDEOINPUTDEVICENV))
+    # set_func('wglQueryVideoCaptureDeviceNV', t.BOOL, (t.HDC, t.HVIDEOINPUTDEVICENV, t.INT, ct.POINTER(t.INT)))
+    # set_func('wglReleaseVideoCaptureDeviceNV', t.BOOL, (t.HDC, t.HVIDEOINPUTDEVICENV))
     set_enum("WGL_UNIQUE_ID_NV", 0x20CE)
     set_enum("WGL_NUM_VIDEO_CAPTURE_SLOTS_NV", 0x20CF)
 
 
 #### WGL_NV_VIDEO_OUTPUT ####
 def init_wgl_nv_video_output():
-#     set_func('wglGetVideoDeviceNV', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.HPVIDEODEV)))
-#     set_func('wglReleaseVideoDeviceNV', t.BOOL, (t.HPVIDEODEV,))
-#     set_func('wglBindVideoImageNV', t.BOOL, (t.HPVIDEODEV, t.HPBUFFERARB, t.INT))
-#     set_func('wglReleaseVideoImageNV', t.BOOL, (t.HPBUFFERARB, t.INT))
-#     set_func('wglSendPbufferToVideoNV', t.BOOL, (t.HPBUFFERARB, t.INT, ct.POINTER(t.ULONG), t.BOOL))
-#     set_func('wglGetVideoInfoNV', t.BOOL, (t.HPVIDEODEV, ct.POINTER(t.ULONG), ct.POINTER(t.ULONG)))
+    # set_func('wglGetVideoDeviceNV', t.BOOL, (t.HDC, t.INT, ct.POINTER(t.HPVIDEODEV)))
+    # set_func('wglReleaseVideoDeviceNV', t.BOOL, (t.HPVIDEODEV,))
+    # set_func('wglBindVideoImageNV', t.BOOL, (t.HPVIDEODEV, t.HPBUFFERARB, t.INT))
+    # set_func('wglReleaseVideoImageNV', t.BOOL, (t.HPBUFFERARB, t.INT))
+    # set_func('wglSendPbufferToVideoNV', t.BOOL, (t.HPBUFFERARB, t.INT, ct.POINTER(t.ULONG), t.BOOL))
+    # set_func('wglGetVideoInfoNV', t.BOOL, (t.HPVIDEODEV, ct.POINTER(t.ULONG), ct.POINTER(t.ULONG)))
     set_enum("WGL_BIND_TO_VIDEO_RGB_NV", 0x20C0)
     set_enum("WGL_BIND_TO_VIDEO_RGBA_NV", 0x20C1)
     set_enum("WGL_BIND_TO_VIDEO_RGB_AND_DEPTH_NV", 0x20C2)
@@ -651,12 +651,12 @@ def init_wgl_nv_vertex_array_range():
 
 #### WGL_OML_SYNC_CONTROL ####
 def init_wgl_oml_sync_control():
-#     set_func('wglGetSyncValuesOML', t.BOOL, (t.HDC, ct.POINTER(t.INT64), ct.POINTER(t.INT64), ct.POINTER(t.INT64)))
-#     set_func('wglGetMscRateOML', t.BOOL, (t.HDC, ct.POINTER(t.INT32), ct.POINTER(t.INT32)))
-#     set_func('wglSwapBuffersMscOML', t.INT64, (t.HDC, t.INT64, t.INT64, t.INT64))
-#     set_func('wglSwapLayerBuffersMscOML', t.INT64, (t.HDC, t.INT, t.INT64, t.INT64, t.INT64))
-#     set_func('wglWaitForMscOML', t.BOOL, (t.HDC, t.INT64, t.INT64, t.INT64, ct.POINTER(t.INT64), ct.POINTER(t.INT64), ct.POINTER(t.INT64)))
-#     set_func('wglWaitForSbcOML', t.BOOL, (t.HDC, t.INT64, ct.POINTER(t.INT64), ct.POINTER(t.INT64), ct.POINTER(t.INT64)))
+    # set_func('wglGetSyncValuesOML', t.BOOL, (t.HDC, ct.POINTER(t.INT64), ct.POINTER(t.INT64), ct.POINTER(t.INT64)))
+    # set_func('wglGetMscRateOML', t.BOOL, (t.HDC, ct.POINTER(t.INT32), ct.POINTER(t.INT32)))
+    # set_func('wglSwapBuffersMscOML', t.INT64, (t.HDC, t.INT64, t.INT64, t.INT64))
+    # set_func('wglSwapLayerBuffersMscOML', t.INT64, (t.HDC, t.INT, t.INT64, t.INT64, t.INT64))
+    # set_func('wglWaitForMscOML', t.BOOL, (t.HDC, t.INT64, t.INT64, t.INT64, ct.POINTER(t.INT64), ct.POINTER(t.INT64), ct.POINTER(t.INT64)))
+    # set_func('wglWaitForSbcOML', t.BOOL, (t.HDC, t.INT64, ct.POINTER(t.INT64), ct.POINTER(t.INT64), ct.POINTER(t.INT64)))
     pass
 
 def init():

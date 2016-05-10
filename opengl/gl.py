@@ -2427,7 +2427,7 @@ def init_gl_version_4_3():
     set_func('glVertexBindingDivisor', t.void, (t.GLuint, t.GLuint))
     set_func('glDebugMessageControl', t.void, (t.GLenum, t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.GLuint), t.GLboolean))
     set_func('glDebugMessageInsert', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLenum, t.GLsizei, ct.POINTER(t.GLchar)))
-#     set_func('glDebugMessageCallback', t.void, (t.GLDEBUGPROC, ct.POINTER(t.void)))
+    # set_func('glDebugMessageCallback', t.void, (t.GLDEBUGPROC, ct.POINTER(t.void)))
     set_func('glGetDebugMessageLog', t.GLuint, (t.GLuint, t.GLsizei, ct.POINTER(t.GLenum), ct.POINTER(t.GLenum), ct.POINTER(t.GLuint), ct.POINTER(t.GLenum), ct.POINTER(t.GLsizei), ct.POINTER(t.GLchar)))
     set_func('glPushDebugGroup', t.void, (t.GLenum, t.GLuint, t.GLsizei, ct.POINTER(t.GLchar)))
     set_func('glPopDebugGroup', t.void, ())
@@ -4457,7 +4457,7 @@ def init_gl_es_version_3_2():
     set_func('glCopyImageSubData', t.void, (t.GLuint, t.GLenum, t.GLint, t.GLint, t.GLint, t.GLint, t.GLuint, t.GLenum, t.GLint, t.GLint, t.GLint, t.GLint, t.GLsizei, t.GLsizei, t.GLsizei))
     set_func('glDebugMessageControl', t.void, (t.GLenum, t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.GLuint), t.GLboolean))
     set_func('glDebugMessageInsert', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLenum, t.GLsizei, ct.POINTER(t.GLchar)))
-#     set_func('glDebugMessageCallback', t.void, (t.GLDEBUGPROC, ct.POINTER(t.void)))
+    # set_func('glDebugMessageCallback', t.void, (t.GLDEBUGPROC, ct.POINTER(t.void)))
     set_func('glGetDebugMessageLog', t.GLuint, (t.GLuint, t.GLsizei, ct.POINTER(t.GLenum), ct.POINTER(t.GLenum), ct.POINTER(t.GLuint), ct.POINTER(t.GLenum), ct.POINTER(t.GLsizei), ct.POINTER(t.GLchar)))
     set_func('glPushDebugGroup', t.void, (t.GLenum, t.GLuint, t.GLsizei, ct.POINTER(t.GLchar)))
     set_func('glPopDebugGroup', t.void, ())
@@ -5142,7 +5142,7 @@ def init_gl_amd_compressed_atc_texture():
 def init_gl_amd_debug_output():
     set_func('glDebugMessageEnableAMD', t.void, (t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.GLuint), t.GLboolean))
     set_func('glDebugMessageInsertAMD', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLsizei, ct.POINTER(t.GLchar)))
-#     set_func('glDebugMessageCallbackAMD', t.void, (t.GLDEBUGPROCAMD, ct.POINTER(t.void)))
+    # set_func('glDebugMessageCallbackAMD', t.void, (t.GLDEBUGPROCAMD, ct.POINTER(t.void)))
     set_func('glGetDebugMessageLogAMD', t.GLuint, (t.GLuint, t.GLsizei, ct.POINTER(t.GLenum), ct.POINTER(t.GLuint), ct.POINTER(t.GLuint), ct.POINTER(t.GLsizei), ct.POINTER(t.GLchar)))
     set_enum("GL_MAX_DEBUG_MESSAGE_LENGTH_AMD", 0x9143)
     set_enum("GL_MAX_DEBUG_LOGGED_MESSAGES_AMD", 0x9144)
@@ -5794,7 +5794,7 @@ def init_gl_arb_buffer_storage():
 
 #### GL_ARB_CL_EVENT ####
 def init_gl_arb_cl_event():
-#     set_func('glCreateSyncFromCLeventARB', t.GLsync, (ct.POINTER(t.struct _cl_context), ct.POINTER(t.struct _cl_event), t.GLbitfield))
+    # set_func('glCreateSyncFromCLeventARB', t.GLsync, (ct.POINTER(t.struct _cl_context), ct.POINTER(t.struct _cl_event), t.GLbitfield))
     set_enum("GL_SYNC_CL_EVENT_ARB", 0x8240)
     set_enum("GL_SYNC_CL_EVENT_COMPLETE_ARB", 0x8241)
 
@@ -5908,7 +5908,7 @@ def init_gl_arb_cull_distance():
 def init_gl_arb_debug_output():
     set_func('glDebugMessageControlARB', t.void, (t.GLenum, t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.GLuint), t.GLboolean))
     set_func('glDebugMessageInsertARB', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLenum, t.GLsizei, ct.POINTER(t.GLchar)))
-#     set_func('glDebugMessageCallbackARB', t.void, (t.GLDEBUGPROCARB, ct.POINTER(t.void)))
+    # set_func('glDebugMessageCallbackARB', t.void, (t.GLDEBUGPROCARB, ct.POINTER(t.void)))
     set_func('glGetDebugMessageLogARB', t.GLuint, (t.GLuint, t.GLsizei, ct.POINTER(t.GLenum), ct.POINTER(t.GLenum), ct.POINTER(t.GLuint), ct.POINTER(t.GLenum), ct.POINTER(t.GLsizei), ct.POINTER(t.GLchar)))
     set_enum("GL_DEBUG_OUTPUT_SYNCHRONOUS_ARB", 0x8242)
     set_enum("GL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH_ARB", 0x8243)
@@ -11467,7 +11467,7 @@ def init_gl_khr_context_flush_control():
 def init_gl_khr_debug():
     set_func('glDebugMessageControl', t.void, (t.GLenum, t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.GLuint), t.GLboolean))
     set_func('glDebugMessageInsert', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLenum, t.GLsizei, ct.POINTER(t.GLchar)))
-#     set_func('glDebugMessageCallback', t.void, (t.GLDEBUGPROC, ct.POINTER(t.void)))
+    # set_func('glDebugMessageCallback', t.void, (t.GLDEBUGPROC, ct.POINTER(t.void)))
     set_func('glGetDebugMessageLog', t.GLuint, (t.GLuint, t.GLsizei, ct.POINTER(t.GLenum), ct.POINTER(t.GLenum), ct.POINTER(t.GLuint), ct.POINTER(t.GLenum), ct.POINTER(t.GLsizei), ct.POINTER(t.GLchar)))
     set_func('glPushDebugGroup', t.void, (t.GLenum, t.GLuint, t.GLsizei, ct.POINTER(t.GLchar)))
     set_func('glPopDebugGroup', t.void, ())
@@ -11478,7 +11478,7 @@ def init_gl_khr_debug():
     set_func('glGetPointerv', t.void, (t.GLenum, ct.POINTER(ct.POINTER(t.void))))
     set_func('glDebugMessageControlKHR', t.void, (t.GLenum, t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.GLuint), t.GLboolean))
     set_func('glDebugMessageInsertKHR', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLenum, t.GLsizei, ct.POINTER(t.GLchar)))
-#     set_func('glDebugMessageCallbackKHR', t.void, (t.GLDEBUGPROCKHR, ct.POINTER(t.void)))
+    # set_func('glDebugMessageCallbackKHR', t.void, (t.GLDEBUGPROCKHR, ct.POINTER(t.void)))
     set_func('glGetDebugMessageLogKHR', t.GLuint, (t.GLuint, t.GLsizei, ct.POINTER(t.GLenum), ct.POINTER(t.GLenum), ct.POINTER(t.GLuint), ct.POINTER(t.GLenum), ct.POINTER(t.GLsizei), ct.POINTER(t.GLchar)))
     set_func('glPushDebugGroupKHR', t.void, (t.GLenum, t.GLuint, t.GLsizei, ct.POINTER(t.GLchar)))
     set_func('glPopDebugGroupKHR', t.void, ())
