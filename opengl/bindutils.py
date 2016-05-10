@@ -4,6 +4,12 @@ from ctypes.util import find_library
 import platform
 osName = platform.system()
 
+try:
+    if genGL:
+        _generation = True
+except NameError:
+    _generation = False
+
 # list to keep refrences to c strings around
 _stringRef = []
 
@@ -48,7 +54,9 @@ def conv_list_2d(listIn, cType):
 
 def define_function(libName, name, returnType, params):
     '''Helper function to help in binding functions'''
-    try:
+    if _generation:
+        return None
+    else:
         if osName == "Windows":
             function = ct.WINFUNCTYPE(returnType, *params)
             lib = ct.WinDLL(libName)
@@ -60,8 +68,6 @@ def define_function(libName, name, returnType, params):
         new_func = ct.cast(address, function)
 
         return new_func
-    except:
-        return None
 
 
 if osName == "Windows":
