@@ -2,7 +2,6 @@
 OpenGL binding For python
 WARNING - This is generated code, do not modify directly.
 '''
-import sys
 import ctypes as ct
 
 from opengl.bindutils import gl_func
