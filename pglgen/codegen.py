@@ -201,10 +201,13 @@ def gen_binding(enums, commands, features, extensions):
             featureCmds = OrderedDict()
             featureEnums = OrderedDict()
 
-            for c in verFeatures['default']['require']['command']:
-                featureCmds[c] = commands[c]
-            for e in verFeatures['default']['require']['enum']:
-                featureEnums[e] = enums[e]
+            for name, featureData in verFeatures.items():
+                if name == 'info':
+                    continue
+                for c in featureData['require']['command']:
+                    featureCmds[c] = commands[c]
+                for e in featureData['require']['enum']:
+                    featureEnums[e] = enums[e]
 
             funcName = 'init_' + verName.lower()
             initNames[api].append(funcName)
@@ -220,11 +223,11 @@ def gen_binding(enums, commands, features, extensions):
 
             extCmds = OrderedDict()
             extEnums = OrderedDict()
-
-            for c in extFeature['default']['command']:
-                extCmds[c] = commands[c]
-            for e in extFeature['default']['enum']:
-                extEnums[e] = enums[e]
+            for extData in extFeature.values():
+                for c in extData['command']:
+                    extCmds[c] = commands[c]
+                for e in extData['enum']:
+                    extEnums[e] = enums[e]
 
             funcName = 'init_' + extName.lower()
             initNames[api].append(funcName)
