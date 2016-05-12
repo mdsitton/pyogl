@@ -152,27 +152,71 @@ class Extensions(xml.BaseParser):
     def init_data(self):
 
         self.name = None
-        self.api = None
+        self.supported = None
         self.version = None
 
-        self.extensions = OrderedDict()
+        self.extensions = {}
+
+        self.requireBlockAPI = None
+        self.requireBlockProfile = 'default'
 
     def parse(self):
 
         tagPath = self.stack.path()
         tag, attrs, data = self.stack.peek()
 
+        #if 'registry/extensions/extension/require/enum'
         if ('extension/require/enum' in tagPath or
             'extension/require/command' in tagPath):
 
+            #if self.name is None or self.supported is None:
             ptag, pattrs, pdata = self.stack.peek(posRel=2)
             self.name = pattrs['name']
-            self.supported = pattrs['supported']
-            try:
-                self.extensions[self.name][tag].append(attrs['name'])
-            except KeyError:
-                self.extensions[self.name] = {'enum': [], 'command': []}
-                self.extensions[self.name][tag].append(attrs['name'])
+            self.supported = pattrs['supported'].split('|')
+
+            # quick hack until we can properly handle core vs compatibility profile.
+            if 'glcore' in self.supported:
+                if 'gl' not in self.supported:
+                    self.supported = ['gl']
+                else:
+                    self.supported.remove('glcore')
+
+
+            ptag, pattrs, pdata = self.stack.peek(posRel=1)
+            if 'profile' in pattrs:
+                self.requireBlockProfile = pattrs['profile']
+            else:
+                self.requireBlockProfile = 'default'
+
+            # This is to restrict a subset of a extension to a specific api.
+            if 'api' in pattrs:
+                self.requireBlockAPI = pattrs['api']
+            else:
+                self.requireBlockAPI = None
+
+            prof = self.requireBlockProfile
+
+            for api in self.supported:
+                if self.requireBlockAPI is None or self.requireBlockAPI == api:
+
+                    # this is to detect if the dict structure is setup
+                    # if not we create it.
+                    try:
+                        self.extensions[api]
+                    except KeyError:
+                        self.extensions[api] = OrderedDict()
+
+                    try:
+                        self.extensions[api][self.name]
+                    except KeyError:
+                        self.extensions[api][self.name] = {}
+
+                    try:
+                        self.extensions[api][self.name][prof]
+                    except KeyError:
+                        self.extensions[api][self.name][prof] = {'enum': [], 'command': []}
+
+                    self.extensions[api][self.name][prof][tag].append(attrs['name'])
 
     def integrate(self):
         self.parent.extensions.update(self.extensions)
@@ -185,15 +229,20 @@ class Registry(xml.BaseParser):
         self.enums = OrderedDict()
         self.commands = OrderedDict()
 
-        # The features dictionary is laid out as follows:
+        # The dictionary structure for defining features and extensions
+        # One difference between features and extensions is that afik there
+        # is not any instances of an extension removing features.
+        # gl.xml is also the only file that uses profiles, so everything should
+        # be found in default for those.
         # features = {
         #     gl: {                        # api
         #         GL_VERSION_1_0: {        # name
-        #             'info': {
+        #             'info': { # info only for opengl features not ext.
         #                 'api': gl,
         #                 'version': 1.0,
         #                 'name': GL_VERSION_1_0,
         #             },
+                      # Within profiles extensions dont have remove or require.
         #             'default': {  # Items in default are port of all profiles
         #                 'require': {
         #                     'enum': [],
@@ -209,7 +258,7 @@ class Registry(xml.BaseParser):
         # }
         self.features = OrderedDict()
 
-        self.extensions = OrderedDict()
+        self.extensions = {}
 
         self.tag = 'registry'
 

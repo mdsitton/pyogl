@@ -179,21 +179,24 @@ def gen_bindings(apis):
     for api in apis:
         code = gen_binding(*regparse.parse_registry('{0}.xml'.format(api)))
 
-        with open('./opengl/{}.py'.format(api), 'w') as glFile:
-            glFile.write(code)
+        for subapi, outputCode in code.items():
+            with open('./opengl/{}.py'.format(subapi), 'w') as glFile:
+                glFile.write(outputCode)
 
 def gen_binding(enums, commands, features, extensions):
     '''Generate the binding code using the dictionaries passed in'''
 
-    initNames = []
-    code = []
-    code.append(codeHeader)
+    initNames = {}
+    code = {}
     for api, apiNames in features.items():
+        code[api] = []
+        initNames[api] = []
+        code[api].append(codeHeader)
         for verName, verFeatures in apiNames.items():
 
             version = verFeatures['info']['version']
 
-            code.append('\n#### {} VERSION {} ####'.format(api.upper(), version))
+            code[api].append('\n#### {} VERSION {} ####'.format(api.upper(), version))
 
             featureCmds = OrderedDict()
             featureEnums = OrderedDict()
@@ -204,32 +207,36 @@ def gen_binding(enums, commands, features, extensions):
                 featureEnums[e] = enums[e]
 
             funcName = 'init_' + verName.lower()
-            initNames.append(funcName)
+            initNames[api].append(funcName)
 
             funcCode = gen_func_code(featureEnums, featureCmds)
 
-            code.append(funcTemplate.format(funcName, funcCode))
+            code[api].append(funcTemplate.format(funcName, funcCode))
 
-    for name, data in extensions.items():
-        code.append('\n#### {} ####'.format(name.upper()))
-        extCmds = OrderedDict()
-        extEnums = OrderedDict()
+    #print (extensions)
+    for api, extNames in extensions.items():
+        for extName, extFeature in extNames.items():
+            code[api].append('\n#### {} ####'.format(extName.upper()))
 
-        for c in data['command']:
-            extCmds[c] = commands[c]
-        for e in data['enum']:
-            extEnums[e] = enums[e]
+            extCmds = OrderedDict()
+            extEnums = OrderedDict()
 
-        funcName = 'init_' + name.lower()
-        initNames.append(funcName)
-        funcCode = gen_func_code(extEnums, extCmds)
+            for c in extFeature['default']['command']:
+                extCmds[c] = commands[c]
+            for e in extFeature['default']['enum']:
+                extEnums[e] = enums[e]
 
-        code.append(funcTemplate.format(funcName, funcCode))
+            funcName = 'init_' + extName.lower()
+            initNames[api].append(funcName)
+            funcCode = gen_func_code(extEnums, extCmds)
 
-    initCode = []
-    for i in initNames:
-        initCode.append('    {}()\n'.format(i))
+            code[api].append(funcTemplate.format(funcName, funcCode))
 
-    code.append(initTemplate.format(''.join(initCode)))
+    for api, names in initNames.items():
+        initCode = []
+        for initName in names:
+            initCode.append('    {}()\n'.format(initName))
 
-    return ''.join(code)
+        code[api].append(initTemplate.format(''.join(initCode)))
+
+    return {api: ''.join(sepCode) for api, sepCode in code.items()}
