@@ -41,74 +41,72 @@ commentedFunc = '    # set_func(\'{0}\', {1}, ({2}))\n'
 
 pointer = 'ct.POINTER({0})'
 
+def parse_type(typeStr):
 
-def filter_const(typeInfo):
-    '''
-    Remove const declarations from types since its not very
-    enfocable with python.
-    '''
+    typeList = []
+    print (typeStr)
+    typePart = typeStr.partition('*')
 
-    # This counts how many const have been removed to
-    # compensate for the new index location
-    consCorrect = 0
+    typeList.append(typePart[0])
 
-    for i, item in enumerate(typeInfo[:]):
-        if 'const' == item:
-            typeInfo.remove('const')
-            consCorrect += 1
-        elif 'const' in item:
-            typeInfo[i-consCorrect] = ''.join(item.split('const')).strip()
+    ptrStr = ''.join(typePart[1:])
 
-    # return typeStr
+    if ptrStr != '':
+        pointers = ptrStr.split('*')
+        del pointers[0]  # pointers start off offset by 1 position.
+        pointers = ['*'+ptr for ptr in pointers]
 
+        typeList.extend(pointers)
 
-def filter_pointer(typeInfo):
-    '''
-    Filters out pointers from the type info list
-    returns the number of pointers found and removed.
-    '''
-    ptrLocs = [i for i, item in enumerate(typeInfo) if '*' in item]
+    typeStack = []
 
-    ptrCount = 0
+    for dataType in reversed(typeList):
 
-    if ptrLocs:
-        for i in ptrLocs:
-            ptrStr = typeInfo[i]
-            ptrCount += ptrStr.count('*')
-            typeInfo.remove(ptrStr)
+        typeData = {}
 
-    return ptrCount
+        if 'const' in dataType:
+            typeData['const'] = True
+        else:
+            typeData['const'] = False
 
-def parse_type(typeInfo):
-    #print (typeInfo)
+        if '*' in dataType:
+            typeData['type'] = 'pointer'
+        else:
+            typeData['type'] = dataType.replace('const', '').strip()
 
-    # generate return type string must be done before pointers.
-    filter_const(typeInfo)
+        typeStack.append(typeData)
 
-    # Handle pointers
-    ptrCount = filter_pointer(typeInfo)
-    typeStr = typeInfo[0] # There will only be a single value in typeInfo
-    baseTypeStr = typeStr
-    if typeStr:
-        if typeStr == 'int':
-            baseTypeStr = 'INT'
-        elif typeStr == 'char':
-            baseTypeStr = 'CHAR'
-        elif typeStr == 'float':
-            baseTypeStr = 'FLOAT'
-        elif typeStr == 'unsigned int':
-            baseTypeStr = 'UINT'
-        elif typeStr == 'unsigned long':
-            baseTypeStr = 'ULONG'
-        typeStr = 't.'+baseTypeStr
+    return typeStack
 
-    # add the found number of pointers to the object.
-    if ptrCount:
-        for i in range(ptrCount):
+typeMap = {
+    'int': 'INT',
+    'char': 'CHAR',
+    'float': 'FLOAT',
+    'unsigned int': 'UINT',
+    'unsigned long': 'ULONG'
+}
+
+def generate_type_str(typeData):
+
+    baseTypeStr = None
+
+    typeStr = ''
+
+    for typeItem in reversed(typeData):
+        dataType = typeItem['type']
+        isConst = typeItem['const']
+
+        if dataType == 'pointer':
             typeStr = pointer.format(typeStr)
 
+        else:
 
-    #print (typeStr, baseTypeStr)
+            try:
+                baseTypeStr = typeMap[dataType]
+            except KeyError:
+                baseTypeStr = dataType
+
+            typeStr = 't.'+baseTypeStr
 
     return typeStr, baseTypeStr
 
@@ -123,7 +121,8 @@ def gen_func_code(enums, commands):
 
         commentFunction = False
 
-        rtnStr, baseRtnType = parse_type(rtnType)
+        typeData = parse_type(rtnType)
+        rtnStr, baseRtnType = generate_type_str(typeData)
 
         # Mark the function  to be commented out out if we do
         # not currently support any of the datatypes needed
@@ -139,7 +138,8 @@ def gen_func_code(enums, commands):
             # modified...
             parTypeCpy = parType[:]
 
-            parStr, baseType = parse_type(parTypeCpy)
+            typeData = parse_type(parTypeCpy)
+            parStr, baseType = generate_type_str(typeData)
 
             # Mark the function to be commented out out if we do
             # not currently support any of the datatypes needed
@@ -216,7 +216,6 @@ def gen_binding(enums, commands, features, extensions):
 
             code[api].append(funcTemplate.format(funcName, funcCode))
 
-    #print (extensions)
     for api, extNames in extensions.items():
         for extName, extFeature in extNames.items():
             code[api].append('\n#### {} ####'.format(extName.upper()))

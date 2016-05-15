@@ -493,7 +493,7 @@ def init_egl_ext_yuv_surface():
 
 #### EGL_HI_CLIENTPIXMAP ####
 def init_egl_hi_clientpixmap():
-    # set_func('eglCreatePixmapSurfaceHI', t.EGLSurface, (t.EGLDisplay, t.EGLConfig, ct.POINTER(t.struct)))
+    # set_func('eglCreatePixmapSurfaceHI', t.EGLSurface, (t.EGLDisplay, t.EGLConfig, ct.POINTER(t.struct EGLClientPixmapHI)))
     set_enum("EGL_CLIENT_PIXMAP_POINTER_HI", 0x8F74)
 
 

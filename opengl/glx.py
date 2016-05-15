@@ -77,8 +77,8 @@ def init_glx_version_1_1():
 
 #### GLX VERSION 1.2 ####
 def init_glx_version_1_2():
-    # set_func('glXGetCurrentDisplay', ct.POINTER(t.Display), ())
-    pass
+    set_func('glXGetCurrentDisplay', ct.POINTER(t.Display), ())
+
 
 #### GLX VERSION 1.3 ####
 def init_glx_version_1_3():
@@ -290,7 +290,7 @@ def init_glx_ext_framebuffer_srgb():
 
 #### GLX_EXT_IMPORT_CONTEXT ####
 def init_glx_ext_import_context():
-    # set_func('glXGetCurrentDisplayEXT', ct.POINTER(t.Display), ())
+    set_func('glXGetCurrentDisplayEXT', ct.POINTER(t.Display), ())
     # set_func('glXQueryContextInfoEXT', t.INT, (ct.POINTER(t.Display), t.GLXContext, t.INT, ct.POINTER(t.INT)))
     # set_func('glXGetContextIDEXT', t.GLXContextID, (t.GLXContext,))
     # set_func('glXImportContextEXT', t.GLXContext, (ct.POINTER(t.Display), t.GLXContextID))
@@ -483,12 +483,12 @@ def init_glx_nv_present_video():
 #### GLX_NV_SWAP_GROUP ####
 def init_glx_nv_swap_group():
     # set_func('glXJoinSwapGroupNV', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.GLuint))
-    # set_func('glXBindSwapBarrierNV', t.Bool, (ct.POINTER(t.Display), t.GLuint, t.GLuint))
+    set_func('glXBindSwapBarrierNV', t.Bool, (ct.POINTER(t.Display), t.GLuint, t.GLuint))
     # set_func('glXQuerySwapGroupNV', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, ct.POINTER(t.GLuint), ct.POINTER(t.GLuint)))
     # set_func('glXQueryMaxSwapGroupsNV', t.Bool, (ct.POINTER(t.Display), t.INT, ct.POINTER(t.GLuint), ct.POINTER(t.GLuint)))
     # set_func('glXQueryFrameCountNV', t.Bool, (ct.POINTER(t.Display), t.INT, ct.POINTER(t.GLuint)))
     # set_func('glXResetFrameCountNV', t.Bool, (ct.POINTER(t.Display), t.INT))
-    pass
+
 
 #### GLX_NV_VIDEO_CAPTURE ####
 def init_glx_nv_video_capture():

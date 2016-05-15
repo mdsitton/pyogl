@@ -21,6 +21,10 @@ class TagStack(object):
         self.data[self.stackSize-1].append(data)
         self.dataAdded[-1] = True
 
+    def clear_frame_data(self):
+        self.data[self.stackSize-1] = []
+        self.dataAdded[-1] = False
+
     def is_data_added(self, posRel=0):
         pos = -1 - posRel
         return self.dataAdded[pos]
@@ -85,6 +89,10 @@ class BaseParser(object):
                 self.parsers[parser]['instance'] = parInst
 
     def data(self, data):
+        # We need to check if the stack frame has been used
+        # previously and clear the previous data if so.
+        if self.stack.is_data_added() is True:
+            self.stack.clear_frame_data()
         self.stack.add_data(data.strip())
         self.parse()
 
