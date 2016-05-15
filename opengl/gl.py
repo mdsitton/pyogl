@@ -2424,7 +2424,6 @@ def init_gl_version_4_2():
 
 #### GL VERSION 4.3 ####
 def init_gl_version_4_3():
-    set_func('glGetPointerv', t.void, (t.GLenum, ct.POINTER(ct.POINTER(t.void))))
     set_func('glClearBufferData', t.void, (t.GLenum, t.GLenum, t.GLenum, t.GLenum, ct.POINTER(t.void)))
     set_func('glClearBufferSubData', t.void, (t.GLenum, t.GLenum, t.GLintptr, t.GLsizeiptr, t.GLenum, t.GLenum, ct.POINTER(t.void)))
     set_func('glDispatchCompute', t.void, (t.GLuint, t.GLuint, t.GLuint))
@@ -2468,8 +2467,7 @@ def init_gl_version_4_3():
     set_func('glGetObjectLabel', t.void, (t.GLenum, t.GLuint, t.GLsizei, ct.POINTER(t.GLsizei), ct.POINTER(t.GLchar)))
     set_func('glObjectPtrLabel', t.void, (ct.POINTER(t.void), t.GLsizei, ct.POINTER(t.GLchar)))
     set_func('glGetObjectPtrLabel', t.void, (ct.POINTER(t.void), t.GLsizei, ct.POINTER(t.GLsizei), ct.POINTER(t.GLchar)))
-    set_enum("GL_STACK_UNDERFLOW", 0x0504)
-    set_enum("GL_STACK_OVERFLOW", 0x0503)
+    set_func('glGetPointerv', t.void, (t.GLenum, ct.POINTER(ct.POINTER(t.void))))
     set_enum("GL_NUM_SHADING_LANGUAGE_VERSIONS", 0x82E9)
     set_enum("GL_VERTEX_ATTRIB_ARRAY_LONG", 0x874E)
     set_enum("GL_COMPRESSED_RGB8_ETC2", 0x9274)
@@ -2730,6 +2728,8 @@ def init_gl_version_4_3():
     set_enum("GL_MAX_VERTEX_ATTRIB_BINDINGS", 0x82DA)
     set_enum("GL_VERTEX_BINDING_BUFFER", 0x8F4F)
     set_enum("GL_DISPLAY_LIST", 0x82E7)
+    set_enum("GL_STACK_UNDERFLOW", 0x0504)
+    set_enum("GL_STACK_OVERFLOW", 0x0503)
 
 
 #### GL VERSION 4.4 ####

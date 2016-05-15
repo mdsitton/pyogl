@@ -116,10 +116,10 @@ class Feature(xml.BaseParser):
             'name': self.name
         }
 
-        features = {
-            'info': info,
-            'default': self.default,
-        }
+        features = OrderedDict([
+            ('info', info),
+            ('default', self.default)
+        ])
 
         # merge any profiles into parent master
         features.update(self.profiles)
