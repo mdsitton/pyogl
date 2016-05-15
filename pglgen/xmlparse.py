@@ -133,7 +133,6 @@ def parse_xml(rootParser, xmlPath):
 
     with open(xmlPath, 'rb') as xmlFile:
         for line in xmlFile:
-            # print(line.strip())
             xmlParser.Parse(line.strip(), 0)
 
     xmlParser.Parse(b'', 1)

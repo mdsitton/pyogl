@@ -44,7 +44,6 @@ pointer = 'ct.POINTER({0})'
 def parse_type(typeStr):
 
     typeList = []
-    print (typeStr)
     typePart = typeStr.partition('*')
 
     typeList.append(typePart[0])
@@ -60,7 +59,7 @@ def parse_type(typeStr):
 
     typeStack = []
 
-    for dataType in reversed(typeList):
+    for dataType in typeList:
 
         typeData = {}
 
@@ -92,7 +91,7 @@ def generate_type_str(typeData):
 
     typeStr = ''
 
-    for typeItem in reversed(typeData):
+    for typeItem in typeData:
         dataType = typeItem['type']
         isConst = typeItem['const']
 

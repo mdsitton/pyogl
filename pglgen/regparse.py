@@ -26,7 +26,6 @@ class Command(xml.BaseParser):
             self.rtnType.extend(data)
         elif 'command/param/name' in tagPath:
             self.params.append([data[0].strip(), ' '.join(self.protoParam).strip()])
-            print (self.protoParam, data[0])
             self.protoParam = []
         elif 'command/param' in tagPath:
             self.protoParam.extend(data)
@@ -143,7 +142,7 @@ class Extensions(xml.BaseParser):
         self.supported = None
         self.version = None
 
-        self.extensions = {}
+        self.extensions = OrderedDict()
 
         self.requireBlockAPI = None
         self.requireBlockProfile = 'default'
@@ -246,7 +245,7 @@ class Registry(xml.BaseParser):
         # }
         self.features = OrderedDict()
 
-        self.extensions = {}
+        self.extensions = OrderedDict()
 
         self.tag = 'registry'
 
