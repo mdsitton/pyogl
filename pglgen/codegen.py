@@ -4,8 +4,6 @@ from opengl import gltypes
 
 from pglgen import regparse
 
-# Get list of supported types automatically
-supportedTypes = [item for item in dir(gltypes) if item[0] != '_' and item != 'ct']
 codeHeader = '''\'\'\'
 OpenGL binding For python
 WARNING - This is generated code, do not modify directly.
@@ -40,6 +38,10 @@ func = '    set_func(\'{0}\', {1}, ({2}))\n'
 commentedFunc = '    # set_func(\'{0}\', {1}, ({2}))\n'
 
 pointer = 'ct.POINTER({0})'
+
+
+# Get list of supported types automatically
+supportedTypes = [item for item in dir(gltypes) if item[0] != '_' and item != 'ct']
 
 def parse_type(typeStr):
 
@@ -174,6 +176,8 @@ def gen_func_code(enums, commands):
 
     return ''.join(functionCode)
 
+#def gen_feature_function()
+
 def gen_bindings(apis):
     for api in apis:
         apiClass = ApiGen(api)
@@ -196,8 +200,8 @@ class ApiGen(object):
         for api in self.apis:
             self.code[api] = codeHeader
             self.initNames[api] = []
-            self.gen_features(api)
-            self.gen_extensions(api)
+            self.gen_features(api, 'versions')
+            self.gen_features(api, 'extensions')
             self.gen_init(api)
             self.write(api)
 
@@ -206,68 +210,50 @@ class ApiGen(object):
         with open('./opengl/{}.py'.format(api), 'w') as glFile:
             glFile.write(outputCode)
 
-    def gen_features(self, api):
+    def gen_features(self, api, genType):
         '''Generate code for opengl feature levels'''
 
         initNames = []
         code = []
         try:
-            apiNames = self.features[api]
+            if genType == 'versions':
+                apiNames = self.features[api]
+            elif genType == 'extensions':
+                apiNames = self.extensions[api]
         except KeyError:
             # this api doesnt contain any features
             return
 
-        for verName, verFeatures in apiNames.items():
+        for name, features in apiNames.items():
 
-            version = verFeatures['info']['version']
+            if genType == 'versions':
+                version = features['info']['version']
+                funComment = '\n#### {} VERSION {} ####'.format(api.upper(), version)
+            elif genType == 'extensions':
+                funComment = '\n#### {} ####'.format(name.upper())
 
-            code.append('\n#### {} VERSION {} ####'.format(api.upper(), version))
+            code.append(funComment)
 
             featureCmds = OrderedDict()
             featureEnums = OrderedDict()
 
-            for name, featureData in verFeatures.items():
-                if name == 'info':
+            for profname, featureData in features.items():
+                if profname == 'info':
                     continue
-                for c in featureData['require']['command']:
+
+                if genType == 'versions':
+                    featureData = featureData['require']
+                elif genType == 'extensions':
+                    featureData = featureData
+
+                for c in featureData['command']:
                     featureCmds[c] = self.commands[c]
-                for e in featureData['require']['enum']:
+                for e in featureData['enum']:
                     featureEnums[e] = self.enums[e]
-
-            initName = 'init_' + verName.lower()
+            initName = 'init_' + name.lower()
             initNames.append(initName)
+
             funcCode = gen_func_code(featureEnums, featureCmds)
-
-            code.append(funcTemplate.format(initName, funcCode))
-
-        self.initNames[api].extend(initNames)
-        self.code[api] += ''.join(code)
-
-    def gen_extensions(self, api):
-        '''Generate code for opengl extensions'''
-
-        initNames = []
-        code = []
-        try:
-            extNames = self.extensions[api]
-        except KeyError:
-            # this api doesnt contain any extensions
-            return
-
-        for extName, extFeature in extNames.items():
-            code.append('\n#### {} ####'.format(extName.upper()))
-
-            extCmds = OrderedDict()
-            extEnums = OrderedDict()
-            for extData in extFeature.values():
-                for c in extData['command']:
-                    extCmds[c] = self.commands[c]
-                for e in extData['enum']:
-                    extEnums[e] = self.enums[e]
-
-            initName = 'init_' + extName.lower()
-            initNames.append(initName)
-            funcCode = gen_func_code(extEnums, extCmds)
 
             code.append(funcTemplate.format(initName, funcCode))
 
