@@ -15,7 +15,7 @@ class Generate(Command):
         pass
 
 setup(name='pyOGL',
-      version='0.1',
+      version='0.0.1',
       description='Python OpenGL ctypes binding.',
       author='Matthew Sitton',
       author_email='matthewsitton@gmail.com',
