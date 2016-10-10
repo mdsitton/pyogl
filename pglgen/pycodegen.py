@@ -43,42 +43,6 @@ pointer = 'ct.POINTER({0})'
 # Get list of supported types automatically
 supportedTypes = [item for item in dir(gltypes) if item[0] != '_' and item != 'ct']
 
-def parse_type(typeStr):
-
-    typeList = []
-    typePart = typeStr.partition('*')
-
-    typeList.append(typePart[0])
-
-    ptrStr = ''.join(typePart[1:])
-
-    if ptrStr != '':
-        pointers = ptrStr.split('*')
-        del pointers[0]  # pointers start off offset by 1 position.
-        pointers = ['*'+ptr for ptr in pointers]
-
-        typeList.extend(pointers)
-
-    typeStack = []
-
-    for dataType in typeList:
-
-        typeData = {}
-
-        if 'const' in dataType:
-            typeData['const'] = True
-        else:
-            typeData['const'] = False
-
-        if '*' in dataType:
-            typeData['type'] = 'pointer'
-        else:
-            typeData['type'] = dataType.replace('const', '').strip()
-
-        typeStack.append(typeData)
-
-    return typeStack
-
 typeMap = {
     'int': 'INT',
     'char': 'CHAR',
@@ -117,13 +81,12 @@ def gen_func_code(enums, commands):
     nonCommented = False
 
     for name, typeInfo in commands.items():
-        rtnType = typeInfo['return'][:]
+        rtnType = typeInfo['return']
         params = typeInfo['parms']
 
         commentFunction = False
 
-        typeData = parse_type(rtnType)
-        rtnStr, baseRtnType = generate_type_str(typeData)
+        rtnStr, baseRtnType = generate_type_str(rtnType)
 
         # Mark the function  to be commented out out if we do
         # not currently support any of the datatypes needed
@@ -133,14 +96,7 @@ def gen_func_code(enums, commands):
         # generate param list string
         parmItems = []
         for parName, parType in params:
-            # Fix issue where if a function was generated twice it would be
-            # missing pointers. This was because the same list was being passed
-            # by reference all the way to the parseType function where it was
-            # modified...
-            parTypeCpy = parType[:]
-
-            typeData = parse_type(parTypeCpy)
-            parStr, baseType = generate_type_str(typeData)
+            parStr, baseType = generate_type_str(parType)
 
             # Mark the function to be commented out out if we do
             # not currently support any of the datatypes needed

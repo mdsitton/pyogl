@@ -3,6 +3,41 @@ import os
 
 from pglgen import xmlparse as xml
 
+def parse_type(typeStr):
+
+    typeList = []
+    typePart = typeStr.partition('*')
+
+    typeList.append(typePart[0])
+
+    ptrStr = ''.join(typePart[1:])
+
+    if ptrStr != '':
+        pointers = ptrStr.split('*')
+        del pointers[0]  # pointers start off offset by 1 position.
+        pointers = ['*'+ptr for ptr in pointers]
+
+        typeList.extend(pointers)
+
+    typeStack = []
+
+    for dataType in typeList:
+
+        typeData = {}
+
+        if 'const' in dataType:
+            typeData['const'] = True
+        else:
+            typeData['const'] = False
+
+        if '*' in dataType:
+            typeData['type'] = 'pointer'
+        else:
+            typeData['type'] = dataType.replace('const', '').strip()
+
+        typeStack.append(typeData)
+
+    return typeStack
 
 class Command(xml.BaseParser):
     '''Parse xml registry command tags'''
@@ -26,7 +61,7 @@ class Command(xml.BaseParser):
         elif 'command/proto' in tagPath:
             self.rtnType.extend(data)
         elif 'command/param/name' in tagPath:
-            self.params.append([data[0].strip(), ' '.join(self.protoParam).strip()])
+            self.params.append([data[0].strip(), parse_type(' '.join(self.protoParam).strip())])
             self.protoParam = []
         elif 'command/param' in tagPath:
             self.protoParam.extend(data)
@@ -45,7 +80,7 @@ class Commands(xml.BaseParser):
         for cmd in self.commands:
             attr = {
                 'parms': cmd.params,
-                'return': ' '.join(cmd.rtnType).strip(),
+                'return': parse_type(' '.join(cmd.rtnType).strip()),
             }
             self.root.commands[cmd.name] = attr
 
