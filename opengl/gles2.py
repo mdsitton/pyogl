@@ -1670,6 +1670,12 @@ def init_gl_ext_buffer_storage():
     set_enum("GL_BUFFER_STORAGE_FLAGS_EXT", 0x8220)
 
 
+#### GL_EXT_CLEAR_TEXTURE ####
+def init_gl_ext_clear_texture():
+    set_func('glClearTexImageEXT', t.void, (t.GLuint, t.GLint, t.GLenum, t.GLenum, ct.POINTER(t.void)))
+    set_func('glClearTexSubImageEXT', t.void, (t.GLuint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLsizei, t.GLsizei, t.GLsizei, t.GLenum, t.GLenum, ct.POINTER(t.void)))
+
+
 #### GL_EXT_CLIP_CULL_DISTANCE ####
 def init_gl_ext_clip_cull_distance():
     set_enum("GL_MAX_CLIP_DISTANCES_EXT", 0x0D32)
@@ -2377,9 +2383,30 @@ def init_gl_ext_unpack_subimage():
     set_enum("GL_UNPACK_SKIP_PIXELS_EXT", 0x0CF4)
 
 
+#### GL_EXT_WINDOW_RECTANGLES ####
+def init_gl_ext_window_rectangles():
+    set_func('glWindowRectanglesEXT', t.void, (t.GLenum, t.GLsizei, ct.POINTER(t.GLint)))
+    set_enum("GL_INCLUSIVE_EXT", 0x8F10)
+    set_enum("GL_EXCLUSIVE_EXT", 0x8F11)
+    set_enum("GL_WINDOW_RECTANGLE_EXT", 0x8F12)
+    set_enum("GL_WINDOW_RECTANGLE_MODE_EXT", 0x8F13)
+    set_enum("GL_MAX_WINDOW_RECTANGLES_EXT", 0x8F14)
+    set_enum("GL_NUM_WINDOW_RECTANGLES_EXT", 0x8F15)
+
+
 #### GL_FJ_SHADER_BINARY_GCCSO ####
 def init_gl_fj_shader_binary_gccso():
     set_enum("GL_GCCSO_SHADER_BINARY_FJ", 0x9260)
+
+
+#### GL_IMG_BINDLESS_TEXTURE ####
+def init_gl_img_bindless_texture():
+    set_func('glGetTextureHandleIMG', t.GLuint64, (t.GLuint,))
+    set_func('glGetTextureSamplerHandleIMG', t.GLuint64, (t.GLuint, t.GLuint))
+    set_func('glUniformHandleui64IMG', t.void, (t.GLint, t.GLuint64))
+    set_func('glUniformHandleui64vIMG', t.void, (t.GLint, t.GLsizei, ct.POINTER(t.GLuint64)))
+    set_func('glProgramUniformHandleui64IMG', t.void, (t.GLuint, t.GLint, t.GLuint64))
+    set_func('glProgramUniformHandleui64vIMG', t.void, (t.GLuint, t.GLint, t.GLsizei, ct.POINTER(t.GLuint64)))
 
 
 #### GL_IMG_FRAMEBUFFER_DOWNSAMPLE ####
@@ -2437,6 +2464,11 @@ def init_gl_img_texture_filter_cubic():
     set_enum("GL_CUBIC_IMG", 0x9139)
     set_enum("GL_CUBIC_MIPMAP_NEAREST_IMG", 0x913A)
     set_enum("GL_CUBIC_MIPMAP_LINEAR_IMG", 0x913B)
+
+
+#### GL_INTEL_CONSERVATIVE_RASTERIZATION ####
+def init_gl_intel_conservative_rasterization():
+    set_enum("GL_CONSERVATIVE_RASTERIZATION_INTEL", 0x83FE)
 
 
 #### GL_INTEL_FRAMEBUFFER_CMAA ####
@@ -2748,6 +2780,14 @@ def init_gl_nv_conservative_raster():
     set_enum("GL_SUBPIXEL_PRECISION_BIAS_X_BITS_NV", 0x9347)
     set_enum("GL_SUBPIXEL_PRECISION_BIAS_Y_BITS_NV", 0x9348)
     set_enum("GL_MAX_SUBPIXEL_PRECISION_BIAS_BITS_NV", 0x9349)
+
+
+#### GL_NV_CONSERVATIVE_RASTER_PRE_SNAP_TRIANGLES ####
+def init_gl_nv_conservative_raster_pre_snap_triangles():
+    set_func('glConservativeRasterParameteriNV', t.void, (t.GLenum, t.GLint))
+    set_enum("GL_CONSERVATIVE_RASTER_MODE_NV", 0x954D)
+    set_enum("GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV", 0x954E)
+    set_enum("GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV", 0x954F)
 
 
 #### GL_NV_COPY_BUFFER ####
@@ -3790,6 +3830,30 @@ def init_gl_oes_vertex_type_10_10_10_2():
     set_enum("GL_INT_10_10_10_2_OES", 0x8DF7)
 
 
+#### GL_OES_VIEWPORT_ARRAY ####
+def init_gl_oes_viewport_array():
+    set_func('glViewportArrayvOES', t.void, (t.GLuint, t.GLsizei, ct.POINTER(t.GLfloat)))
+    set_func('glViewportIndexedfOES', t.void, (t.GLuint, t.GLfloat, t.GLfloat, t.GLfloat, t.GLfloat))
+    set_func('glViewportIndexedfvOES', t.void, (t.GLuint, ct.POINTER(t.GLfloat)))
+    set_func('glScissorArrayvOES', t.void, (t.GLuint, t.GLsizei, ct.POINTER(t.GLint)))
+    set_func('glScissorIndexedOES', t.void, (t.GLuint, t.GLint, t.GLint, t.GLsizei, t.GLsizei))
+    set_func('glScissorIndexedvOES', t.void, (t.GLuint, ct.POINTER(t.GLint)))
+    set_func('glDepthRangeArrayfvOES', t.void, (t.GLuint, t.GLsizei, ct.POINTER(t.GLfloat)))
+    set_func('glDepthRangeIndexedfOES', t.void, (t.GLuint, t.GLfloat, t.GLfloat))
+    set_func('glGetFloati_vOES', t.void, (t.GLenum, t.GLuint, ct.POINTER(t.GLfloat)))
+    set_func('glEnableiOES', t.void, (t.GLenum, t.GLuint))
+    set_func('glDisableiOES', t.void, (t.GLenum, t.GLuint))
+    set_func('glIsEnablediOES', t.GLboolean, (t.GLenum, t.GLuint))
+    set_enum("GL_SCISSOR_BOX", 0x0C10)
+    set_enum("GL_VIEWPORT", 0x0BA2)
+    set_enum("GL_DEPTH_RANGE", 0x0B70)
+    set_enum("GL_SCISSOR_TEST", 0x0C11)
+    set_enum("GL_MAX_VIEWPORTS_OES", 0x825B)
+    set_enum("GL_VIEWPORT_SUBPIXEL_BITS_OES", 0x825C)
+    set_enum("GL_VIEWPORT_BOUNDS_RANGE_OES", 0x825D)
+    set_enum("GL_VIEWPORT_INDEX_PROVOKING_VERTEX_OES", 0x825F)
+
+
 #### GL_OVR_MULTIVIEW ####
 def init_gl_ovr_multiview():
     set_func('glFramebufferTextureMultiviewOVR', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLint, t.GLint, t.GLsizei))
@@ -3948,6 +4012,7 @@ def init():
     init_gl_ext_blend_func_extended()
     init_gl_ext_blend_minmax()
     init_gl_ext_buffer_storage()
+    init_gl_ext_clear_texture()
     init_gl_ext_clip_cull_distance()
     init_gl_ext_color_buffer_half_float()
     init_gl_ext_copy_image()
@@ -4002,7 +4067,9 @@ def init():
     init_gl_ext_texture_type_2_10_10_10_rev()
     init_gl_ext_texture_view()
     init_gl_ext_unpack_subimage()
+    init_gl_ext_window_rectangles()
     init_gl_fj_shader_binary_gccso()
+    init_gl_img_bindless_texture()
     init_gl_img_framebuffer_downsample()
     init_gl_img_multisampled_render_to_texture()
     init_gl_img_program_binary()
@@ -4011,6 +4078,7 @@ def init():
     init_gl_img_texture_compression_pvrtc()
     init_gl_img_texture_compression_pvrtc2()
     init_gl_img_texture_filter_cubic()
+    init_gl_intel_conservative_rasterization()
     init_gl_intel_framebuffer_cmaa()
     init_gl_intel_performance_query()
     init_gl_khr_blend_equation_advanced()
@@ -4026,6 +4094,7 @@ def init():
     init_gl_nv_blend_equation_advanced_coherent()
     init_gl_nv_conditional_render()
     init_gl_nv_conservative_raster()
+    init_gl_nv_conservative_raster_pre_snap_triangles()
     init_gl_nv_copy_buffer()
     init_gl_nv_coverage_sample()
     init_gl_nv_depth_nonlinear()
@@ -4091,6 +4160,7 @@ def init():
     init_gl_oes_vertex_array_object()
     init_gl_oes_vertex_half_float()
     init_gl_oes_vertex_type_10_10_10_2()
+    init_gl_oes_viewport_array()
     init_gl_ovr_multiview()
     init_gl_ovr_multiview_multisampled_render_to_texture()
     init_gl_qcom_alpha_test()

@@ -254,9 +254,23 @@ def init_egl_android_blob_cache():
     # set_func('eglSetBlobCacheFuncsANDROID', t.void, (t.EGLDisplay, t.EGLSetBlobFuncANDROID, t.EGLGetBlobFuncANDROID))
     pass
 
+#### EGL_ANDROID_CREATE_NATIVE_CLIENT_BUFFER ####
+def init_egl_android_create_native_client_buffer():
+    # set_func('eglCreateNativeClientBufferANDROID', t.EGLClientBuffer, (ct.POINTER(t.EGLint),))
+    set_enum("EGL_NATIVE_BUFFER_USAGE_ANDROID", 0x3143)
+    set_enum("EGL_NATIVE_BUFFER_USAGE_PROTECTED_BIT_ANDROID", 0x00000001)
+    set_enum("EGL_NATIVE_BUFFER_USAGE_RENDERBUFFER_BIT_ANDROID", 0x00000002)
+    set_enum("EGL_NATIVE_BUFFER_USAGE_TEXTURE_BIT_ANDROID", 0x00000004)
+
+
 #### EGL_ANDROID_FRAMEBUFFER_TARGET ####
 def init_egl_android_framebuffer_target():
     set_enum("EGL_FRAMEBUFFER_TARGET_ANDROID", 0x3147)
+
+
+#### EGL_ANDROID_FRONT_BUFFER_AUTO_REFRESH ####
+def init_egl_android_front_buffer_auto_refresh():
+    set_enum("EGL_FRONT_BUFFER_AUTO_REFRESH_ANDROID", 0x314C)
 
 
 #### EGL_ANDROID_IMAGE_NATIVE_BUFFER ####
@@ -272,6 +286,11 @@ def init_egl_android_native_fence_sync():
     set_enum("EGL_SYNC_NATIVE_FENCE_SIGNALED_ANDROID", 0x3146)
     set_enum("EGL_NO_NATIVE_FENCE_FD_ANDROID", -1)
 
+
+#### EGL_ANDROID_PRESENTATION_TIME ####
+def init_egl_android_presentation_time():
+    # set_func('eglPresentationTimeANDROID', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, t.EGLnsecsANDROID))
+    pass
 
 #### EGL_ANDROID_RECORDABLE ####
 def init_egl_android_recordable():
@@ -302,6 +321,11 @@ def init_egl_angle_surface_d3d_texture_2d_share_handle():
 #### EGL_ANGLE_WINDOW_FIXED_SIZE ####
 def init_egl_angle_window_fixed_size():
     set_enum("EGL_FIXED_SIZE_ANGLE", 0x3201)
+
+
+#### EGL_ARM_IMPLICIT_EXTERNAL_SYNC ####
+def init_egl_arm_implicit_external_sync():
+    set_enum("EGL_SYNC_PRIOR_COMMANDS_IMPLICIT_EXTERNAL_ARM", 0x328A)
 
 
 #### EGL_ARM_PIXMAP_MULTISAMPLE_DISCARD ####
@@ -541,6 +565,13 @@ def init_egl_khr_config_attribs():
     set_enum("EGL_VG_ALPHA_FORMAT_PRE_BIT_KHR", 0x0040)
 
 
+#### EGL_KHR_CONTEXT_FLUSH_CONTROL ####
+def init_egl_khr_context_flush_control():
+    set_enum("EGL_CONTEXT_RELEASE_BEHAVIOR_NONE_KHR", 0)
+    set_enum("EGL_CONTEXT_RELEASE_BEHAVIOR_KHR", 0x2097)
+    set_enum("EGL_CONTEXT_RELEASE_BEHAVIOR_FLUSH_KHR", 0x2098)
+
+
 #### EGL_KHR_CREATE_CONTEXT ####
 def init_egl_khr_create_context():
     set_enum("EGL_CONTEXT_MAJOR_VERSION_KHR", 0x3098)
@@ -715,6 +746,11 @@ def init_egl_khr_mutable_render_buffer():
     set_enum("EGL_MUTABLE_RENDER_BUFFER_BIT_KHR", 0x1000)
 
 
+#### EGL_KHR_NO_CONFIG_CONTEXT ####
+def init_egl_khr_no_config_context():
+#     set_enum("EGL_NO_CONFIG_KHR", ((EGLConfig)0))
+    pass
+
 #### EGL_KHR_PARTIAL_UPDATE ####
 def init_egl_khr_partial_update():
     # set_func('eglSetDamageRegionKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, ct.POINTER(t.EGLint), t.EGLint))
@@ -781,6 +817,19 @@ def init_egl_khr_stream():
     set_enum("EGL_STREAM_STATE_DISCONNECTED_KHR", 0x321A)
     set_enum("EGL_BAD_STREAM_KHR", 0x321B)
     set_enum("EGL_BAD_STATE_KHR", 0x321C)
+
+
+#### EGL_KHR_STREAM_ATTRIB ####
+def init_egl_khr_stream_attrib():
+    # set_func('eglCreateStreamAttribKHR', t.EGLStreamKHR, (t.EGLDisplay, ct.POINTER(t.EGLAttrib)))
+    # set_func('eglSetStreamAttribKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLStreamKHR, t.EGLenum, t.EGLAttrib))
+    # set_func('eglQueryStreamAttribKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLStreamKHR, t.EGLenum, ct.POINTER(t.EGLAttrib)))
+    # set_func('eglStreamConsumerAcquireAttribKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLStreamKHR, ct.POINTER(t.EGLAttrib)))
+    # set_func('eglStreamConsumerReleaseAttribKHR', t.EGLBoolean, (t.EGLDisplay, t.EGLStreamKHR, ct.POINTER(t.EGLAttrib)))
+    set_enum("EGL_CONSUMER_LATENCY_USEC_KHR", 0x3210)
+    set_enum("EGL_STREAM_STATE_KHR", 0x3214)
+    set_enum("EGL_STREAM_STATE_CREATED_KHR", 0x3215)
+    set_enum("EGL_STREAM_STATE_CONNECTING_KHR", 0x3216)
 
 
 #### EGL_KHR_STREAM_CONSUMER_GLTEXTURE ####
@@ -917,6 +966,11 @@ def init_egl_nv_post_sub_buffer():
     set_enum("EGL_POST_SUB_BUFFER_SUPPORTED_NV", 0x30BE)
 
 
+#### EGL_NV_ROBUSTNESS_VIDEO_MEMORY_PURGE ####
+def init_egl_nv_robustness_video_memory_purge():
+    set_enum("EGL_GENERATE_RESET_ON_VIDEO_MEMORY_PURGE_NV", 0x334C)
+
+
 #### EGL_NV_STREAM_CONSUMER_GLTEXTURE_YUV ####
 def init_egl_nv_stream_consumer_gltexture_yuv():
     # set_func('eglStreamConsumerGLTextureExternalAttribsNV', t.EGLBoolean, (t.EGLDisplay, t.EGLStreamKHR, t.EGLAttrib))
@@ -1002,15 +1056,19 @@ def init():
     init_egl_version_1_4()
     init_egl_version_1_5()
     init_egl_android_blob_cache()
+    init_egl_android_create_native_client_buffer()
     init_egl_android_framebuffer_target()
+    init_egl_android_front_buffer_auto_refresh()
     init_egl_android_image_native_buffer()
     init_egl_android_native_fence_sync()
+    init_egl_android_presentation_time()
     init_egl_android_recordable()
     init_egl_angle_d3d_share_handle_client_buffer()
     init_egl_angle_device_d3d()
     init_egl_angle_query_surface_pointer()
     init_egl_angle_surface_d3d_texture_2d_share_handle()
     init_egl_angle_window_fixed_size()
+    init_egl_arm_implicit_external_sync()
     init_egl_arm_pixmap_multisample_discard()
     init_egl_ext_buffer_age()
     init_egl_ext_create_context_robustness()
@@ -1040,6 +1098,7 @@ def init():
     init_egl_khr_cl_event()
     init_egl_khr_cl_event2()
     init_egl_khr_config_attribs()
+    init_egl_khr_context_flush_control()
     init_egl_khr_create_context()
     init_egl_khr_create_context_no_error()
     init_egl_khr_debug()
@@ -1056,6 +1115,7 @@ def init():
     init_egl_khr_lock_surface2()
     init_egl_khr_lock_surface3()
     init_egl_khr_mutable_render_buffer()
+    init_egl_khr_no_config_context()
     init_egl_khr_partial_update()
     init_egl_khr_platform_android()
     init_egl_khr_platform_gbm()
@@ -1063,6 +1123,7 @@ def init():
     init_egl_khr_platform_x11()
     init_egl_khr_reusable_sync()
     init_egl_khr_stream()
+    init_egl_khr_stream_attrib()
     init_egl_khr_stream_consumer_gltexture()
     init_egl_khr_stream_cross_process_fd()
     init_egl_khr_stream_fifo()
@@ -1084,6 +1145,7 @@ def init():
     init_egl_nv_device_cuda()
     init_egl_nv_native_query()
     init_egl_nv_post_sub_buffer()
+    init_egl_nv_robustness_video_memory_purge()
     init_egl_nv_stream_consumer_gltexture_yuv()
     init_egl_nv_stream_metadata()
     init_egl_nv_stream_sync()

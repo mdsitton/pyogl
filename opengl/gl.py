@@ -2995,6 +2995,23 @@ def init_gl_amd_draw_buffers_blend():
     set_func('glBlendEquationSeparateIndexedAMD', t.void, (t.GLuint, t.GLenum, t.GLenum))
 
 
+#### GL_AMD_GPU_SHADER_HALF_FLOAT ####
+def init_gl_amd_gpu_shader_half_float():
+    set_enum("GL_FLOAT16_NV", 0x8FF8)
+    set_enum("GL_FLOAT16_VEC2_NV", 0x8FF9)
+    set_enum("GL_FLOAT16_VEC3_NV", 0x8FFA)
+    set_enum("GL_FLOAT16_VEC4_NV", 0x8FFB)
+    set_enum("GL_FLOAT16_MAT2_AMD", 0x91C5)
+    set_enum("GL_FLOAT16_MAT3_AMD", 0x91C6)
+    set_enum("GL_FLOAT16_MAT4_AMD", 0x91C7)
+    set_enum("GL_FLOAT16_MAT2x3_AMD", 0x91C8)
+    set_enum("GL_FLOAT16_MAT2x4_AMD", 0x91C9)
+    set_enum("GL_FLOAT16_MAT3x2_AMD", 0x91CA)
+    set_enum("GL_FLOAT16_MAT3x4_AMD", 0x91CB)
+    set_enum("GL_FLOAT16_MAT4x2_AMD", 0x91CC)
+    set_enum("GL_FLOAT16_MAT4x3_AMD", 0x91CD)
+
+
 #### GL_AMD_GPU_SHADER_INT64 ####
 def init_gl_amd_gpu_shader_int64():
     set_func('glUniform1i64NV', t.void, (t.GLint, t.GLint64EXT))
@@ -3949,7 +3966,6 @@ def init_gl_arb_framebuffer_object():
     set_func('glBlitFramebuffer', t.void, (t.GLint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLint, t.GLbitfield, t.GLenum))
     set_func('glRenderbufferStorageMultisample', t.void, (t.GLenum, t.GLsizei, t.GLenum, t.GLsizei, t.GLsizei))
     set_func('glFramebufferTextureLayer', t.void, (t.GLenum, t.GLenum, t.GLuint, t.GLint, t.GLint))
-    set_enum("GL_INDEX", 0x8222)
     set_enum("GL_INVALID_FRAMEBUFFER_OPERATION", 0x0506)
     set_enum("GL_FRAMEBUFFER_ATTACHMENT_COLOR_ENCODING", 0x8210)
     set_enum("GL_FRAMEBUFFER_ATTACHMENT_COMPONENT_TYPE", 0x8211)
@@ -4022,6 +4038,7 @@ def init_gl_arb_framebuffer_object():
     set_enum("GL_RENDERBUFFER_STENCIL_SIZE", 0x8D55)
     set_enum("GL_FRAMEBUFFER_INCOMPLETE_MULTISAMPLE", 0x8D56)
     set_enum("GL_MAX_SAMPLES", 0x8D57)
+    set_enum("GL_INDEX", 0x8222)
 
 
 #### GL_ARB_FRAMEBUFFER_SRGB ####
@@ -4179,6 +4196,8 @@ def init_gl_arb_half_float_vertex():
 
 #### GL_ARB_IMAGING ####
 def init_gl_arb_imaging():
+    set_func('glBlendColor', t.void, (t.GLfloat, t.GLfloat, t.GLfloat, t.GLfloat))
+    set_func('glBlendEquation', t.void, (t.GLenum,))
     set_func('glColorTable', t.void, (t.GLenum, t.GLenum, t.GLsizei, t.GLenum, t.GLenum, ct.POINTER(t.void)))
     set_func('glColorTableParameterfv', t.void, (t.GLenum, t.GLenum, ct.POINTER(t.GLfloat)))
     set_func('glColorTableParameteriv', t.void, (t.GLenum, t.GLenum, ct.POINTER(t.GLint)))
@@ -4211,8 +4230,17 @@ def init_gl_arb_imaging():
     set_func('glMinmax', t.void, (t.GLenum, t.GLenum, t.GLboolean))
     set_func('glResetHistogram', t.void, (t.GLenum,))
     set_func('glResetMinmax', t.void, (t.GLenum,))
-    set_func('glBlendColor', t.void, (t.GLfloat, t.GLfloat, t.GLfloat, t.GLfloat))
-    set_func('glBlendEquation', t.void, (t.GLenum,))
+    set_enum("GL_CONSTANT_COLOR", 0x8001)
+    set_enum("GL_ONE_MINUS_CONSTANT_COLOR", 0x8002)
+    set_enum("GL_CONSTANT_ALPHA", 0x8003)
+    set_enum("GL_ONE_MINUS_CONSTANT_ALPHA", 0x8004)
+    set_enum("GL_BLEND_COLOR", 0x8005)
+    set_enum("GL_FUNC_ADD", 0x8006)
+    set_enum("GL_MIN", 0x8007)
+    set_enum("GL_MAX", 0x8008)
+    set_enum("GL_BLEND_EQUATION", 0x8009)
+    set_enum("GL_FUNC_SUBTRACT", 0x800A)
+    set_enum("GL_FUNC_REVERSE_SUBTRACT", 0x800B)
     set_enum("GL_CONVOLUTION_1D", 0x8010)
     set_enum("GL_CONVOLUTION_2D", 0x8011)
     set_enum("GL_SEPARABLE_2D", 0x8012)
@@ -4277,17 +4305,6 @@ def init_gl_arb_imaging():
     set_enum("GL_CONSTANT_BORDER", 0x8151)
     set_enum("GL_REPLICATE_BORDER", 0x8153)
     set_enum("GL_CONVOLUTION_BORDER_COLOR", 0x8154)
-    set_enum("GL_CONSTANT_COLOR", 0x8001)
-    set_enum("GL_ONE_MINUS_CONSTANT_COLOR", 0x8002)
-    set_enum("GL_CONSTANT_ALPHA", 0x8003)
-    set_enum("GL_ONE_MINUS_CONSTANT_ALPHA", 0x8004)
-    set_enum("GL_BLEND_COLOR", 0x8005)
-    set_enum("GL_FUNC_ADD", 0x8006)
-    set_enum("GL_MIN", 0x8007)
-    set_enum("GL_MAX", 0x8008)
-    set_enum("GL_BLEND_EQUATION", 0x8009)
-    set_enum("GL_FUNC_SUBTRACT", 0x800A)
-    set_enum("GL_FUNC_REVERSE_SUBTRACT", 0x800B)
 
 
 #### GL_ARB_INDIRECT_PARAMETERS ####
@@ -4726,6 +4743,14 @@ def init_gl_arb_query_buffer_object():
 
 #### GL_ARB_ROBUSTNESS ####
 def init_gl_arb_robustness():
+    set_func('glGetGraphicsResetStatusARB', t.GLenum, ())
+    set_func('glGetnTexImageARB', t.void, (t.GLenum, t.GLint, t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.void)))
+    set_func('glReadnPixelsARB', t.void, (t.GLint, t.GLint, t.GLsizei, t.GLsizei, t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.void)))
+    set_func('glGetnCompressedTexImageARB', t.void, (t.GLenum, t.GLint, t.GLsizei, ct.POINTER(t.void)))
+    set_func('glGetnUniformfvARB', t.void, (t.GLuint, t.GLint, t.GLsizei, ct.POINTER(t.GLfloat)))
+    set_func('glGetnUniformivARB', t.void, (t.GLuint, t.GLint, t.GLsizei, ct.POINTER(t.GLint)))
+    set_func('glGetnUniformuivARB', t.void, (t.GLuint, t.GLint, t.GLsizei, ct.POINTER(t.GLuint)))
+    set_func('glGetnUniformdvARB', t.void, (t.GLuint, t.GLint, t.GLsizei, ct.POINTER(t.GLdouble)))
     set_func('glGetnMapdvARB', t.void, (t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.GLdouble)))
     set_func('glGetnMapfvARB', t.void, (t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.GLfloat)))
     set_func('glGetnMapivARB', t.void, (t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.GLint)))
@@ -4738,14 +4763,6 @@ def init_gl_arb_robustness():
     set_func('glGetnSeparableFilterARB', t.void, (t.GLenum, t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.void), t.GLsizei, ct.POINTER(t.void), ct.POINTER(t.void)))
     set_func('glGetnHistogramARB', t.void, (t.GLenum, t.GLboolean, t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.void)))
     set_func('glGetnMinmaxARB', t.void, (t.GLenum, t.GLboolean, t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.void)))
-    set_func('glGetGraphicsResetStatusARB', t.GLenum, ())
-    set_func('glGetnTexImageARB', t.void, (t.GLenum, t.GLint, t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.void)))
-    set_func('glReadnPixelsARB', t.void, (t.GLint, t.GLint, t.GLsizei, t.GLsizei, t.GLenum, t.GLenum, t.GLsizei, ct.POINTER(t.void)))
-    set_func('glGetnCompressedTexImageARB', t.void, (t.GLenum, t.GLint, t.GLsizei, ct.POINTER(t.void)))
-    set_func('glGetnUniformfvARB', t.void, (t.GLuint, t.GLint, t.GLsizei, ct.POINTER(t.GLfloat)))
-    set_func('glGetnUniformivARB', t.void, (t.GLuint, t.GLint, t.GLsizei, ct.POINTER(t.GLint)))
-    set_func('glGetnUniformuivARB', t.void, (t.GLuint, t.GLint, t.GLsizei, ct.POINTER(t.GLuint)))
-    set_func('glGetnUniformdvARB', t.void, (t.GLuint, t.GLint, t.GLsizei, ct.POINTER(t.GLdouble)))
     set_enum("GL_NO_ERROR", 0)
     set_enum("GL_CONTEXT_FLAG_ROBUST_ACCESS_BIT_ARB", 0x00000004)
     set_enum("GL_LOSE_CONTEXT_ON_RESET_ARB", 0x8252)
@@ -6014,6 +6031,14 @@ def init_gl_arb_vertex_type_10f_11f_11f_rev():
 
 #### GL_ARB_VERTEX_TYPE_2_10_10_10_REV ####
 def init_gl_arb_vertex_type_2_10_10_10_rev():
+    set_func('glVertexAttribP1ui', t.void, (t.GLuint, t.GLenum, t.GLboolean, t.GLuint))
+    set_func('glVertexAttribP1uiv', t.void, (t.GLuint, t.GLenum, t.GLboolean, ct.POINTER(t.GLuint)))
+    set_func('glVertexAttribP2ui', t.void, (t.GLuint, t.GLenum, t.GLboolean, t.GLuint))
+    set_func('glVertexAttribP2uiv', t.void, (t.GLuint, t.GLenum, t.GLboolean, ct.POINTER(t.GLuint)))
+    set_func('glVertexAttribP3ui', t.void, (t.GLuint, t.GLenum, t.GLboolean, t.GLuint))
+    set_func('glVertexAttribP3uiv', t.void, (t.GLuint, t.GLenum, t.GLboolean, ct.POINTER(t.GLuint)))
+    set_func('glVertexAttribP4ui', t.void, (t.GLuint, t.GLenum, t.GLboolean, t.GLuint))
+    set_func('glVertexAttribP4uiv', t.void, (t.GLuint, t.GLenum, t.GLboolean, ct.POINTER(t.GLuint)))
     set_func('glVertexP2ui', t.void, (t.GLenum, t.GLuint))
     set_func('glVertexP2uiv', t.void, (t.GLenum, ct.POINTER(t.GLuint)))
     set_func('glVertexP3ui', t.void, (t.GLenum, t.GLuint))
@@ -6044,14 +6069,6 @@ def init_gl_arb_vertex_type_2_10_10_10_rev():
     set_func('glColorP4uiv', t.void, (t.GLenum, ct.POINTER(t.GLuint)))
     set_func('glSecondaryColorP3ui', t.void, (t.GLenum, t.GLuint))
     set_func('glSecondaryColorP3uiv', t.void, (t.GLenum, ct.POINTER(t.GLuint)))
-    set_func('glVertexAttribP1ui', t.void, (t.GLuint, t.GLenum, t.GLboolean, t.GLuint))
-    set_func('glVertexAttribP1uiv', t.void, (t.GLuint, t.GLenum, t.GLboolean, ct.POINTER(t.GLuint)))
-    set_func('glVertexAttribP2ui', t.void, (t.GLuint, t.GLenum, t.GLboolean, t.GLuint))
-    set_func('glVertexAttribP2uiv', t.void, (t.GLuint, t.GLenum, t.GLboolean, ct.POINTER(t.GLuint)))
-    set_func('glVertexAttribP3ui', t.void, (t.GLuint, t.GLenum, t.GLboolean, t.GLuint))
-    set_func('glVertexAttribP3uiv', t.void, (t.GLuint, t.GLenum, t.GLboolean, ct.POINTER(t.GLuint)))
-    set_func('glVertexAttribP4ui', t.void, (t.GLuint, t.GLenum, t.GLboolean, t.GLuint))
-    set_func('glVertexAttribP4uiv', t.void, (t.GLuint, t.GLenum, t.GLboolean, ct.POINTER(t.GLuint)))
     set_enum("GL_UNSIGNED_INT_2_10_10_10_REV", 0x8368)
     set_enum("GL_INT_2_10_10_10_REV", 0x8D9F)
 
@@ -8118,6 +8135,17 @@ def init_gl_ext_vertex_weighting():
     set_enum("GL_VERTEX_WEIGHT_ARRAY_POINTER_EXT", 0x8510)
 
 
+#### GL_EXT_WINDOW_RECTANGLES ####
+def init_gl_ext_window_rectangles():
+    set_func('glWindowRectanglesEXT', t.void, (t.GLenum, t.GLsizei, ct.POINTER(t.GLint)))
+    set_enum("GL_INCLUSIVE_EXT", 0x8F10)
+    set_enum("GL_EXCLUSIVE_EXT", 0x8F11)
+    set_enum("GL_WINDOW_RECTANGLE_EXT", 0x8F12)
+    set_enum("GL_WINDOW_RECTANGLE_MODE_EXT", 0x8F13)
+    set_enum("GL_MAX_WINDOW_RECTANGLES_EXT", 0x8F14)
+    set_enum("GL_NUM_WINDOW_RECTANGLES_EXT", 0x8F15)
+
+
 #### GL_EXT_X11_SYNC_OBJECT ####
 def init_gl_ext_x11_sync_object():
     set_func('glImportSyncEXT', t.GLsync, (t.GLenum, t.GLintptr, t.GLbitfield))
@@ -8258,6 +8286,11 @@ def init_gl_ingr_interlace_read():
     set_enum("GL_INTERLACE_READ_INGR", 0x8568)
 
 
+#### GL_INTEL_CONSERVATIVE_RASTERIZATION ####
+def init_gl_intel_conservative_rasterization():
+    set_enum("GL_CONSERVATIVE_RASTERIZATION_INTEL", 0x83FE)
+
+
 #### GL_INTEL_FRAMEBUFFER_CMAA ####
 def init_gl_intel_framebuffer_cmaa():
     set_func('glApplyFramebufferAttachmentCMAAINTEL', t.void, ())
@@ -8366,7 +8399,6 @@ def init_gl_khr_debug():
     set_func('glObjectPtrLabel', t.void, (ct.POINTER(t.void), t.GLsizei, ct.POINTER(t.GLchar)))
     set_func('glGetObjectPtrLabel', t.void, (ct.POINTER(t.void), t.GLsizei, ct.POINTER(t.GLsizei), ct.POINTER(t.GLchar)))
     set_func('glGetPointerv', t.void, (t.GLenum, ct.POINTER(ct.POINTER(t.void))))
-    set_enum("GL_DISPLAY_LIST", 0x82E7)
     set_enum("GL_DEBUG_OUTPUT_SYNCHRONOUS", 0x8242)
     set_enum("GL_DEBUG_NEXT_LOGGED_MESSAGE_LENGTH", 0x8243)
     set_enum("GL_DEBUG_CALLBACK_FUNCTION", 0x8244)
@@ -8407,6 +8439,7 @@ def init_gl_khr_debug():
     set_enum("GL_CONTEXT_FLAG_DEBUG_BIT", 0x00000002)
     set_enum("GL_STACK_OVERFLOW", 0x0503)
     set_enum("GL_STACK_UNDERFLOW", 0x0504)
+    set_enum("GL_DISPLAY_LIST", 0x82E7)
 
 
 #### GL_KHR_NO_ERROR ####
@@ -8657,6 +8690,14 @@ def init_gl_nv_blend_equation_advanced_coherent():
     set_enum("GL_BLEND_ADVANCED_COHERENT_NV", 0x9285)
 
 
+#### GL_NV_CLIP_SPACE_W_SCALING ####
+def init_gl_nv_clip_space_w_scaling():
+    set_func('glViewportPositionWScaleNV', t.void, (t.GLuint, t.GLfloat, t.GLfloat))
+    set_enum("GL_VIEWPORT_POSITION_W_SCALE_NV", 0x937C)
+    set_enum("GL_VIEWPORT_POSITION_W_SCALE_X_COEFF_NV", 0x937D)
+    set_enum("GL_VIEWPORT_POSITION_W_SCALE_Y_COEFF_NV", 0x937E)
+
+
 #### GL_NV_COMMAND_LIST ####
 def init_gl_nv_command_list():
     set_func('glCreateStatesNV', t.void, (t.GLsizei, ct.POINTER(t.GLuint)))
@@ -8728,6 +8769,14 @@ def init_gl_nv_conservative_raster_dilate():
     set_enum("GL_CONSERVATIVE_RASTER_DILATE_NV", 0x9379)
     set_enum("GL_CONSERVATIVE_RASTER_DILATE_RANGE_NV", 0x937A)
     set_enum("GL_CONSERVATIVE_RASTER_DILATE_GRANULARITY_NV", 0x937B)
+
+
+#### GL_NV_CONSERVATIVE_RASTER_PRE_SNAP_TRIANGLES ####
+def init_gl_nv_conservative_raster_pre_snap_triangles():
+    set_func('glConservativeRasterParameteriNV', t.void, (t.GLenum, t.GLint))
+    set_enum("GL_CONSERVATIVE_RASTER_MODE_NV", 0x954D)
+    set_enum("GL_CONSERVATIVE_RASTER_MODE_POST_SNAP_NV", 0x954E)
+    set_enum("GL_CONSERVATIVE_RASTER_MODE_PRE_SNAP_TRIANGLES_NV", 0x954F)
 
 
 #### GL_NV_COPY_DEPTH_TO_COLOR ####
@@ -9178,13 +9227,6 @@ def init_gl_nv_parameter_buffer_object():
 
 #### GL_NV_PATH_RENDERING ####
 def init_gl_nv_path_rendering():
-    set_func('glPathColorGenNV', t.void, (t.GLenum, t.GLenum, t.GLenum, ct.POINTER(t.GLfloat)))
-    set_func('glPathTexGenNV', t.void, (t.GLenum, t.GLenum, t.GLint, ct.POINTER(t.GLfloat)))
-    set_func('glPathFogGenNV', t.void, (t.GLenum,))
-    set_func('glGetPathColorGenivNV', t.void, (t.GLenum, t.GLenum, ct.POINTER(t.GLint)))
-    set_func('glGetPathColorGenfvNV', t.void, (t.GLenum, t.GLenum, ct.POINTER(t.GLfloat)))
-    set_func('glGetPathTexGenivNV', t.void, (t.GLenum, t.GLenum, ct.POINTER(t.GLint)))
-    set_func('glGetPathTexGenfvNV', t.void, (t.GLenum, t.GLenum, ct.POINTER(t.GLfloat)))
     set_func('glGenPathsNV', t.GLuint, (t.GLsizei,))
     set_func('glDeletePathsNV', t.void, (t.GLuint, t.GLsizei))
     set_func('glIsPathNV', t.GLboolean, (t.GLuint,))
@@ -9242,17 +9284,13 @@ def init_gl_nv_path_rendering():
     set_func('glPathMemoryGlyphIndexArrayNV', t.GLenum, (t.GLuint, t.GLenum, t.GLsizeiptr, ct.POINTER(t.void), t.GLsizei, t.GLuint, t.GLsizei, t.GLuint, t.GLfloat))
     set_func('glProgramPathFragmentInputGenNV', t.void, (t.GLuint, t.GLint, t.GLenum, t.GLint, ct.POINTER(t.GLfloat)))
     set_func('glGetProgramResourcefvNV', t.void, (t.GLuint, t.GLenum, t.GLuint, t.GLsizei, ct.POINTER(t.GLenum), t.GLsizei, ct.POINTER(t.GLsizei), ct.POINTER(t.GLfloat)))
-    set_enum("GL_2_BYTES_NV", 0x1407)
-    set_enum("GL_3_BYTES_NV", 0x1408)
-    set_enum("GL_4_BYTES_NV", 0x1409)
-    set_enum("GL_EYE_LINEAR_NV", 0x2400)
-    set_enum("GL_OBJECT_LINEAR_NV", 0x2401)
-    set_enum("GL_CONSTANT_NV", 0x8576)
-    set_enum("GL_PATH_FOG_GEN_MODE_NV", 0x90AC)
-    set_enum("GL_PRIMARY_COLOR", 0x8577)
-    set_enum("GL_PRIMARY_COLOR_NV", 0x852C)
-    set_enum("GL_SECONDARY_COLOR_NV", 0x852D)
-    set_enum("GL_PATH_GEN_COLOR_FORMAT_NV", 0x90B2)
+    set_func('glPathColorGenNV', t.void, (t.GLenum, t.GLenum, t.GLenum, ct.POINTER(t.GLfloat)))
+    set_func('glPathTexGenNV', t.void, (t.GLenum, t.GLenum, t.GLint, ct.POINTER(t.GLfloat)))
+    set_func('glPathFogGenNV', t.void, (t.GLenum,))
+    set_func('glGetPathColorGenivNV', t.void, (t.GLenum, t.GLenum, ct.POINTER(t.GLint)))
+    set_func('glGetPathColorGenfvNV', t.void, (t.GLenum, t.GLenum, ct.POINTER(t.GLfloat)))
+    set_func('glGetPathTexGenivNV', t.void, (t.GLenum, t.GLenum, ct.POINTER(t.GLint)))
+    set_func('glGetPathTexGenfvNV', t.void, (t.GLenum, t.GLenum, ct.POINTER(t.GLfloat)))
     set_enum("GL_PATH_FORMAT_SVG_NV", 0x9070)
     set_enum("GL_PATH_FORMAT_PS_NV", 0x9071)
     set_enum("GL_STANDARD_FONT_NAME_NV", 0x9072)
@@ -9406,6 +9444,17 @@ def init_gl_nv_path_rendering():
     set_enum("GL_PATH_MAX_PROJECTION_STACK_DEPTH_NV", 0x0D38)
     set_enum("GL_PATH_TRANSPOSE_PROJECTION_MATRIX_NV", 0x84E4)
     set_enum("GL_FRAGMENT_INPUT_NV", 0x936D)
+    set_enum("GL_2_BYTES_NV", 0x1407)
+    set_enum("GL_3_BYTES_NV", 0x1408)
+    set_enum("GL_4_BYTES_NV", 0x1409)
+    set_enum("GL_EYE_LINEAR_NV", 0x2400)
+    set_enum("GL_OBJECT_LINEAR_NV", 0x2401)
+    set_enum("GL_CONSTANT_NV", 0x8576)
+    set_enum("GL_PATH_FOG_GEN_MODE_NV", 0x90AC)
+    set_enum("GL_PRIMARY_COLOR", 0x8577)
+    set_enum("GL_PRIMARY_COLOR_NV", 0x852C)
+    set_enum("GL_SECONDARY_COLOR_NV", 0x852D)
+    set_enum("GL_PATH_GEN_COLOR_FORMAT_NV", 0x90B2)
 
 
 #### GL_NV_PATH_RENDERING_SHARED_EDGE ####
@@ -9536,6 +9585,11 @@ def init_gl_nv_register_combiners2():
     set_func('glCombinerStageParameterfvNV', t.void, (t.GLenum, t.GLenum, ct.POINTER(t.GLfloat)))
     set_func('glGetCombinerStageParameterfvNV', t.void, (t.GLenum, t.GLenum, ct.POINTER(t.GLfloat)))
     set_enum("GL_PER_STAGE_CONSTANTS_NV", 0x8535)
+
+
+#### GL_NV_ROBUSTNESS_VIDEO_MEMORY_PURGE ####
+def init_gl_nv_robustness_video_memory_purge():
+    set_enum("GL_PURGED_CONTEXT_RESET_NV", 0x92BB)
 
 
 #### GL_NV_SAMPLE_LOCATIONS ####
@@ -11117,6 +11171,7 @@ def init():
     init_gl_amd_debug_output()
     init_gl_amd_depth_clamp_separate()
     init_gl_amd_draw_buffers_blend()
+    init_gl_amd_gpu_shader_half_float()
     init_gl_amd_gpu_shader_int64()
     init_gl_amd_interleaved_elements()
     init_gl_amd_multi_draw_indirect()
@@ -11387,6 +11442,7 @@ def init():
     init_gl_ext_vertex_attrib_64bit()
     init_gl_ext_vertex_shader()
     init_gl_ext_vertex_weighting()
+    init_gl_ext_window_rectangles()
     init_gl_ext_x11_sync_object()
     init_gl_gremedy_frame_terminator()
     init_gl_gremedy_string_marker()
@@ -11403,6 +11459,7 @@ def init():
     init_gl_ingr_blend_func_separate()
     init_gl_ingr_color_clamp()
     init_gl_ingr_interlace_read()
+    init_gl_intel_conservative_rasterization()
     init_gl_intel_framebuffer_cmaa()
     init_gl_intel_map_texture()
     init_gl_intel_parallel_arrays()
@@ -11427,11 +11484,13 @@ def init():
     init_gl_nv_bindless_texture()
     init_gl_nv_blend_equation_advanced()
     init_gl_nv_blend_equation_advanced_coherent()
+    init_gl_nv_clip_space_w_scaling()
     init_gl_nv_command_list()
     init_gl_nv_compute_program5()
     init_gl_nv_conditional_render()
     init_gl_nv_conservative_raster()
     init_gl_nv_conservative_raster_dilate()
+    init_gl_nv_conservative_raster_pre_snap_triangles()
     init_gl_nv_copy_depth_to_color()
     init_gl_nv_copy_image()
     init_gl_nv_deep_texture3d()
@@ -11469,6 +11528,7 @@ def init():
     init_gl_nv_primitive_restart()
     init_gl_nv_register_combiners()
     init_gl_nv_register_combiners2()
+    init_gl_nv_robustness_video_memory_purge()
     init_gl_nv_sample_locations()
     init_gl_nv_shader_buffer_load()
     init_gl_nv_shader_buffer_store()

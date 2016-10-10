@@ -480,6 +480,11 @@ def init_glx_nv_present_video():
     set_enum("GLX_NUM_VIDEO_SLOTS_NV", 0x20F0)
 
 
+#### GLX_NV_ROBUSTNESS_VIDEO_MEMORY_PURGE ####
+def init_glx_nv_robustness_video_memory_purge():
+    set_enum("GLX_GENERATE_RESET_ON_VIDEO_MEMORY_PURGE_NV", 0x20F7)
+
+
 #### GLX_NV_SWAP_GROUP ####
 def init_glx_nv_swap_group():
     # set_func('glXJoinSwapGroupNV', t.Bool, (ct.POINTER(t.Display), t.GLXDrawable, t.GLuint))
@@ -744,6 +749,7 @@ def init():
     init_glx_nv_float_buffer()
     init_glx_nv_multisample_coverage()
     init_glx_nv_present_video()
+    init_glx_nv_robustness_video_memory_purge()
     init_glx_nv_swap_group()
     init_glx_nv_video_capture()
     init_glx_nv_video_out()
