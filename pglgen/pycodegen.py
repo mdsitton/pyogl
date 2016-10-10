@@ -2,7 +2,7 @@ from collections import OrderedDict
 
 from opengl import gltypes
 
-from pglgen import regparse
+from pglgen.codegenbase import *
 
 codeHeader = '''\'\'\'
 OpenGL binding For python
@@ -132,39 +132,13 @@ def gen_func_code(enums, commands):
 
     return ''.join(functionCode)
 
-#def gen_feature_function()
-
-def gen_bindings(apis):
-    for api in apis:
-        apiClass = ApiGen(api)
-        apiClass.gen_code()
-
-class ApiGen(object):
+class PyApiGen(BaseApiGen):
     def __init__(self, apiName):
+        super(PyApiGen, self).__init__(apiName)
+        self.apiPath = './opengl/{}.py'
 
-        self.code = {}
-        self.initNames = {}
-
-        self.apiMajorName = apiName
-
-        info = regparse.parse_registry('{0}.xml'.format(self.apiMajorName))
-        self.enums, self.commands, self.features, self.extensions = info
-
-        self.apis = list(set(self.features.keys())|set(self.extensions.keys()))
-
-    def gen_code(self):
-        for api in self.apis:
-            self.code[api] = codeHeader
-            self.initNames[api] = []
-            self.gen_features(api, 'versions')
-            self.gen_features(api, 'extensions')
-            self.gen_init(api)
-            self.write(api)
-
-    def write(self, api):
-        outputCode = self.code[api]
-        with open('./opengl/{}.py'.format(api), 'w') as glFile:
-            glFile.write(outputCode)
+    def gen_header(self, api):
+        self.code[api] = codeHeader
 
     def gen_features(self, api, genType):
         '''Generate code for opengl feature levels'''

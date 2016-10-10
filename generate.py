@@ -11,7 +11,10 @@ builtins.genGL = True
 
 def main():
     apis = ['gl', 'wgl', 'glx', 'egl']
-    pycodegen.gen_bindings(apis)
+
+    for api in apis:
+        apiClass = pycodegen.PyApiGen(api)
+        apiClass.gen_code()
 
 if __name__ == '__main__':
     main()
