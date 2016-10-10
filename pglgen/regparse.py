@@ -1,4 +1,5 @@
 from collections import OrderedDict
+import os
 
 from pglgen import xmlparse as xml
 
@@ -6,7 +7,7 @@ from pglgen import xmlparse as xml
 class Command(xml.BaseParser):
     '''Parse xml registry command tags'''
 
-    def init_data(self):
+    def init_data(self, apiFile):
 
         self.name = None
         self.rtnType = []
@@ -34,7 +35,7 @@ class Command(xml.BaseParser):
 class Commands(xml.BaseParser):
     '''Integrate changes from the indivdual Command parsers.'''
 
-    def init_data(self):
+    def init_data(self, apiFile):
 
         self.commands = []
 
@@ -51,7 +52,7 @@ class Commands(xml.BaseParser):
 
 class Feature(xml.BaseParser):
 
-    def init_data(self):
+    def init_data(self, apiFile):
 
         self.name = None
         self.api = None
@@ -106,6 +107,10 @@ class Feature(xml.BaseParser):
 
                 self.profiles[profile][featureStatus][tag].append(attrs['name'])
             else:
+                # skip opengl 1.0 enums in opengl 1.1
+                if (hasattr(self.root, 'gl1Enums') and tag == 'enum' and
+                        self.version == '1.1' and attrs['name'] in self.root.gl1Enums):
+                    return
                 self.default[featureStatus][tag].append(attrs['name'])
 
     def integrate(self):
@@ -115,6 +120,9 @@ class Feature(xml.BaseParser):
             'version': self.version,
             'name': self.name
         }
+        # Add in the enums for opengl 1.0
+        if hasattr(self.root, 'gl1Enums') and self.api == "gl" and self.version == '1.0':
+            self.default['require']['enum'].extend(self.root.gl1Enums)
 
         features = OrderedDict([
             ('info', info),
@@ -136,7 +144,7 @@ class Feature(xml.BaseParser):
 
 class Extensions(xml.BaseParser):
 
-    def init_data(self):
+    def init_data(self, apiFile):
 
         self.name = None
         self.supported = None
@@ -211,7 +219,7 @@ class Extensions(xml.BaseParser):
 
 class Registry(xml.BaseParser):
 
-    def init_data(self):
+    def init_data(self, apiFile):
 
         self.enums = OrderedDict()
         self.commands = OrderedDict()
@@ -244,6 +252,9 @@ class Registry(xml.BaseParser):
         #     }
         # }
         self.features = OrderedDict()
+        if apiFile == "gl":
+            with open("gl1enums.txt") as f:
+                self.gl1Enums = f.read().split()
 
         self.extensions = OrderedDict()
 
@@ -264,7 +275,8 @@ class Registry(xml.BaseParser):
 
 
 def parse_registry(xmlFile):
-    reg = xml.parse_xml(Registry, xmlFile)
+    apiName = xmlFile.rsplit(".")[0]
+    reg = xml.parse_xml(Registry, xmlFile, apiName)
     return (reg.enums, reg.commands, reg.features, reg.extensions)
 
 

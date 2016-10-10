@@ -45,6 +45,14 @@ class TagStack(object):
 
 class BaseParser(object):
     def __init__(self, xmlParser, tag, parent, root):
+        # This is a hacky workaround to be able to pass in a data string
+        # to be accessed by any sub-parsers.
+        if isinstance(parent, basestring):
+            self.strdata = parent
+            parent = None
+        else:
+            self.strdata = parent.strdata
+
         self.xmlParser = xmlParser
         self.parent = parent
         self.tag = tag
@@ -65,7 +73,7 @@ class BaseParser(object):
 
         self.set_handlers()
 
-        self.init_data()
+        self.init_data(self.strdata)
 
     def set_handlers(self):
         self.xmlParser.StartElementHandler = self.start
@@ -116,7 +124,7 @@ class BaseParser(object):
 
     # The following method stubs are what the parsing sub-classes
     # will be implemented within.
-    def init_data(self):
+    def init_data(self, strData):
         pass
 
     def parse(self):
@@ -126,10 +134,10 @@ class BaseParser(object):
         pass
 
 
-def parse_xml(rootParser, xmlPath):
+def parse_xml(rootParser, xmlPath, strdata):
 
     xmlParser = expat.ParserCreate()
-    root = rootParser(xmlParser, None, None, None)
+    root = rootParser(xmlParser, None, strdata, None)
 
     with open(xmlPath, 'rb') as xmlFile:
         for line in xmlFile:
