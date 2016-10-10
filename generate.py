@@ -1,4 +1,4 @@
-from pglgen import codegen
+from pglgen import pycodegen
 
 # This is somewhat of a hack
 # It injects a variable into the builtins so that its simple
@@ -11,7 +11,7 @@ builtins.genGL = True
 
 def main():
     apis = ['gl', 'wgl', 'glx', 'egl']
-    codegen.gen_bindings(apis)
+    pycodegen.gen_bindings(apis)
 
 if __name__ == '__main__':
     main()
