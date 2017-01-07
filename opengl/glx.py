@@ -15,6 +15,20 @@ def set_enum(name, value):
     globals()[name] = value
 
 noParms = ()
+# GLXFBConfigID = t.XID
+# GLXFBConfig = ct.POINTER(t._GLXFBConfigRec)
+# GLXContextID = t.XID
+# GLXContext = ct.POINTER(t._GLXcontextRec)
+# GLXPixmap = t.XID
+# GLXDrawable = t.XID
+# GLXWindow = t.XID
+# GLXPbuffer = t.XID
+# GLXVideoCaptureDeviceNV = t.XID
+# GLXVideoDeviceNV = t.UINT
+# GLXVideoSourceSGIX = t.XID
+# GLXFBConfigIDSGIX = t.XID
+# GLXFBConfigSGIX = ct.POINTER(t._GLXFBConfigRec)
+# GLXPbufferSGIX = t.XID
 
 #### GLX VERSION 1.0 ####
 def init_glx_version_1_0():

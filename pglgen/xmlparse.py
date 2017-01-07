@@ -47,7 +47,7 @@ class BaseParser(object):
     def __init__(self, xmlParser, tag, parent, root):
         # This is a hacky workaround to be able to pass in a data string
         # to be accessed by any sub-parsers.
-        if isinstance(parent, basestring):
+        if isinstance(parent, str) or isinstance(parent, bytes):
             self.strdata = parent
             parent = None
         else:

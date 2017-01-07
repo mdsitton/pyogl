@@ -15,6 +15,30 @@ def set_enum(name, value):
     globals()[name] = value
 
 noParms = ()
+# GLenum = t.UINT
+# GLboolean = t.UCHAR
+# GLbitfield = t.UINT
+# GLvoid = t.void
+# GLbyte = t.SCHAR
+# GLshort = t.short
+# GLint = t.INT
+# GLclampx = t.INT
+# GLubyte = t.UCHAR
+# GLushort = t.USHORT
+# GLuint = t.UINT
+# GLsizei = t.INT
+# GLfloat = t.FLOAT
+# GLclampf = t.FLOAT
+# GLdouble = t.double
+# GLclampd = t.double
+# GLeglImageOES = ct.POINTER(t.void)
+# GLchar = t.CHAR
+# GLcharARB = t.CHAR
+# GLhalfARB = t.USHORT
+# GLhalf = t.USHORT
+# GLfixed = t.GLint
+# GLsync = ct.POINTER(t._GLsync)
+# GLhalfNV = t.USHORT
 
 #### GLES2 VERSION 2.0 ####
 def init_gl_es_version_2_0():

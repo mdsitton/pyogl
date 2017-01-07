@@ -15,6 +15,25 @@ def set_enum(name, value):
     globals()[name] = value
 
 noParms = ()
+# EGLBoolean = t.UINT
+# EGLenum = t.UINT
+# EGLClientBuffer = ct.POINTER(t.void)
+# EGLConfig = ct.POINTER(t.void)
+# EGLContext = ct.POINTER(t.void)
+# EGLDeviceEXT = ct.POINTER(t.void)
+# EGLDisplay = ct.POINTER(t.void)
+# EGLImage = ct.POINTER(t.void)
+# EGLImageKHR = ct.POINTER(t.void)
+# EGLLabelKHR = ct.POINTER(t.void)
+# EGLObjectKHR = ct.POINTER(t.void)
+# EGLOutputLayerEXT = ct.POINTER(t.void)
+# EGLOutputPortEXT = ct.POINTER(t.void)
+# EGLStreamKHR = ct.POINTER(t.void)
+# EGLSurface = ct.POINTER(t.void)
+# EGLSync = ct.POINTER(t.void)
+# EGLSyncKHR = ct.POINTER(t.void)
+# EGLSyncNV = ct.POINTER(t.void)
+# EGLNativeFileDescriptorKHR = t.INT
 
 #### EGL VERSION 1.0 ####
 def init_egl_version_1_0():
@@ -32,7 +51,7 @@ def init_egl_version_1_0():
     # set_func('eglGetCurrentSurface', t.EGLSurface, (t.EGLint,))
     # set_func('eglGetDisplay', t.EGLDisplay, (t.EGLNativeDisplayType,))
     # set_func('eglGetError', t.EGLint, ())
-    # set_func('eglGetProcAddress', t.__eglMustCastToProperFunctionPointerType, (ct.POINTER(t.CHAR),))
+    # set_func('eglGetProcAddress', t._eglMustCastToProperFunctionPointerType, (ct.POINTER(t.CHAR),))
     # set_func('eglInitialize', t.EGLBoolean, (t.EGLDisplay, ct.POINTER(t.EGLint), ct.POINTER(t.EGLint)))
     # set_func('eglMakeCurrent', t.EGLBoolean, (t.EGLDisplay, t.EGLSurface, t.EGLSurface, t.EGLContext))
     # set_func('eglQueryContext', t.EGLBoolean, (t.EGLDisplay, t.EGLContext, t.EGLint, ct.POINTER(t.EGLint)))
@@ -517,7 +536,7 @@ def init_egl_ext_yuv_surface():
 
 #### EGL_HI_CLIENTPIXMAP ####
 def init_egl_hi_clientpixmap():
-    # set_func('eglCreatePixmapSurfaceHI', t.EGLSurface, (t.EGLDisplay, t.EGLConfig, ct.POINTER(t.struct EGLClientPixmapHI)))
+    # set_func('eglCreatePixmapSurfaceHI', t.EGLSurface, (t.EGLDisplay, t.EGLConfig, ct.POINTER(t.EGLClientPixmapHI)))
     set_enum("EGL_CLIENT_PIXMAP_POINTER_HI", 0x8F74)
 
 

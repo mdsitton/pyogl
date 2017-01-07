@@ -15,6 +15,30 @@ def set_enum(name, value):
     globals()[name] = value
 
 noParms = ()
+# GLenum = t.UINT
+# GLboolean = t.UCHAR
+# GLbitfield = t.UINT
+# GLvoid = t.void
+# GLbyte = t.SCHAR
+# GLshort = t.short
+# GLint = t.INT
+# GLclampx = t.INT
+# GLubyte = t.UCHAR
+# GLushort = t.USHORT
+# GLuint = t.UINT
+# GLsizei = t.INT
+# GLfloat = t.FLOAT
+# GLclampf = t.FLOAT
+# GLdouble = t.double
+# GLclampd = t.double
+# GLeglImageOES = ct.POINTER(t.void)
+# GLchar = t.CHAR
+# GLcharARB = t.CHAR
+# GLhalfARB = t.USHORT
+# GLhalf = t.USHORT
+# GLfixed = t.GLint
+# GLsync = ct.POINTER(t._GLsync)
+# GLhalfNV = t.USHORT
 
 #### GL VERSION 1.0 ####
 def init_gl_version_1_0():
@@ -3481,7 +3505,7 @@ def init_gl_arb_buffer_storage():
 
 #### GL_ARB_CL_EVENT ####
 def init_gl_arb_cl_event():
-    # set_func('glCreateSyncFromCLeventARB', t.GLsync, (ct.POINTER(t.struct _cl_context), ct.POINTER(t.struct _cl_event), t.GLbitfield))
+    # set_func('glCreateSyncFromCLeventARB', t.GLsync, (ct.POINTER(t._cl_context), ct.POINTER(t._cl_event), t.GLbitfield))
     set_enum("GL_SYNC_CL_EVENT_ARB", 0x8240)
     set_enum("GL_SYNC_CL_EVENT_COMPLETE_ARB", 0x8241)
 

@@ -1,7 +1,7 @@
 from collections import OrderedDict
-import os
 
 from pglgen import xmlparse as xml
+
 
 def parse_type(typeStr):
 
@@ -15,7 +15,7 @@ def parse_type(typeStr):
     if ptrStr != '':
         pointers = ptrStr.split('*')
         del pointers[0]  # pointers start off offset by 1 position.
-        pointers = ['*'+ptr for ptr in pointers]
+        pointers = ['*' for ptr in pointers]
 
         typeList.extend(pointers)
 
@@ -26,18 +26,73 @@ def parse_type(typeStr):
         typeData = {}
 
         if 'const' in dataType:
+            dataType = dataType.replace('const', '')
             typeData['const'] = True
         else:
             typeData['const'] = False
 
+        if 'struct' in dataType:
+            dataType = dataType.replace('struct', '')
+            typeData['struct'] = True
+        else:
+            typeData['struct'] = False
+
         if '*' in dataType:
             typeData['type'] = 'pointer'
         else:
-            typeData['type'] = dataType.replace('const', '').strip()
+            typeData['type'] = dataType.strip()
 
         typeStack.append(typeData)
 
     return typeStack
+
+
+class Type(xml.BaseParser):
+
+    def init_data(self, apiFile):
+        self.name = None
+        self.typeInfo = []
+
+    def parse(self):
+        tagPath = self.stack.path()
+        tag, attrs, data = self.stack.peek()
+
+        if 'registry/types/type/name' in tagPath:
+            self.name = data[0].strip()
+        elif 'registry/types/type' in tagPath:
+            if 'requires' not in attrs and data:
+                if 'name' in attrs and self.name is None:
+                    self.name = attrs['name'].strip()
+                self.typeInfo.extend(data)
+            else:  # TODO - Fix khrplatform things
+                self.name = None
+                # print(attrs, data)
+
+    def integrate(self):
+        if self.name is not None:
+            if ';' in self.typeInfo:
+                self.typeInfo.remove(';')
+
+            if self.typeInfo:
+                typeInfo = ''.join(self.typeInfo)
+
+                if ('(' not in typeInfo and ')' not in typeInfo and
+                    '}' not in typeInfo and '{' not in typeInfo and
+                    '#' not in typeInfo):
+                    typeInfo = typeInfo.replace("typedef ", "")
+                    self.parent.types[self.name] = parse_type(typeInfo)
+
+
+class Types(xml.BaseParser):
+
+    def init_data(self, apiFile):
+        self.types = OrderedDict()
+
+        self.register_parser('registry/types/type', Type)
+
+    def integrate(self):
+        self.root.types.update(self.types)
+
 
 class Command(xml.BaseParser):
     '''Parse xml registry command tags'''
@@ -98,7 +153,7 @@ class Feature(xml.BaseParser):
 
         self.profiles = OrderedDict()
 
-        #self.parent.features.append(self)
+        # self.parent.features.append(self)
 
     @staticmethod
     def profile_setup(profileDict):
@@ -195,11 +250,10 @@ class Extensions(xml.BaseParser):
         tagPath = self.stack.path()
         tag, attrs, data = self.stack.peek()
 
-        #if 'registry/extensions/extension/require/enum'
-        if ('extension/require/enum' in tagPath or
-            'extension/require/command' in tagPath):
+        # if 'registry/extensions/extension/require/enum'
+        if 'extension/require/enum' in tagPath or 'extension/require/command' in tagPath:
 
-            #if self.name is None or self.supported is None:
+            # if self.name is None or self.supported is None:
             ptag, pattrs, pdata = self.stack.peek(posRel=2)
             self.name = pattrs['name']
             self.supported = pattrs['supported'].split('|')
@@ -258,6 +312,7 @@ class Registry(xml.BaseParser):
 
         self.enums = OrderedDict()
         self.commands = OrderedDict()
+        self.types = OrderedDict()
 
         # The dictionary structure for defining features and extensions
         # One difference between features and extensions is that afik there
@@ -295,6 +350,7 @@ class Registry(xml.BaseParser):
 
         self.tag = 'registry'
 
+        self.register_parser('registry/types', Types)
         self.register_parser('registry/commands', Commands)
         self.register_parser('registry/feature', Feature)
         self.register_parser('registry/extensions', Extensions)
@@ -312,7 +368,7 @@ class Registry(xml.BaseParser):
 def parse_registry(xmlFile):
     apiName = xmlFile.rsplit(".")[0]
     reg = xml.parse_xml(Registry, xmlFile, apiName)
-    return (reg.enums, reg.commands, reg.features, reg.extensions)
+    return (reg.enums, reg.commands, reg.types, reg.features, reg.extensions)
 
 
 #  Higher level Tree-like View of parser classes.

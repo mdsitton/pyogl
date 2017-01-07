@@ -10,7 +10,7 @@ class BaseApiGen(object):
         self.apiMajorName = apiName
 
         info = regparse.parse_registry('{0}.xml'.format(self.apiMajorName))
-        self.enums, self.commands, self.features, self.extensions = info
+        self.enums, self.commands, self.types, self.features, self.extensions = info
 
         self.apis = list(set(self.features.keys())|set(self.extensions.keys()))
 
@@ -18,6 +18,7 @@ class BaseApiGen(object):
         for api in self.apis:
             self.initNames[api] = []
             self.gen_header(api)
+            self.gen_types(api)
             self.gen_features(api, 'versions')
             self.gen_features(api, 'extensions')
             self.gen_init(api)
@@ -32,6 +33,9 @@ class BaseApiGen(object):
         pass
 
     def gen_features(self, api, genType):
+        pass
+
+    def gen_types(self, api):
         pass
 
     def gen_init(self, api):

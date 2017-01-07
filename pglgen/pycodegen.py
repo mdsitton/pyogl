@@ -37,6 +37,8 @@ def init():
 func = '    set_func(\'{0}\', {1}, ({2}))\n'
 commentedFunc = '    # set_func(\'{0}\', {1}, ({2}))\n'
 
+typeTemplate = '# {0} = {1}\n'
+
 pointer = 'ct.POINTER({0})'
 
 
@@ -48,20 +50,30 @@ typeMap = {
     'char': 'CHAR',
     'float': 'FLOAT',
     'unsigned int': 'UINT',
-    'unsigned long': 'ULONG'
+    'unsigned long': 'ULONG',
+    'unsigned short': 'USHORT',
+    'signed char': 'SCHAR',
+    'unsigned char': 'UCHAR'
 }
 
 def generate_type_str(typeData):
 
     baseTypeStr = None
 
-    typeStr = ''
+    typeStr = None
 
     for typeItem in typeData:
         dataType = typeItem['type']
         isConst = typeItem['const']
+        isStruct = typeItem['struct']
 
-        if dataType == 'pointer':
+        # Fix issue with __GLsync
+        if '__' in dataType:
+            dataType = dataType.replace('__', '_')
+
+        # Pointers come after the data type so this should never be
+        # called in the first loop iteration.
+        if dataType == 'pointer' and typeStr is not None:
             typeStr = pointer.format(typeStr)
 
         else:
@@ -188,6 +200,12 @@ class PyApiGen(BaseApiGen):
             code.append(funcTemplate.format(initName, funcCode))
 
         self.initNames[api].extend(initNames)
+        self.code[api] += ''.join(code)
+
+    def gen_types(self, api):
+        code = []
+        for name, typeInfo in self.types.items():
+            code.append(typeTemplate.format(name, generate_type_str(typeInfo)[0]))
         self.code[api] += ''.join(code)
 
     def gen_init(self, api):
